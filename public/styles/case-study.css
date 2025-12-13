@@ -43,6 +43,11 @@
     --hairline-subtle: rgba(0,0,0,0.12);
     --bg-elevated: rgba(0,0,0,.03);
   }
+  
+  /* Light mode placeholder images */
+  .placeholder-image {
+    background: #f5f5f5;
+  }
 }
 
 body{
@@ -59,8 +64,8 @@ a{ color: inherit; }
 
 /* Top Navigation - matching Figma */
 .topNav{
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 18px;
   padding: 20px var(--page-pad-left) 20px var(--page-pad-left);
@@ -77,20 +82,28 @@ a{ color: inherit; }
   display: flex;
   gap: 24px;
   align-items: center;
+  justify-content: flex-start;
+}
+
+.topNav-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .topNav-right{
   display: flex;
   gap: 16px;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .topNav a{
   text-decoration: none;
   color: var(--muted-light);
-  font-size: var(--step-1); /* 20px */
+  font-size: 1rem; /* 16px */
   font-weight: 500;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.7px;
   transition: color 0.2s;
   padding: 4px 0;
@@ -98,10 +111,11 @@ a{ color: inherit; }
 }
 
 .topNav-name{
-  text-transform: capitalize !important;
+  text-transform: none !important;
   color: var(--text) !important;
   font-weight: 500;
-  margin-right: 8px;
+  font-size: 1rem;
+  letter-spacing: normal;
 }
 
 .topNav a:hover{
@@ -116,6 +130,20 @@ a{ color: inherit; }
 .topNav-social{
   text-transform: none !important;
   letter-spacing: normal;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: opacity 0.2s;
+}
+
+.topNav-social:hover{
+  opacity: 0.7;
+}
+
+.topNav-social svg{
+  width: 20px;
+  height: 20px;
+  color: var(--muted-light);
 }
 
 .caseStudy{
@@ -280,6 +308,13 @@ figure img{ display:block; width:100%; height:auto; }
   height: 400px;
   background: #242627;
   display: block;
+}
+
+/* Light mode placeholder */
+@media (prefers-color-scheme: light) {
+  .placeholder-image {
+    background: #f5f5f5;
+  }
 }
 figcaption{
   padding: 10px 12px;
