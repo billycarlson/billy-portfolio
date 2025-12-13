@@ -8,24 +8,22 @@ meta:
   - "10–12 min read"
 sections:
   - { id: "context", label: "Context" }
-  - { id: "scope", label: "Project Scope" }
   - { id: "challenges", label: "Challenges" }
   - { 
       id: "approach", 
       label: "Approach",
       children: [
-        { id: "problem-framing", label: "Problem Framing" },
-        { id: "ideation", label: "Ideation" },
-        { id: "implementation", label: "Implementation" }
+        { id: "vision", label: "Vision First" },
+        { id: "alignment", label: "Designing for Alignment" },
+        { id: "tradeoffs", label: "Navigating Tradeoffs" }
       ]
     }
   - { 
       id: "looking-forward", 
       label: "Looking Forward",
       children: [
-        { id: "impact", label: "Business Impact" },
-        { id: "learnings", label: "Key Learnings" },
-        { id: "legacy", label: "Project Legacy" }
+        { id: "outcome", label: "Outcome" },
+        { id: "reflection", label: "Reflection" }
       ]
     }
 ---
@@ -34,147 +32,186 @@ import PullQuote from "../../components/PullQuote.astro";
 import Callout from "../../components/Callout.astro";
 import MetricsGrid from "../../components/MetricsGrid.astro";
 
-<p>
-The desktop homepage at iHerb is one of the most visible and scrutinized surfaces in
-the product. It sits at the intersection of marketing priorities, executive
-expectations, and long-term platform considerations.
-</p>
+<section id="context" class="two-col">
+  <div class="section-text">
+    <div class="label">Context</div>
+    <h2>A high-visibility surface under pressure</h2>
+    <p>
+      The desktop homepage at iHerb is one of the most visible and scrutinized surfaces in
+      the product. It sits at the intersection of marketing priorities, executive
+      expectations, and long-term platform considerations.
+    </p>
+    <p>
+      When I stepped into this project, the request was clear but incomplete: update the
+      homepage to better reflect the brand and support evolving business goals—quickly.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>The existing homepage before redesign.</figcaption>
+  </figure>
+</section>
 
-<p>
-When I stepped into this project, the request was clear but incomplete: update the
-homepage to better reflect the brand and support evolving business goals—quickly.
-</p>
-
-<h2>The constraint wasn’t design — it was pressure</h2>
-
-<p>
-The homepage had accumulated years of incremental changes. Different teams had
-touched it with good intent, but without a unifying vision. Visual inconsistency,
-content sprawl, and competing priorities made the experience feel fragmented.
-</p>
-
-<p>
-Complicating matters, feedback was coming directly from executive leadership. The
-timeline was compressed, expectations were high, and alignment across teams was
-still forming.
-</p>
-
-<p>
-This wasn’t a scenario where design could disappear into exploration. We needed to
-be decisive.
-</p>
+<section id="challenges" class="two-col">
+  <div class="section-text">
+    <div class="label">Challenges</div>
+    <h2>The constraint wasn't design — it was pressure</h2>
+    <p>
+      The homepage had accumulated years of incremental changes. Different teams had
+      touched it with good intent, but without a unifying vision. Visual inconsistency,
+      content sprawl, and competing priorities made the experience feel fragmented.
+    </p>
+    <p>
+      Complicating matters, feedback was coming directly from executive leadership. The
+      timeline was compressed, expectations were high, and alignment across teams was
+      still forming.
+    </p>
+    <p>
+      This wasn't a scenario where design could disappear into exploration. We needed to
+      be decisive.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Mapping the fragmented experience.</figcaption>
+  </figure>
+</section>
 
 <Callout title="Related thinking">
-  This moment reinforced ideas I’ve written about in
-  <a href="/stories/designing-under-executive-pressure">
-    Designing Under Executive Pressure
-  </a>.
+  <p>This moment reinforced ideas I've written about in <a href="/stories/executive-pressure">Designing Under Executive Pressure</a>.</p>
 </Callout>
 
-<h2>Choosing vision before optimization</h2>
+<section id="approach">
+  <div class="label">Approach</div>
+  <h2>How I navigated the work</h2>
+  <p>
+    The approach focused on creating clarity before optimization—establishing a vision that could align stakeholders before diving into implementation details.
+  </p>
+</section>
 
-<p>
-Rather than starting with incremental tweaks, I proposed a different approach:
-create a future-state desktop homepage that clarified where we were going before
-deciding how far we could realistically move in the near term.
-</p>
+<section id="vision" class="two-col">
+  <div class="section-text">
+    <div class="label">Vision First</div>
+    <h2>Choosing vision before optimization</h2>
+    <p>
+      Rather than starting with incremental tweaks, I proposed a different approach:
+      create a future-state desktop homepage that clarified where we were going before
+      deciding how far we could realistically move in the near term.
+    </p>
+    <p>
+      This reframing helped shift conversations away from individual modules and toward
+      overall structure, hierarchy, and intent.
+    </p>
+    <p>
+      The goal wasn't to ship everything immediately. It was to create a north star that
+      teams could align around.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>The future-state vision concept.</figcaption>
+  </figure>
+</section>
 
-<p>
-This reframing helped shift conversations away from individual modules and toward
-overall structure, hierarchy, and intent.
-</p>
+<section id="alignment" class="two-col">
+  <div class="section-text">
+    <div class="label">Designing for Alignment</div>
+    <h2>Designing for alignment, not just approval</h2>
+    <p>The design work focused on:</p>
+    <ul>
+      <li>Clarifying visual hierarchy across content types</li>
+      <li>Reducing cognitive load by grouping related information</li>
+      <li>Establishing more consistent patterns for promotions and discovery</li>
+      <li>Making brand expression feel intentional rather than decorative</li>
+    </ul>
+    <p>
+      Just as important as the design itself was how it was presented. I treated reviews
+      as alignment moments, not just checkpoints.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Design explorations showing hierarchy options.</figcaption>
+  </figure>
+</section>
 
-<p>
-The goal wasn’t to ship everything immediately. It was to create a north star that
-teams could align around.
-</p>
+<section id="tradeoffs" class="two-col">
+  <div class="section-text">
+    <div class="label">Navigating Tradeoffs</div>
+    <h2>Navigating tradeoffs without losing trust</h2>
+    <p>
+      Not everything in the future vision could ship immediately. Technical constraints,
+      dependencies with mobile teams, and ongoing experiments required prioritization.
+    </p>
+    <p>
+      Instead of defending every detail, I focused on explaining tradeoffs clearly:
+      what mattered now, what could wait, and why.
+    </p>
+    <p>
+      This transparency helped maintain momentum while avoiding false expectations.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Phased implementation roadmap.</figcaption>
+  </figure>
+</section>
 
-<h2>Designing for alignment, not just approval</h2>
+<section id="looking-forward">
+  <div class="label">Looking Forward</div>
+  <h2>Results and reflections</h2>
 
-<p>
-The design work focused on:
-</p>
+  <MetricsGrid 
+    metrics={[
+      { value: "Aligned", label: "Shared direction across product, design, and marketing" },
+      { value: "Clarity", label: "Reduced debate around homepage structure" },
+      { value: "Momentum", label: "Future vision unlocked phased execution" }
+    ]}
+  />
+</section>
 
-<ul>
-  <li>Clarifying visual hierarchy across content types</li>
-  <li>Reducing cognitive load by grouping related information</li>
-  <li>Establishing more consistent patterns for promotions and discovery</li>
-  <li>Making brand expression feel intentional rather than decorative</li>
-</ul>
+<section id="outcome" class="two-col">
+  <div class="section-text">
+    <div class="label">Outcome</div>
+    <h2>From deliverable to reference point</h2>
+    <p>
+      The future-state design became a reference point rather than a one-off deliverable.
+      It informed subsequent iterations, helped onboard new partners, and reduced
+      reactive redesign cycles.
+    </p>
+    <p>
+      More importantly, it repositioned design as a strategic contributor — not just an
+      executor responding to feedback.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>The redesigned homepage in production.</figcaption>
+  </figure>
+</section>
 
-<p>
-Just as important as the design itself was how it was presented. I treated reviews
-as alignment moments, not just checkpoints.
-</p>
-
-<h3>🧠 ADD REAL-WORLD STORY HERE</h3>
-<p><strong>What to add:</strong></p>
-<ul>
-  <li>A specific executive review moment</li>
-  <li>What feedback surprised you</li>
-  <li>How you reframed concerns into design decisions</li>
-</ul>
-
-<h2>Navigating tradeoffs without losing trust</h2>
-
-<p>
-Not everything in the future vision could ship immediately. Technical constraints,
-dependencies with mobile teams, and ongoing experiments required prioritization.
-</p>
-
-<p>
-Instead of defending every detail, I focused on explaining tradeoffs clearly:
-what mattered now, what could wait, and why.
-</p>
-
-<p>
-This transparency helped maintain momentum while avoiding false expectations.
-</p>
-
-<MetricsGrid
-  items={[
-    { label: "Alignment", value: "Shared direction across product, design, and marketing" },
-    { label: "Clarity", value: "Reduced debate around homepage structure" },
-    { label: "Momentum", value: "Future vision unlocked phased execution" }
-  ]}
-/>
-
-<h2>Outcome</h2>
-
-<p>
-The future-state design became a reference point rather than a one-off deliverable.
-It informed subsequent iterations, helped onboard new partners, and reduced
-reactive redesign cycles.
-</p>
-
-<p>
-More importantly, it repositioned design as a strategic contributor — not just an
-executor responding to feedback.
-</p>
-
-<h2>Reflection</h2>
-
-<p>
-High-visibility projects often test more than design skill. They test judgment,
-communication, and leadership under pressure.
-</p>
-
-<p>
-This project reinforced a lesson I’ve learned repeatedly: when stakes are high,
-clarity matters more than completeness.
-</p>
+<section id="reflection" class="two-col">
+  <div class="section-text">
+    <div class="label">Reflection</div>
+    <h2>Clarity matters more than completeness</h2>
+    <p>
+      High-visibility projects often test more than design skill. They test judgment,
+      communication, and leadership under pressure.
+    </p>
+    <p>
+      This project reinforced a lesson I've learned repeatedly: when stakes are high,
+      clarity matters more than completeness.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Team collaboration during the project.</figcaption>
+  </figure>
+</section>
 
 <Callout title="Related stories">
   <ul>
-    <li>
-      <a href="/stories/designing-under-executive-pressure">
-        Designing Under Executive Pressure
-      </a>
-    </li>
-    <li>
-      <a href="/stories/designing-for-moments-that-matter">
-        Designing for Moments That Matter
-      </a>
-    </li>
+    <li><a href="/stories/executive-pressure">Designing Under Executive Pressure</a></li>
+    <li><a href="/stories/moments-that-matter">Designing for Moments That Matter</a></li>
   </ul>
 </Callout>
