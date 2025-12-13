@@ -1,0 +1,162 @@
+---
+import TopNav from "../components/TopNav.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/case-study.css" />
+  </head>
+  <body>
+    <TopNav />
+    
+    <main class="page-content">
+      <div class="about-section">
+        <div class="section-label">WHO I AM</div>
+        <p class="about-intro">
+          I am a product design leader who is driven to create designs that fulfill both user and business objectives.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-item">
+          <h3 class="about-item-title">A Leader</h3>
+          <p>
+            As a design leader, I have always been passionate about managing innovative and effective teams that can design impactful products. For this reason, I have dedicated much of my time and energy to developing my own unique management style and approach to design.
+          </p>
+        </div>
+
+        <div class="about-item">
+          <h3 class="about-item-title">A Mentor</h3>
+          <p>
+            I have been fortunate enough to mentor a number of aspiring designers during my time with the teams I ran. My mentorship has taken many forms, ranging from personal one-on-one sessions to the development of comprehensive programs that promote better design understanding and skill acquisition.
+          </p>
+        </div>
+
+        <div class="about-item">
+          <h3 class="about-item-title">A Designer</h3>
+          <p>
+            As a designer, I have always been passionate about creating with a people-first mindset. Who are we serving? What are their needs? What are their goals and objectives? What challenges do they face? My aim is to always create products and experiences that meet their needs, that exceed their expectations, and that make their lives easier and more enjoyable. I strive to put the users at the center of the design process, to ensure that the user experience is always paramount.
+          </p>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <div class="section-label">WHAT I DO</div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-item">
+          <h3 class="about-item-title">Leadership</h3>
+          <p>
+            My design leadership is rooted in collaboration and communication. I foster an environment of open dialogue within my team and organization, encouraging the exchange of ideas quickly and regularly. I understand the importance of design in digital product design, from concept to product. My priority is to ensure design remains a priority throughout the process. My efforts to promote collaboration and communication will help ensure design remains a priority.
+          </p>
+        </div>
+
+        <div class="about-item">
+          <h3 class="about-item-title">Design Process</h3>
+          <p>
+            My design process is based on the principles of human-centered design. This approach focuses on meeting the needs of the end user through research, collaboration, and iteration. I also consider the impact of the design on the business, through potential revenue, cost savings, and other key objectives. This enables me to create products that are beneficial to both users and the business.
+          </p>
+        </div>
+
+        <div class="about-item">
+          <h3 class="about-item-title">Case Studies</h3>
+          <p>
+            Explore my portfolio of case studies to see how I've applied design thinking to solve complex problems and deliver measurable results for various clients and projects.
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .page-content {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 80px var(--page-pad-right) 80px var(--page-pad-left);
+    width: 100%;
+  }
+
+  .about-section {
+    margin-bottom: 60px;
+  }
+
+  .section-label {
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    font-size: var(--step-3); /* 30px */
+    color: var(--text);
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--hairline);
+  }
+
+  .about-intro {
+    font-size: var(--step-4); /* 40px */
+    line-height: 1.15;
+    color: var(--text);
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    max-width: 455px;
+    margin-top: 40px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    margin-top: 40px;
+  }
+
+  .about-item {
+    max-width: 435px;
+  }
+
+  .about-item-title {
+    font-size: var(--step-2); /* 22px */
+    line-height: 1.15;
+    margin: 0 0 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+  }
+
+  .about-item p {
+    font-size: var(--step-0); /* 16px */
+    line-height: 1.6;
+    color: var(--text);
+    font-weight: 400;
+    margin: 0;
+  }
+
+  @media (min-width: 980px) {
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .about-item {
+      margin-left: auto;
+    }
+  }
+</style>
+
