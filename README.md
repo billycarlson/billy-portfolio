@@ -18,7 +18,7 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:4321/stories/fashionphile-style-template` to see the template case study.
+Visit `http://localhost:4321/stories/case-study-template` to see the template case study.
 
 ## Project Structure
 
@@ -38,7 +38,7 @@ src/
       index.astro            # Stories listing page
   content/
     stories/
-      fashionphile-style-template.mdx  # Template case study
+      case-study-template.mdx  # Template case study
 public/
   styles/
     case-study.css           # Typography & layout styles
@@ -46,7 +46,7 @@ public/
 
 ## Creating a New Case Study
 
-1. Duplicate `src/content/stories/fashionphile-style-template.mdx`
+1. Duplicate `src/content/stories/case-study-template.mdx`
 2. Rename it (e.g., `my-project.mdx`)
 3. Update the frontmatter (title, lede, meta, sections)
 4. Write your content using the section structure
