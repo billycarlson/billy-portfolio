@@ -1,0 +1,57 @@
+---
+const modules = import.meta.glob('../../content/stories/*.mdx');
+const stories = await Promise.all(
+  Object.entries(modules).map(async ([path, module]) => {
+    const story = await module();
+    return {
+      slug: path.split('/').pop()?.replace('.mdx', '') || '',
+      title: story.frontmatter?.title || 'Untitled',
+      lede: story.frontmatter?.lede || '',
+      meta: story.frontmatter?.meta || []
+    };
+  })
+);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Case Studies</title>
+    <link rel="stylesheet" href="/styles/case-study.css" />
+  </head>
+
+  <body>
+    <div class="topNav">
+      <a href="/stories">Stories</a>
+      <a href="/about">About</a>
+      <a href="/resume">Resume</a>
+    </div>
+
+    <main style="max-width: 1200px; margin: 0 auto; padding: var(--page-pad);">
+      <h1 style="font-size: var(--step-3); margin-bottom: 36px;">Case Studies</h1>
+      <div style="display: grid; gap: 32px;">
+        {stories.map((story) => (
+          <article style="border-bottom: 1px solid var(--hairline); padding-bottom: 32px;">
+            <h2 style="font-size: var(--step-2); margin-bottom: 12px;">
+              <a href={`/stories/${story.slug}`} style="text-decoration: none; color: inherit;">
+                {story.title}
+              </a>
+            </h2>
+            {story.lede && (
+              <p style="font-size: var(--step-1); color: var(--muted); margin-bottom: 12px;">
+                {story.lede}
+              </p>
+            )}
+            {story.meta.length > 0 && (
+              <div style="display: flex; gap: 14px; flex-wrap: wrap; color: var(--muted); font-size: var(--step--1);">
+                {story.meta.map((m) => <span>{m}</span>)}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </main>
+  </body>
+</html>
+

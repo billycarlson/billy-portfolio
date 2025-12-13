@@ -1,0 +1,235 @@
+:root{
+  /* swap these anytime */
+  --bg: #0b0c10;
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.62);
+  --hairline: rgba(255,255,255,.12);
+
+  --step--1: clamp(0.95rem, 0.90rem + 0.2vw, 1.05rem);
+  --step-0:  clamp(1.05rem, 1.00rem + 0.35vw, 1.2rem);
+  --step-1:  clamp(1.25rem, 1.10rem + 0.7vw, 1.6rem);
+  --step-2:  clamp(1.6rem, 1.35rem + 1.1vw, 2.2rem);
+  --step-3:  clamp(2.2rem, 1.7rem + 2.0vw, 3.4rem);
+
+  --page-pad: clamp(18px, 3vw, 36px);
+  --content: 72ch;
+  --content-wide: 92ch;
+  --radius: 18px;
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+}
+
+a{ color: inherit; }
+
+.topNav{
+  display:flex;
+  gap: 18px;
+  padding: 14px var(--page-pad);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.topNav a{
+  text-decoration: none;
+  color: var(--muted);
+  font-size: var(--step--1);
+  transition: color 0.2s;
+}
+
+.topNav a:hover{
+  color: var(--text);
+}
+
+.caseStudy{
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: clamp(18px, 3vw, 40px);
+  padding: var(--page-pad);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 980px){
+  .caseStudy{ grid-template-columns: 1fr; }
+}
+
+.toc{
+  position: sticky;
+  top: 18px;
+  align-self: start;
+  border-left: 1px solid var(--hairline);
+  padding-left: 14px;
+}
+
+@media (max-width: 980px){
+  .toc{ position: relative; border-left: none; padding-left: 0; }
+}
+
+.toc a{
+  display:block;
+  text-decoration:none;
+  color: var(--muted);
+  font-size: var(--step--1);
+  padding: 6px 0;
+  transition: color 0.2s;
+}
+.toc a:hover{ color: var(--text); }
+.toc a.active{
+  color: var(--text);
+  font-weight: 500;
+}
+
+.main{ min-width: 0; }
+
+.hero{
+  max-width: var(--content-wide);
+  padding-bottom: clamp(18px, 3vw, 36px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.hero h1{
+  font-size: var(--step-3);
+  line-height: 1.05;
+  margin: 0 0 10px;
+}
+.lede{
+  font-size: var(--step-1);
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+.meta{
+  display:flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+.content{
+  padding-top: clamp(22px, 3vw, 34px);
+}
+
+.content section{
+  padding-top: clamp(28px, 4vw, 56px);
+  max-width: var(--content);
+  scroll-margin-top: 20px;
+}
+
+.content .label{
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.content h2{
+  font-size: var(--step-2);
+  line-height: 1.15;
+  margin: 0 0 14px;
+}
+.content p{ margin: 0 0 14px; }
+.content ul{ margin: 0 0 14px 1.2em; }
+
+figure{
+  margin: 18px 0 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+}
+figure img{ display:block; width:100%; height:auto; }
+figcaption{
+  padding: 10px 12px;
+  font-size: var(--step--1);
+  color: var(--muted);
+  border-top: 1px solid var(--hairline);
+}
+
+/* Pull Quote */
+.pullQuote{
+  margin: 28px 0;
+  padding: 24px 0;
+  border-left: 3px solid var(--hairline);
+  padding-left: 20px;
+  max-width: var(--content);
+}
+
+.pullQuote blockquote{
+  margin: 0;
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--text);
+  font-style: italic;
+}
+
+.pullQuote cite{
+  display: block;
+  margin-top: 12px;
+  font-size: var(--step--1);
+  color: var(--muted);
+  font-style: normal;
+}
+
+/* Callout */
+.callout{
+  margin: 28px 0;
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  background: rgba(255,255,255,.03);
+  max-width: var(--content);
+}
+
+.callout p{
+  margin: 0;
+  font-size: var(--step-0);
+}
+
+.callout p:not(:last-child){
+  margin-bottom: 12px;
+}
+
+.callout strong{
+  display: block;
+  margin-bottom: 8px;
+  font-size: var(--step--1);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* Metrics Grid */
+.metricsGrid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin: 28px 0;
+  max-width: var(--content);
+}
+
+.metric{
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--hairline);
+  background: rgba(255,255,255,.03);
+}
+
+.metricValue{
+  font-size: var(--step-2);
+  line-height: 1.1;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+.metricLabel{
+  font-size: var(--step--1);
+  color: var(--muted);
+  margin: 0;
+}
+

@@ -1,0 +1,67 @@
+---
+const { sections = [] } = Astro.props;
+---
+
+<nav class="toc" id="toc">
+  {sections.map((s) => (
+    <a href={`#${s.id}`} data-section={s.id}>{s.label}</a>
+  ))}
+</nav>
+
+<script>
+  // IntersectionObserver to highlight current section in TOC
+  document.addEventListener('DOMContentLoaded', () => {
+    const toc = document.getElementById('toc');
+    if (toc) {
+      const links = Array.from(toc.querySelectorAll('a[data-section]'));
+      const sectionElements = links.map(link => {
+        const sectionId = link.getAttribute('data-section');
+        return {
+          link,
+          id: sectionId,
+          element: sectionId ? document.getElementById(sectionId) : null
+        };
+      }).filter(s => s.element);
+
+      if (sectionElements.length > 0) {
+        const observerOptions = {
+          root: null,
+          rootMargin: '-20% 0px -60% 0px',
+          threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          // Find the first intersecting entry (topmost visible section)
+          const intersecting = entries
+            .filter(e => e.isIntersecting)
+            .sort((a, b) => {
+              const aRect = a.boundingClientRect;
+              const bRect = b.boundingClientRect;
+              return aRect.top - bRect.top;
+            });
+
+          if (intersecting.length > 0) {
+            const activeSection = intersecting[0].target.id;
+            
+            // Remove active class from all links
+            links.forEach(link => link.classList.remove('active'));
+            
+            // Add active class to current link
+            const activeLink = links.find(link => link.getAttribute('data-section') === activeSection);
+            if (activeLink) {
+              activeLink.classList.add('active');
+            }
+          }
+        }, observerOptions);
+
+        // Observe all sections
+        sectionElements.forEach(s => {
+          if (s.element) {
+            observer.observe(s.element);
+          }
+        });
+      }
+    }
+  });
+</script>
+
