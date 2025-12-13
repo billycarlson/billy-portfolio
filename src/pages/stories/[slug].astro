@@ -2,19 +2,24 @@
 import StoryLayout from "../../layouts/StoryLayout.astro";
 
 export async function getStaticPaths() {
-  const modules = import.meta.glob('../../content/stories/*.mdx');
-  return Object.keys(modules).map((path) => ({
-    params: { slug: path.split('/').pop()?.replace(/\.mdx$/, '') || '' },
-    props: { path },
-  }));
+  const modules = import.meta.glob('../../content/stories/*.mdx', { eager: true });
+  
+  return Object.entries(modules)
+    .filter(([path]) => !path.includes('template'))
+    .map(([path, module]) => {
+      const slug = path.split('/').pop()?.replace(/\.mdx$/, '') || '';
+      const story = module as any;
+      return {
+        params: { slug },
+        props: { 
+          Content: story.default,
+          frontmatter: story.frontmatter || {}
+        },
+      };
+    });
 }
 
-const { path } = Astro.props;
-const story = await import(path);
-const Content = story.default;
-const frontmatter = story.frontmatter;
-
-// Extract sections and other props, excluding layout
+const { Content, frontmatter } = Astro.props;
 const { layout: _, sections: __, ...layoutProps } = frontmatter;
 ---
 
