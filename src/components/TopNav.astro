@@ -10,12 +10,13 @@ const isActive = (path: string) => {
 
 <nav class="topNav">
   <div class="topNav-left">
+    <a href="/" class="topNav-name">BILLY CARLSON</a>
     <a href="/" class={isActive('/') ? 'active' : ''}>Stories</a>
     <a href="/about" class={isActive('/about') ? 'active' : ''}>About</a>
     <a href="/resume" class={isActive('/resume') ? 'active' : ''}>Resume</a>
   </div>
   <div class="topNav-right">
-    <!-- Add social links here if needed -->
+    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="topNav-social">LinkedIn</a>
   </div>
 </nav>
 

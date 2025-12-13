@@ -1,0 +1,126 @@
+---
+title: "Design Leadership"
+lede: "Short punchy one-liner about the problem and outcome."
+meta:
+  - "Company"
+  - "Role"
+  - "6 min read"
+sections:
+  - { id: "context", label: "Context" }
+  - { id: "scope", label: "Project Scope" }
+  - { id: "challenges", label: "Challenges" }
+  - { 
+      id: "approach", 
+      label: "Approach",
+      children: [
+        { id: "problem-framing", label: "Problem Framing" },
+        { id: "ideation", label: "Ideation" },
+        { id: "implementation", label: "Implementation" }
+      ]
+    }
+  - { 
+      id: "looking-forward", 
+      label: "Looking Forward",
+      children: [
+        { id: "impact", label: "Business Impact" },
+        { id: "learnings", label: "Key Learnings" },
+        { id: "legacy", label: "Project Legacy" }
+      ]
+    }
+---
+
+import PullQuote from "../../components/PullQuote.astro";
+import Callout from "../../components/Callout.astro";
+import MetricsGrid from "../../components/MetricsGrid.astro";
+
+<section id="context">
+  <div class="label">Context</div>
+  <h2>What was happening</h2>
+  <p>Write 2–4 short paragraphs. Keep it scannable.</p>
+</section>
+
+<section id="scope">
+  <div class="label">Project Scope</div>
+  <h2>What you owned</h2>
+  <ul>
+    <li>Responsibility</li>
+    <li>Responsibility</li>
+  </ul>
+</section>
+
+<section id="challenges">
+  <div class="label">Challenges</div>
+  <h2>The constraints that shaped the work</h2>
+  <p>Bullets or short paragraphs.</p>
+</section>
+
+<section id="approach">
+  <div class="label">Approach</div>
+  <h2>How you worked</h2>
+
+  <PullQuote 
+    quote="This is an example pull quote that highlights a key insight from the case study."
+    attribution="Team Lead"
+  />
+
+  <Callout title="Key Insight">
+    <p>This is a callout box for important information that needs to stand out.</p>
+  </Callout>
+
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Caption (optional).</figcaption>
+  </figure>
+</section>
+
+<section id="problem-framing">
+  <div class="label">Problem Framing</div>
+  <h2>How we defined the problem</h2>
+  <p>Describe how you framed the problem.</p>
+</section>
+
+<section id="ideation">
+  <div class="label">Ideation</div>
+  <h2>Exploring solutions</h2>
+  <p>Describe the ideation process.</p>
+</section>
+
+<section id="implementation">
+  <div class="label">Implementation</div>
+  <h2>Bringing it to life</h2>
+  <p>Describe the implementation process.</p>
+</section>
+
+<section id="looking-forward">
+  <div class="label">Looking Forward</div>
+  <h2>What's next</h2>
+  <p>Overview of the outcomes and future direction.</p>
+</section>
+
+<section id="impact">
+  <div class="label">Business Impact</div>
+  <h2>What changed</h2>
+  
+  <MetricsGrid 
+    metrics={[
+      { value: "42%", label: "Increase in engagement" },
+      { value: "3.2x", label: "Faster load times" },
+      { value: "89%", label: "User satisfaction" }
+    ]}
+  />
+  
+  <p>Add metrics if you have them.</p>
+</section>
+
+<section id="learnings">
+  <div class="label">Key Learnings</div>
+  <h2>What you'd do again (and what you wouldn't)</h2>
+  <p>Close strong.</p>
+</section>
+
+<section id="legacy">
+  <div class="label">Project Legacy</div>
+  <h2>Long-term impact</h2>
+  <p>Describe the lasting impact of this project.</p>
+</section>
+

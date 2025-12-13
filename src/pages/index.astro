@@ -31,6 +31,11 @@ const stories = await Promise.all(
 		<TopNav />
 		
 		<main class="stories-page">
+			<div class="stories-intro">
+				<p class="stories-intro-text">
+					I am a product design leader who is driven to create designs that fulfill both user and business objectives.
+				</p>
+			</div>
 			<h1 class="page-title">Case Studies</h1>
 			<div class="stories-grid">
 				{stories.map((story) => (
@@ -68,6 +73,20 @@ const stories = await Promise.all(
     font-weight: 400;
     font-family: 'Inter', sans-serif;
     margin: 0 0 60px;
+  }
+
+  .stories-intro {
+    margin-bottom: 60px;
+    max-width: 600px;
+  }
+
+  .stories-intro-text {
+    font-size: var(--step-4); /* 40px */
+    line-height: 1.15;
+    color: var(--text);
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
   }
 
   .stories-grid {
@@ -118,11 +137,5 @@ const stories = await Promise.all(
     font-size: var(--step--1);
   }
 
-  @media (min-width: 768px) {
-    .stories-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-    }
-  }
 </style>
 

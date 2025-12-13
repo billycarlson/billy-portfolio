@@ -76,6 +76,7 @@ a{ color: inherit; }
 .topNav-left{
   display: flex;
   gap: 24px;
+  align-items: center;
 }
 
 .topNav-right{
@@ -96,6 +97,13 @@ a{ color: inherit; }
   font-family: 'Inter', sans-serif;
 }
 
+.topNav-name{
+  text-transform: capitalize !important;
+  color: var(--text) !important;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
 .topNav a:hover{
   color: var(--text);
 }
@@ -103,6 +111,11 @@ a{ color: inherit; }
 .topNav a.active{
   color: var(--text);
   font-weight: 500;
+}
+
+.topNav-social{
+  text-transform: none !important;
+  letter-spacing: normal;
 }
 
 .caseStudy{
