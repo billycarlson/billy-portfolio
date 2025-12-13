@@ -64,52 +64,92 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
 		<TopNav />
 		
 		<main class="stories-page">
-			<div class="stories-intro">
-				<p class="stories-intro-text">
-					I am a product design leader who is driven to create designs that fulfill both user and business objectives.
-				</p>
-			</div>
+			<!-- WHO I AM section -->
+			<section class="two-col-section">
+				<div class="col-left">
+					<h2 class="section-label">Who I Am</h2>
+					<p class="section-intro">
+						I am a product design leader who is driven to create designs that fulfill both user and business objectives.
+					</p>
+				</div>
+				<div class="col-right">
+					<div class="attribute-item">
+						<h3 class="attribute-title">A Leader</h3>
+						<p class="attribute-text">
+							As a design leader, I have always been passionate about managing innovative and effective teams that can design impactful products. For this reason, I have dedicated much of my time and energy to developing my own unique management style and approach to design.
+						</p>
+					</div>
+					<div class="attribute-item">
+						<h3 class="attribute-title">A Mentor</h3>
+						<p class="attribute-text">
+							I have been fortunate enough to mentor a number of aspiring designers during my time with the teams I ran. My mentorship has taken many forms, ranging from personal one-on-one sessions to the development of comprehensive programs that promote better design understanding.
+						</p>
+					</div>
+					<div class="attribute-item">
+						<h3 class="attribute-title">A Designer</h3>
+						<p class="attribute-text">
+							As a designer, I have always been passionate about creating with a people-first mindset. Who are we serving? What are their needs? My aim is to always create products and experiences that meet their needs and exceed their expectations.
+						</p>
+					</div>
+				</div>
+			</section>
 
+			<!-- CASE STUDIES section -->
 			{caseStudies.length > 0 && (
-				<section class="content-section">
-					<h2 class="section-title">Case Studies</h2>
-					<div class="stories-grid">
+				<section class="two-col-section">
+					<div class="col-left">
+						<h2 class="section-label">Case Studies</h2>
+					</div>
+					<div class="col-right">
 						{caseStudies.map((caseStudy) => (
-							<article class="story-card">
-								<h3 class="story-title">
-									<a href={`/case-studies/${caseStudy.slug}`}>{caseStudy.title}</a>
-								</h3>
-								{caseStudy.lede && (
-									<p class="story-lede">{caseStudy.lede}</p>
-								)}
-								{caseStudy.meta.length > 0 && (
-									<div class="story-meta">
-										{caseStudy.meta.map((m) => <span>{m}</span>)}
-									</div>
-								)}
+							<article class="work-card">
+								<div class="work-card-image">
+									<div class="placeholder-image"></div>
+								</div>
+								<div class="work-card-content">
+									<h3 class="work-card-title">
+										<a href={`/case-studies/${caseStudy.slug}`}>{caseStudy.title}</a>
+									</h3>
+									{caseStudy.lede && (
+										<p class="work-card-lede">{caseStudy.lede}</p>
+									)}
+									{caseStudy.meta.length > 0 && (
+										<div class="work-card-meta">
+											{caseStudy.meta.map((m) => <span>{m}</span>)}
+										</div>
+									)}
+								</div>
 							</article>
 						))}
 					</div>
 				</section>
 			)}
 
+			<!-- STORIES section -->
 			{stories.length > 0 && (
-				<section class="content-section">
-					<h2 class="section-title">Stories</h2>
-					<div class="stories-grid">
+				<section class="two-col-section">
+					<div class="col-left">
+						<h2 class="section-label">Stories</h2>
+					</div>
+					<div class="col-right">
 						{stories.map((story) => (
-							<article class="story-card">
-								<h3 class="story-title">
-									<a href={`/stories/${story.slug}`}>{story.title}</a>
-								</h3>
-								{story.lede && (
-									<p class="story-lede">{story.lede}</p>
-								)}
-								{story.meta.length > 0 && (
-									<div class="story-meta">
-										{story.meta.map((m) => <span>{m}</span>)}
-									</div>
-								)}
+							<article class="work-card">
+								<div class="work-card-image">
+									<div class="placeholder-image"></div>
+								</div>
+								<div class="work-card-content">
+									<h3 class="work-card-title">
+										<a href={`/stories/${story.slug}`}>{story.title}</a>
+									</h3>
+									{story.lede && (
+										<p class="work-card-lede">{story.lede}</p>
+									)}
+									{story.meta.length > 0 && (
+										<div class="work-card-meta">
+											{story.meta.map((m) => <span>{m}</span>)}
+										</div>
+									)}
+								</div>
 							</article>
 						))}
 					</div>
@@ -123,86 +163,147 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
   .stories-page {
     max-width: 1320px;
     margin: 0 auto;
-    padding: 80px var(--page-pad-right) 80px var(--page-pad-left);
+    padding: 80px 80px;
     width: 100%;
   }
 
-  .section-title {
-    font-size: var(--step-3); /* 30px */
+  /* Two-column section layout */
+  .two-col-section {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .two-col-section:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  /* Left column - section labels */
+  .col-left {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+  }
+
+  .section-label {
+    font-size: var(--step-3);
     line-height: 1.15;
     color: var(--text);
     font-weight: 500;
     font-family: 'Inter', sans-serif;
-    margin: 0 0 40px;
+    margin: 0 0 24px;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--hairline);
+    letter-spacing: 0.01em;
   }
 
-  .content-section {
-    margin-bottom: 80px;
-  }
-
-  .content-section:last-child {
-    margin-bottom: 0;
-  }
-
-  .stories-intro {
-    margin-bottom: 60px;
-    max-width: 600px;
-  }
-
-  .stories-intro-text {
-    font-size: var(--step-4); /* 40px */
+  .section-intro {
+    font-size: var(--step-4);
     line-height: 1.15;
     color: var(--text);
     font-weight: 400;
     font-family: 'Inter', sans-serif;
     margin: 0;
+    max-width: 455px;
   }
 
-  .stories-grid {
+  /* Right column - content */
+  .col-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Attribute items (Who I Am section) */
+  .attribute-item {
+    padding-top: 28px;
+    padding-bottom: 28px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .attribute-item:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .attribute-title {
+    font-size: var(--step-2);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    margin: 0 0 16px;
+  }
+
+  .attribute-text {
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0;
+    max-width: 435px;
+  }
+
+  /* Work cards (Case Studies & Stories) */
+  .work-card {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 60px;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    border-top: 1px solid var(--hairline);
+    align-items: start;
   }
 
-  .story-card {
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--hairline-subtle);
+  .work-card:first-child {
+    border-top: none;
+    padding-top: 0;
   }
 
-  .story-card:last-child {
-    border-bottom: none;
+  .work-card-image {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 4px;
   }
 
-  .story-title {
-    font-size: var(--step-2); /* 22px */
+  .work-card-image .placeholder-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .work-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .work-card-title {
+    font-size: var(--step-2);
     line-height: 1.15;
-    margin: 0 0 12px;
+    margin: 0;
     font-weight: 500;
     font-family: 'Inter', sans-serif;
   }
 
-  .story-title a {
+  .work-card-title a {
     text-decoration: none;
     color: var(--text);
     transition: color 0.2s;
   }
 
-  .story-title a:hover {
+  .work-card-title a:hover {
     color: var(--muted-light);
   }
 
-  .story-lede {
-    font-size: var(--step-0); /* 16px */
+  .work-card-lede {
+    font-size: var(--step-0);
     color: var(--muted);
-    margin: 0 0 12px;
+    margin: 0;
     line-height: 1.6;
   }
 
-  .story-meta {
+  .work-card-meta {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
@@ -210,42 +311,56 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
     font-size: var(--step--1);
   }
 
+  /* Mobile responsive */
   @media (max-width: 767px) {
     .stories-page {
       padding: 40px 20px;
     }
 
-    .section-title {
-      font-size: var(--step-2);
-      margin-bottom: 30px;
+    .two-col-section {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding-top: 40px;
+      padding-bottom: 40px;
     }
 
-    .content-section {
-      margin-bottom: 60px;
+    .col-left {
+      position: static;
     }
 
-    .stories-intro {
-      margin-bottom: 40px;
-    }
-
-    .stories-intro-text {
+    .section-label {
       font-size: var(--step-2);
     }
 
-    .stories-grid {
-      gap: 40px;
+    .section-intro {
+      font-size: var(--step-2);
     }
 
-    .story-card {
-      padding-bottom: 30px;
+    .work-card {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .attribute-text,
+    .work-card-lede {
+      max-width: 100%;
     }
   }
 
+  /* Tablet */
   @media (min-width: 768px) and (max-width: 1023px) {
     .stories-page {
       padding: 60px 40px;
     }
-  }
 
+    .two-col-section {
+      gap: 40px;
+    }
+
+    .work-card {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
 </style>
 

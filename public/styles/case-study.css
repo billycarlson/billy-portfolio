@@ -310,8 +310,32 @@ a{ color: inherit; }
 
 .content section{
   padding-top: clamp(28px, 4vw, 56px);
-  max-width: var(--content);
+  max-width: var(--content-wide);
   scroll-margin-top: 20px;
+}
+
+/* Two-column layout for case study sections */
+.content section.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+  max-width: var(--content-wide);
+}
+
+.content section.two-col .section-text {
+  max-width: 100%;
+}
+
+.content section.two-col figure {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .content section.two-col {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 .content .label{
