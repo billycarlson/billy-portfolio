@@ -6,9 +6,6 @@ A portfolio website built with Astro + MDX for showcasing case studies with a co
 
 - **Astro + MDX** for fast, static case study pages
 - **Component-based layouts** with reusable components
-- **Auto-highlighting TOC** using IntersectionObserver
-- **Custom components**: PullQuote, Callout, MetricsGrid
-- **Responsive design** with mobile-friendly layout
 - **Easy color customization** via CSS variables
 
 ## Getting Started
@@ -18,31 +15,6 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:4321/stories/case-study-template` to see the template case study.
-
-## Project Structure
-
-```
-src/
-  layouts/
-    CaseStudyLayout.astro    # Main layout template
-  components/
-    TableOfContents.astro    # TOC with auto-highlight
-    CaseStudyHero.astro      # Hero section
-    PullQuote.astro          # Pull quote component
-    Callout.astro            # Callout box component
-    MetricsGrid.astro        # Metrics display component
-  pages/
-    stories/
-      [slug].astro           # Dynamic route for case studies
-      index.astro            # Stories listing page
-  content/
-    stories/
-      case-study-template.mdx  # Template case study
-public/
-  styles/
-    case-study.css           # Typography & layout styles
-```
 
 ## Creating a New Case Study
 
