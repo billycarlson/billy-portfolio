@@ -1,17 +1,57 @@
 ---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+
 export async function getStaticPaths() {
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/a78ef623-cca5-4a84-aff8-2f9c4fa8b94d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'[slug].astro:getStaticPaths:entry',message:'getStaticPaths called',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+  // #endregion
   const modules = import.meta.glob('../../content/stories/*.mdx');
-  return Object.keys(modules).map((path) => ({
-    params: { slug: path.split('/').pop()?.replace('.mdx', '') || '' },
-    props: { path },
-  }));
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/a78ef623-cca5-4a84-aff8-2f9c4fa8b94d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'[slug].astro:getStaticPaths:after-glob',message:'glob result',data:{moduleKeys:Object.keys(modules),moduleCount:Object.keys(modules).length},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+  // #endregion
+  const paths = Object.keys(modules).map((path) => {
+    const slug = path.split('/').pop()?.replace('.mdx', '') || '';
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/a78ef623-cca5-4a84-aff8-2f9c4fa8b94d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'[slug].astro:getStaticPaths:map',message:'path mapping',data:{originalPath:path,slug:slug},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+    // #endregion
+    return {
+      params: { slug },
+      props: { path },
+    };
+  });
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/a78ef623-cca5-4a84-aff8-2f9c4fa8b94d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'[slug].astro:getStaticPaths:exit',message:'returning paths',data:{pathCount:paths.length,paths:paths.map(p=>({slug:p.params.slug,path:p.props.path}))},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+  // #endregion
+  return paths;
 }
 
 const { path } = Astro.props;
-const story = await import(path);
-const Content = story.default;
-const frontmatter = story.frontmatter;
+// #region agent log
+fetch('http://127.0.0.1:7242/ingest/a78ef623-cca5-4a84-aff8-2f9c4fa8b94d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'[slug].astro:render:entry',message:'render started',data:{path:path,slug:Astro.params.slug},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,E'})}).catch(()=>{});
+// #endregion
+let story, Content, frontmatter;
+try {
+  story = await import(path);
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/a78ef623-cca5-4a84-aff8-2f9c4fa8b94d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'[slug].astro:render:after-import',message:'import successful',data:{hasDefault:!!story.default,hasFrontmatter:!!story.frontmatter,storyKeys:Object.keys(story)},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,E'})}).catch(()=>{});
+  // #endregion
+  Content = story.default;
+  frontmatter = story.frontmatter;
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/a78ef623-cca5-4a84-aff8-2f9c4fa8b94d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'[slug].astro:render:before-render',message:'about to render',data:{hasContent:!!Content,frontmatterKeys:frontmatter?Object.keys(frontmatter):null,title:frontmatter?.title,sections:frontmatter?.sections?JSON.parse(JSON.stringify(frontmatter.sections)):null,sectionsCount:frontmatter?.sections?.length||0,hasNestedSections:frontmatter?.sections?.some(s=>s.children&&s.children.length>0)||false},timestamp:Date.now(),sessionId:'debug-session',runId:'run2',hypothesisId:'F'})}).catch(()=>{});
+  // #endregion
+} catch (error) {
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/a78ef623-cca5-4a84-aff8-2f9c4fa8b94d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'[slug].astro:render:error',message:'import failed',data:{error:error.message,errorStack:error.stack,path:path},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,B,C,D,E'})}).catch(()=>{});
+  // #endregion
+  throw error;
+}
+
+// Extract sections and other props, excluding layout
+const { layout: _, ...layoutProps } = frontmatter;
 ---
 
-<Content {...frontmatter} />
+<CaseStudyLayout {...layoutProps}>
+  <Content />
+</CaseStudyLayout>
 

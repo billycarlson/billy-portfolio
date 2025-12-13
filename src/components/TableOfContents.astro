@@ -6,21 +6,9 @@ interface Section {
 }
 
 const { sections = [] } = Astro.props as { sections: Section[] };
-
-const renderSection = (section: Section, isChild = false) => {
-  return (
-    <div class="toc-item">
-      <a href={`#${section.id}`} data-section={section.id} class="toc-link">
-        {section.label}
-      </a>
-      {section.children && section.children.length > 0 && (
-        <div class="toc-children">
-          {section.children.map((child) => renderSection(child, true))}
-        </div>
-      )}
-    </div>
-  );
-};
+// #region agent log
+fetch('http://127.0.0.1:7242/ingest/a78ef623-cca5-4a84-aff8-2f9c4fa8b94d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'TableOfContents.astro:props',message:'sections received',data:{sectionsCount:sections.length,sections:JSON.parse(JSON.stringify(sections)),hasNested:sections.some(s=>s.children&&s.children.length>0)},timestamp:Date.now(),sessionId:'debug-session',runId:'run2',hypothesisId:'F'})}).catch(()=>{});
+// #endregion
 ---
 
 <nav class="toc" id="toc">
@@ -28,7 +16,30 @@ const renderSection = (section: Section, isChild = false) => {
     <span class="toc-icon">↑</span>
     Back to Top
   </a>
-  {sections.map((s) => renderSection(s))}
+  {sections.map((section) => {
+    // #region agent log
+    const hasChildren = section.children && section.children.length > 0;
+    fetch('http://127.0.0.1:7242/ingest/a78ef623-cca5-4a84-aff8-2f9c4fa8b94d',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'TableOfContents.astro:map',message:'rendering section',data:{sectionId:section.id,sectionLabel:section.label,hasChildren:hasChildren,childrenCount:section.children?.length||0},timestamp:Date.now(),sessionId:'debug-session',runId:'run2',hypothesisId:'F'})}).catch(()=>{});
+    // #endregion
+    return (
+      <div class="toc-item">
+        <a href={`#${section.id}`} data-section={section.id} class="toc-link">
+          {section.label}
+        </a>
+        {hasChildren && (
+          <div class="toc-children">
+            {section.children.map((child) => (
+              <div class="toc-item">
+                <a href={`#${child.id}`} data-section={child.id} class="toc-link">
+                  {child.label}
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  })}
 </nav>
 
 <script>
