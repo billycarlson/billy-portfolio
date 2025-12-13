@@ -147,5 +147,38 @@ const stories = allStories.filter(story => story !== null && story.slug !== 'cas
     font-size: var(--step--1);
   }
 
+  @media (max-width: 767px) {
+    .stories-page {
+      padding: 40px 20px;
+    }
+
+    .page-title {
+      font-size: var(--step-3);
+      margin-bottom: 40px;
+    }
+
+    .stories-intro {
+      margin-bottom: 40px;
+    }
+
+    .stories-intro-text {
+      font-size: var(--step-2);
+    }
+
+    .stories-grid {
+      gap: 40px;
+    }
+
+    .story-card {
+      padding-bottom: 30px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .stories-page {
+      padding: 60px 40px;
+    }
+  }
+
 </style>
 
