@@ -1,5 +1,5 @@
 ---
-import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import StoryLayout from "../../layouts/StoryLayout.astro";
 
 export async function getStaticPaths() {
   const modules = import.meta.glob('../../content/stories/*.mdx');
@@ -15,10 +15,10 @@ const Content = story.default;
 const frontmatter = story.frontmatter;
 
 // Extract sections and other props, excluding layout
-const { layout: _, ...layoutProps } = frontmatter;
+const { layout: _, sections: __, ...layoutProps } = frontmatter;
 ---
 
-<CaseStudyLayout {...layoutProps}>
+<StoryLayout {...layoutProps}>
   <Content />
-</CaseStudyLayout>
+</StoryLayout>
 

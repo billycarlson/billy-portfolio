@@ -1,18 +1,28 @@
 ---
 import TopNav from "../components/TopNav.astro";
 
-const modules = import.meta.glob('../content/stories/*.mdx');
-const stories = await Promise.all(
+const modules = import.meta.glob('../content/stories/*.{mdx,mxd}');
+const allStories = await Promise.all(
   Object.entries(modules).map(async ([path, module]) => {
-    const story = await module();
-    return {
-      slug: path.split('/').pop()?.replace('.mdx', '') || '',
-      title: story.frontmatter?.title || 'Untitled',
-      lede: story.frontmatter?.lede || '',
-      meta: story.frontmatter?.meta || []
-    };
+    try {
+      const story = await module();
+      const filename = path.split('/').pop() || '';
+      const slug = filename.replace(/\.(mdx|mxd)$/, '');
+      return {
+        slug,
+        title: story.frontmatter?.title || 'Untitled',
+        lede: story.frontmatter?.lede || '',
+        meta: story.frontmatter?.meta || []
+      };
+    } catch (error) {
+      console.error(`Error loading story from ${path}:`, error);
+      return null;
+    }
   })
 );
+
+// Filter out any null entries from failed imports and exclude the template
+const stories = allStories.filter(story => story !== null && story.slug !== 'case-study-template');
 ---
 
 <html lang="en">

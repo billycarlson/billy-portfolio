@@ -1,0 +1,24 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+
+export async function getStaticPaths() {
+  const modules = import.meta.glob('../../content/case-studies/*.mdx');
+  return Object.keys(modules).map((path) => ({
+    params: { slug: path.split('/').pop()?.replace('.mdx', '') || '' },
+    props: { path },
+  }));
+}
+
+const { path } = Astro.props;
+const caseStudy = await import(path);
+const Content = caseStudy.default;
+const frontmatter = caseStudy.frontmatter;
+
+// Extract sections and other props, excluding layout
+const { layout: _, ...layoutProps } = frontmatter;
+---
+
+<CaseStudyLayout {...layoutProps}>
+  <Content />
+</CaseStudyLayout>
+

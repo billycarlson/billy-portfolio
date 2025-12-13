@@ -1,0 +1,16 @@
+---
+const { title, lede, meta = [] } = Astro.props;
+---
+
+<div class="hero">
+  <h1>{title}</h1>
+  {lede && <p class="lede">{lede}</p>}
+  {meta.length > 0 && (
+    <div class="meta">
+      {meta.map((m) => (
+        <span>{m}</span>
+      ))}
+    </div>
+  )}
+</div>
+
