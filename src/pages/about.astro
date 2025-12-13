@@ -7,7 +7,7 @@ import Footer from "../components/Footer.astro";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About</title>
+    <title>About - Billy Carlson</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -16,63 +16,156 @@ import Footer from "../components/Footer.astro";
   <body>
     <TopNav />
     
-    <main class="page-content">
-      <div class="about-section">
-        <div class="section-label">WHO I AM</div>
-        <p class="about-intro">
-          I am a product design leader who is driven to create designs that fulfill both user and business objectives.
+    <main class="about-page">
+      <!-- Hero Section -->
+      <section class="about-hero">
+        <h1 class="about-headline">About Billy</h1>
+        <p class="about-mission">
+          My mission is to bridge the gap between user needs and business goals—creating products that people genuinely want to use and that drive measurable outcomes.
         </p>
-      </div>
+        <p class="about-extended">
+          For over 15 years, I've worked at the intersection of design craft and business strategy. I build teams that balance creative excellence with tangible results—transforming complex problems into clear, impactful experiences while driving meaningful business growth.
+        </p>
+        <p class="about-extended">
+          I thrive in environments where I can elevate talent, maintain high standards, and create momentum for products that matter.
+        </p>
+      </section>
 
-      <div class="about-grid">
-        <div class="about-item">
-          <h3 class="about-item-title">A Leader</h3>
-          <p>
-            As a design leader, I have always been passionate about managing innovative and effective teams that can design impactful products. For this reason, I have dedicated much of my time and energy to developing my own unique management style and approach to design.
-          </p>
+      <!-- Career Chapters -->
+      <section class="about-section">
+        <div class="section-header">
+          <span class="section-label">My Journey</span>
+          <h2 class="section-title">Career in Chapters</h2>
         </div>
 
-        <div class="about-item">
-          <h3 class="about-item-title">A Mentor</h3>
-          <p>
-            I have been fortunate enough to mentor a number of aspiring designers during my time with the teams I ran. My mentorship has taken many forms, ranging from personal one-on-one sessions to the development of comprehensive programs that promote better design understanding and skill acquisition.
-          </p>
+        <div class="chapters-grid">
+          <div class="chapter">
+            <span class="chapter-label">Early Career</span>
+            <h3 class="chapter-title">Craft Foundation</h3>
+            <p>
+              Started as a hands-on designer, obsessing over details and learning what it takes to ship products that feel right. This foundation in craft and execution shaped how I approach design leadership today.
+            </p>
+          </div>
+
+          <div class="chapter">
+            <span class="chapter-label">Mid-Career</span>
+            <h3 class="chapter-title">Strategic Growth</h3>
+            <p>
+              Moved into leadership roles, learning to advocate for user-centered approaches in business-driven environments. This period taught me how to translate design value into language executives understand.
+            </p>
+          </div>
+
+          <div class="chapter">
+            <span class="chapter-label">Recent Years</span>
+            <h3 class="chapter-title">Design Leadership</h3>
+            <p>
+              Now focused on connecting business goals, engineering capabilities, and human needs. Building high-performing teams and maintaining a player-coach mentality—staying close to the work while enabling others.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How I Work -->
+      <section class="about-section">
+        <div class="section-header">
+          <span class="section-label">Leadership Principles</span>
+          <h2 class="section-title">How I Work</h2>
         </div>
 
-        <div class="about-item">
-          <h3 class="about-item-title">A Designer</h3>
-          <p>
-            As a designer, I have always been passionate about creating with a people-first mindset. Who are we serving? What are their needs? What are their goals and objectives? What challenges do they face? My aim is to always create products and experiences that meet their needs, that exceed their expectations, and that make their lives easier and more enjoyable. I strive to put the users at the center of the design process, to ensure that the user experience is always paramount.
-          </p>
-        </div>
-      </div>
+        <div class="principles-grid">
+          <div class="principle">
+            <h3 class="principle-title">Stay Close to the Work</h3>
+            <p>
+              Strong design leadership doesn't mean stepping away from craft. I stay hands-on in high-stakes moments—modeling standards and maintaining credibility with the team.
+            </p>
+          </div>
 
-      <div class="about-section">
-        <div class="section-label">WHAT I DO</div>
-      </div>
+          <div class="principle">
+            <h3 class="principle-title">Clarity Over Completeness</h3>
+            <p>
+              When pressure is high, I focus on what matters most. Vision before optimization. Alignment before execution. Clear thinking unlocks better outcomes.
+            </p>
+          </div>
 
-      <div class="about-grid">
-        <div class="about-item">
-          <h3 class="about-item-title">Leadership</h3>
-          <p>
-            My design leadership is rooted in collaboration and communication. I foster an environment of open dialogue within my team and organization, encouraging the exchange of ideas quickly and regularly. I understand the importance of design in digital product design, from concept to product. My priority is to ensure design remains a priority throughout the process. My efforts to promote collaboration and communication will help ensure design remains a priority.
-          </p>
+          <div class="principle">
+            <h3 class="principle-title">Build Trust Through Transparency</h3>
+            <p>
+              I explain tradeoffs clearly—what matters now, what can wait, and why. Honest communication builds the trust that enables teams to move fast.
+            </p>
+          </div>
+
+          <div class="principle">
+            <h3 class="principle-title">Grow Others Deliberately</h3>
+            <p>
+              Mentorship isn't passive. I invest in developing designers through intentional coaching, challenging projects, and creating space for them to stretch.
+            </p>
+          </div>
+
+          <div class="principle">
+            <h3 class="principle-title">Design for Business Impact</h3>
+            <p>
+              Great design serves users and the business. I focus on outcomes that matter—engagement, conversion, satisfaction—not just aesthetics.
+            </p>
+          </div>
+
+          <div class="principle">
+            <h3 class="principle-title">Move with Intention</h3>
+            <p>
+              Speed without direction is just motion. I help teams build momentum by establishing clear vision and removing obstacles.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- What I Do -->
+      <section class="about-section">
+        <div class="section-header">
+          <span class="section-label">Capabilities</span>
+          <h2 class="section-title">What I Bring</h2>
         </div>
 
-        <div class="about-item">
-          <h3 class="about-item-title">Design Process</h3>
-          <p>
-            My design process is based on the principles of human-centered design. This approach focuses on meeting the needs of the end user through research, collaboration, and iteration. I also consider the impact of the design on the business, through potential revenue, cost savings, and other key objectives. This enables me to create products that are beneficial to both users and the business.
-          </p>
+        <div class="capabilities-grid">
+          <div class="capability">
+            <h3 class="capability-title">Team Leadership</h3>
+            <p>
+              Building and scaling design teams. Hiring, developing talent, establishing culture, and creating the conditions for designers to do their best work.
+            </p>
+          </div>
+
+          <div class="capability">
+            <h3 class="capability-title">Design Strategy</h3>
+            <p>
+              Connecting design work to business outcomes. Setting vision, prioritizing initiatives, and ensuring design has a seat at strategic conversations.
+            </p>
+          </div>
+
+          <div class="capability">
+            <h3 class="capability-title">Product Craft</h3>
+            <p>
+              Hands-on design when it counts. Complex flows, high-visibility surfaces, and the kind of work that sets the quality bar for the team.
+            </p>
+          </div>
+
+          <div class="capability">
+            <h3 class="capability-title">Cross-Functional Partnership</h3>
+            <p>
+              Navigating the space between product, engineering, and design. Building relationships and alignment that enable teams to ship well.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Personal -->
+      <section class="about-section about-personal">
+        <div class="section-header">
+          <span class="section-label">Personal Life</span>
+          <h2 class="section-title">Beyond Work</h2>
         </div>
 
-        <div class="about-item">
-          <h3 class="about-item-title">Case Studies</h3>
-          <p>
-            Explore my portfolio of case studies to see how I've applied design thinking to solve complex problems and deliver measurable results for various clients and projects.
-          </p>
-        </div>
-      </div>
+        <p class="personal-text">
+          When I'm not designing or leading teams, I'm probably exploring new ideas, staying curious about how things work, and spending time with family. I believe the best design leaders bring their whole selves to work—and that means having a life outside of it.
+        </p>
+      </section>
     </main>
 
     <Footer />
@@ -80,125 +173,213 @@ import Footer from "../components/Footer.astro";
 </html>
 
 <style>
-  .page-content {
-    max-width: 1320px;
+  .about-page {
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 80px var(--page-pad-right) 80px var(--page-pad-left);
+    padding: 60px 80px 80px;
     width: 100%;
   }
 
+  /* Hero */
+  .about-hero {
+    margin-bottom: 80px;
+    max-width: 800px;
+  }
+
+  .about-headline {
+    font-size: var(--step-3);
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 30px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .about-mission {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.3;
+    color: var(--text);
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    margin: 0 0 24px;
+  }
+
+  .about-extended {
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0 0 16px;
+    max-width: 650px;
+  }
+
+  /* Sections */
   .about-section {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .section-header {
+    margin-bottom: 40px;
   }
 
   .section-label {
+    display: block;
     text-transform: uppercase;
-    letter-spacing: 0.3px;
-    font-size: var(--step-3); /* 30px */
-    color: var(--text);
-    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 8px;
     font-weight: 500;
     font-family: 'Inter', sans-serif;
-    position: relative;
-    padding-bottom: 10px;
   }
 
-  .section-label::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--hairline);
-  }
-
-  .about-intro {
-    font-size: var(--step-4); /* 40px */
-    line-height: 1.15;
+  .section-title {
+    font-size: var(--step-2);
+    font-weight: 500;
     color: var(--text);
-    font-weight: 400;
+    margin: 0;
     font-family: 'Inter', sans-serif;
-    max-width: 455px;
-    margin-top: 40px;
   }
 
-  .about-grid {
+  /* Career Chapters */
+  .chapters-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 60px;
-    margin-top: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
   }
 
-  .about-item {
-    max-width: 435px;
+  .chapter {
+    padding-right: 20px;
   }
 
-  .about-item-title {
-    font-size: var(--step-2); /* 22px */
-    line-height: 1.15;
-    margin: 0 0 14px;
+  .chapter-label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-bottom: 8px;
     font-weight: 500;
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
   }
 
-  .about-item p {
-    font-size: var(--step-0); /* 16px */
-    line-height: 1.6;
+  .chapter-title {
+    font-size: var(--step-1);
+    font-weight: 500;
     color: var(--text);
-    font-weight: 400;
+    margin: 0 0 12px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .chapter p {
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--muted);
     margin: 0;
   }
 
+  /* Principles */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 60px;
+  }
+
+  .principle-title {
+    font-size: var(--step-0);
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 8px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .principle p {
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* Capabilities */
+  .capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 60px;
+  }
+
+  .capability-title {
+    font-size: var(--step-0);
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 8px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .capability p {
+    font-size: var(--step--1);
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* Personal */
+  .about-personal {
+    margin-bottom: 0;
+  }
+
+  .personal-text {
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0;
+    max-width: 650px;
+  }
+
+  /* Responsive */
   @media (max-width: 767px) {
-    .page-content {
-      padding: 40px 20px;
+    .about-page {
+      padding: 40px 20px 60px;
+    }
+
+    .about-hero {
+      margin-bottom: 60px;
+    }
+
+    .about-mission {
+      font-size: 1.4rem;
     }
 
     .about-section {
-      margin-bottom: 40px;
+      margin-bottom: 60px;
+      padding-top: 30px;
     }
 
-    .section-label {
-      font-size: var(--step-2);
-      margin-bottom: 16px;
+    .chapters-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
     }
 
-    .about-intro {
-      font-size: var(--step-2);
-      margin-top: 24px;
-    }
-
-    .about-grid {
-      gap: 40px;
-      margin-top: 30px;
-    }
-
-    .about-item {
-      max-width: 100%;
+    .principles-grid,
+    .capabilities-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
     }
   }
 
-  @media (min-width: 768px) and (max-width: 979px) {
-    .page-content {
-      padding: 60px 40px;
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .about-page {
+      padding: 50px 40px 70px;
     }
 
-    .about-grid {
-      gap: 50px;
-    }
-  }
-
-  @media (min-width: 980px) {
-    .about-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
+    .chapters-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
     }
 
-    .about-item {
-      margin-left: auto;
+    .principles-grid,
+    .capabilities-grid {
+      gap: 30px 40px;
     }
   }
 </style>
+
 
