@@ -2,7 +2,7 @@
 const currentPath = Astro.url.pathname;
 const isActive = (path: string) => {
   if (path === '/') {
-    return currentPath === '/' || currentPath.startsWith('/stories/');
+    return currentPath === '/';
   }
   return currentPath.startsWith(path);
 };
@@ -10,7 +10,7 @@ const isActive = (path: string) => {
 
 <nav class="topNav">
   <div class="topNav-left">
-    <a href="/" class={isActive('/') ? 'active' : ''}>Stories</a>
+    <a href="/" class={isActive('/') ? 'active' : ''}>Work</a>
     <a href="/about" class={isActive('/about') ? 'active' : ''}>About</a>
     <a href="/resume" class={isActive('/resume') ? 'active' : ''}>Resume</a>
   </div>

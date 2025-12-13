@@ -4,7 +4,7 @@ import StoryLayout from "../../layouts/StoryLayout.astro";
 export async function getStaticPaths() {
   const modules = import.meta.glob('../../content/stories/*.mdx');
   return Object.keys(modules).map((path) => ({
-    params: { slug: path.split('/').pop()?.replace('.mdx', '') || '' },
+    params: { slug: path.split('/').pop()?.replace(/\.mdx$/, '') || '' },
     props: { path },
   }));
 }
