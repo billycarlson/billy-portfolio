@@ -162,12 +162,6 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
 				<p class="bottom-text">
 					Design leadership isn't about having all the answers—it's about creating the conditions where great work can happen. Over the past fifteen years, I've learned that the best products come from teams that feel empowered to take risks, challenge assumptions, and push beyond the obvious solution. My role is to build those teams, protect their focus, and help them navigate the inevitable tensions between business goals and user needs.
 				</p>
-				<p class="bottom-text">
-					I believe in staying close to the craft. While my days are filled with strategy, hiring, and stakeholder management, I never want to lose touch with the work itself. Whether it's jumping into Figma during a critical deadline or pairing with a designer on a tricky interaction, I find that hands-on involvement keeps me grounded and maintains credibility with my team.
-				</p>
-				<p class="bottom-text">
-					The projects in this portfolio represent moments where design made a real difference—not just to metrics, but to the people using these products every day. Behind each case study is a team I'm proud to have worked with and lessons I carry forward. If you're building something ambitious and looking for a design leader who combines strategic thinking with genuine craft obsession, I'd love to talk.
-				</p>
 			</section>
 		</main>
 
@@ -176,44 +170,12 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
 </html>
 
 <style>
+  /* Page-specific styles for index */
   .stories-page {
     max-width: 1320px;
     margin: 0 auto;
     padding: 80px 80px;
     width: 100%;
-  }
-
-  /* Two-column section layout */
-  .two-col-section {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 24px;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    border-top: 1px solid var(--hairline);
-  }
-
-  .two-col-section:first-child {
-    border-top: none;
-    padding-top: 0;
-  }
-
-  /* Left column - section labels */
-  .col-left {
-    position: sticky;
-    top: 100px;
-    align-self: start;
-  }
-
-  .section-label {
-    font-size: var(--step-1);
-    line-height: 1.15;
-    color: var(--text);
-    font-weight: 500;
-    font-family: 'Inter', sans-serif;
-    margin: 0 0 24px;
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
   }
 
   .section-intro {
@@ -224,13 +186,6 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
     font-family: 'Inter', sans-serif;
     margin: 0;
     width: fit-content;
-  }
-
-  /* Right column - content */
-  .col-right {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
   }
 
   /* Attribute items (Who I Am section) */
@@ -261,147 +216,26 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
     width: 100%;
   }
 
-  /* Work cards (Case Studies & Stories) */
-  .work-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding-top: 28px;
-    padding-bottom: 28px;
-    border-top: 1px solid var(--hairline);
-    align-items: start;
-  }
-
-  .work-card.stacked {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .work-card:first-child {
-    border-top: none;
-    padding-top: 0;
-  }
-
-  .work-card-image {
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    border-radius: 4px;
-  }
-
-  .work-card-image .placeholder-image {
-    width: 100%;
-    height: 100%;
-  }
-
-  .work-card-content {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .work-card-title {
-    font-size: var(--step-2);
-    line-height: 1.15;
-    margin: 0;
-    font-weight: 500;
-    font-family: 'Inter', sans-serif;
-  }
-
-  .work-card-title a {
-    text-decoration: none;
-    color: var(--text);
-    transition: color 0.2s;
-  }
-
-  .work-card-title a:hover {
-    color: var(--muted-light);
-  }
-
-  .work-card-lede {
-    font-size: var(--step-0);
-    color: var(--muted);
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  .work-card-meta {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    color: var(--muted);
-    font-size: var(--step--1);
-  }
-
-  /* Bottom section */
-  .bottom-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
-    border-top: 1px solid var(--hairline);
-    text-align: center;
-  }
-
-  .bottom-text {
-    font-size: var(--step-4);
-    line-height: 1.4;
-    color: var(--text);
-    max-width: 900px;
-    margin: 0 auto 32px;
-    text-align: center;
-  }
-
-  .bottom-text:last-child {
-    margin-bottom: 0;
-  }
-
-  /* Mobile responsive */
+  /* Mobile responsive - page specific */
   @media (max-width: 767px) {
     .stories-page {
-      padding: 40px 20px;
-    }
-
-    .two-col-section {
-      grid-template-columns: 1fr;
-      gap: 30px;
-      padding-top: 40px;
-      padding-bottom: 40px;
-    }
-
-    .col-left {
-      position: static;
-    }
-
-    .section-label {
-      font-size: var(--step-2);
+      padding: 40px 16px;
+      overflow-x: hidden;
     }
 
     .section-intro {
       font-size: var(--step-2);
     }
 
-    .work-card {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .attribute-text,
-    .work-card-lede {
+    .attribute-text {
       max-width: 100%;
     }
   }
 
-  /* Tablet */
+  /* Tablet - page specific */
   @media (min-width: 768px) and (max-width: 1023px) {
     .stories-page {
       padding: 60px 40px;
-    }
-
-    .two-col-section {
-      gap: 40px;
-    }
-
-    .work-card {
-      grid-template-columns: 1fr;
-      gap: 20px;
     }
   }
 </style>
