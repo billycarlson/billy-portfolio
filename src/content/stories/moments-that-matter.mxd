@@ -1,0 +1,116 @@
+---
+title: "Designing Under Executive Pressure"
+lede: "How I make thoughtful design decisions when urgency, politics, and incomplete information collide."
+meta:
+  - "Leadership & Judgment"
+  - "High-Stakes Environments"
+  - "8–10 min read"
+sections:
+  - { id: "context", label: "Context" }
+  - { id: "scope", label: "Project Scope" }
+  - { id: "challenges", label: "Challenges" }
+  - { 
+      id: "approach", 
+      label: "Approach",
+      children: [
+        { id: "problem-framing", label: "Problem Framing" },
+        { id: "ideation", label: "Ideation" },
+        { id: "implementation", label: "Implementation" }
+      ]
+    }
+  - { 
+      id: "looking-forward", 
+      label: "Looking Forward",
+      children: [
+        { id: "impact", label: "Business Impact" },
+        { id: "learnings", label: "Key Learnings" },
+        { id: "legacy", label: "Project Legacy" }
+      ]
+    }
+---
+
+import PullQuote from "../../components/PullQuote.astro";
+import Callout from "../../components/Callout.astro";
+import MetricsGrid from "../../components/MetricsGrid.astro";
+
+<section id="context">
+  <div class="label">Context</div>
+  <h2>When speed becomes the constraint</h2>
+
+  <p>
+    In senior design roles, urgency often arrives without warning. Executive input,
+    shifting priorities, or external deadlines can compress timelines dramatically,
+    sometimes after work is already in progress.
+  </p>
+
+  <p>
+    These moments test more than design skill — they test judgment.
+  </p>
+</section>
+
+<section id="pressure">
+  <div class="label">The Pressure</div>
+  <h2>Incomplete information, complete accountability</h2>
+
+  <p>
+    I’ve worked in environments where leadership requests came late in the process
+    but carried significant weight. The expectation wasn’t perfection — it was
+    confidence, clarity, and momentum.
+  </p>
+
+  <p>
+    The challenge wasn’t just deciding what to do, but deciding what <em>not</em> to do
+    given the constraints.
+  </p>
+</section>
+
+<section id="decisions">
+  <div class="label">Decision-Making</div>
+  <h2>Progress over idealism</h2>
+
+  <p>
+    In these situations, I focus on three questions:
+  </p>
+
+  <ul>
+    <li>What decision reduces the most risk right now?</li>
+    <li>What can be iterated later without harming trust?</li>
+    <li>How do I protect my team from unnecessary churn?</li>
+  </ul>
+
+  <p>
+    Rather than pushing for a perfect solution, I aim for the strongest defensible
+    option under the circumstances — and clearly communicate the tradeoffs involved.
+  </p>
+</section>
+
+<section id="outcome">
+  <div class="label">Outcome</div>
+  <h2>Clarity builds confidence</h2>
+
+  <p>
+    In practice, this approach has helped teams move forward decisively while
+    maintaining credibility with leadership. Designers stay focused, and product
+    partners understand the reasoning behind decisions.
+  </p>
+
+  <p>
+    Over time, these moments build trust — not because every outcome is ideal, but
+    because decisions are thoughtful and grounded.
+  </p>
+</section>
+
+<section id="reflection">
+  <div class="label">Reflection</div>
+  <h2>Leadership is situational</h2>
+
+  <p>
+    Designing under pressure isn’t about having the right answer — it’s about
+    providing direction when certainty isn’t possible.
+  </p>
+
+  <p>
+    Good leadership in these moments comes from experience, empathy, and a steady
+    hand.
+  </p>
+</section>

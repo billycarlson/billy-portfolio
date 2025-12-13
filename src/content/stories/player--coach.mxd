@@ -1,0 +1,121 @@
+---
+title: "Leading Craft as a Player–Coach"
+lede: "Why staying close to the work is essential for setting quality, building trust, and growing strong design teams."
+meta:
+  - "Design Craft"
+  - "Team Leadership"
+  - "10–12 min read"
+sections:
+  - { id: "context", label: "Context" }
+  - { id: "scope", label: "Project Scope" }
+  - { id: "challenges", label: "Challenges" }
+  - { 
+      id: "approach", 
+      label: "Approach",
+      children: [
+        { id: "problem-framing", label: "Problem Framing" },
+        { id: "ideation", label: "Ideation" },
+        { id: "implementation", label: "Implementation" }
+      ]
+    }
+  - { 
+      id: "looking-forward", 
+      label: "Looking Forward",
+      children: [
+        { id: "impact", label: "Business Impact" },
+        { id: "learnings", label: "Key Learnings" },
+        { id: "legacy", label: "Project Legacy" }
+      ]
+    }
+---
+
+import PullQuote from "../../components/PullQuote.astro";
+import Callout from "../../components/Callout.astro";
+import MetricsGrid from "../../components/MetricsGrid.astro";
+
+<section id="context">
+  <div class="label">Context</div>
+  <h2>When speed becomes the constraint</h2>
+
+<p>
+Design quality doesn’t drift upward on its own. In every organization I’ve worked
+in, the craft bar was set implicitly by what leaders noticed, questioned, and
+modeled.
+</p>
+
+<p>
+Early in my management career, I learned that stepping too far away from the work
+created ambiguity. Designers didn’t know what “good” really meant, and feedback
+became inconsistent or overly subjective.
+</p>
+
+<h2>Craft needs to be visible</h2>
+
+<p>
+At one point, I was managing a team where output was steady, but something felt
+off. Screens technically met requirements, but they lacked clarity, hierarchy,
+and polish. The work wasn’t bad — it was just safe.
+</p>
+
+<p>
+In critiques, designers often asked, “Is this okay?” instead of “Is this right?”
+That question told me everything.
+</p>
+
+<h2>Shifting critique from approval to thinking</h2>
+
+<p>
+Rather than issuing directives or redesigning work myself, I shifted how critique
+worked. Instead of starting with opinions, I asked designers to explain intent:
+</p>
+
+<ul>
+  <li>What should users notice first?</li>
+  <li>What decision are we helping them make?</li>
+  <li>What would break if this were removed?</li>
+</ul>
+
+<p>
+We slowed critiques down just enough to make thinking visible. Over time, designers
+began preempting feedback — addressing hierarchy, spacing, and typography before
+anyone asked.
+</p>
+
+<h2>Leading by doing, not hovering</h2>
+
+<p>
+I stayed close to the work without micromanaging. In high-stakes moments, I’d
+personally take on key flows or presentations, not to control outcomes, but to
+model standards under pressure.
+</p>
+
+<p>
+That visibility mattered. Designers could see how decisions were made when time
+was tight, tradeoffs were real, and expectations were high.
+</p>
+
+<h2>What changed over time</h2>
+
+<p>
+As critique became more thoughtful and consistent, something subtle shifted. The
+team stopped asking for approval and started asking better questions. Craft became
+a shared responsibility rather than a personal preference.
+</p>
+
+<p>
+Quality rose not because of enforcement, but because expectations were clear and
+reinforced through action.
+</p>
+
+<h2>What I believe now</h2>
+
+<p>
+Strong design leadership doesn’t mean doing all the best work — it means making
+good work inevitable. That only happens when leaders stay connected to craft,
+language, and decision-making.
+</p>
+
+<p>
+Being a player–coach isn’t about control. It’s about trust, clarity, and shared
+standards.
+</p>
