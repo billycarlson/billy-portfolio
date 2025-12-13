@@ -1,0 +1,15 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="topNav">
+  <div class="topNav-left">
+    <a href="/stories" class={currentPath.startsWith('/stories') ? 'active' : ''}>Stories</a>
+    <a href="/about" class={currentPath === '/about' ? 'active' : ''}>About</a>
+    <a href="/resume" class={currentPath === '/resume' ? 'active' : ''}>Resume</a>
+  </div>
+  <div class="topNav-right">
+    <!-- Add social links here if needed -->
+  </div>
+</nav>
+

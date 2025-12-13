@@ -1,11 +1,34 @@
 ---
-const { sections = [] } = Astro.props;
+interface Section {
+  id: string;
+  label: string;
+  children?: Section[];
+}
+
+const { sections = [] } = Astro.props as { sections: Section[] };
+
+const renderSection = (section: Section, isChild = false) => {
+  return (
+    <div class="toc-item">
+      <a href={`#${section.id}`} data-section={section.id} class="toc-link">
+        {section.label}
+      </a>
+      {section.children && section.children.length > 0 && (
+        <div class="toc-children">
+          {section.children.map((child) => renderSection(child, true))}
+        </div>
+      )}
+    </div>
+  );
+};
 ---
 
 <nav class="toc" id="toc">
-  {sections.map((s) => (
-    <a href={`#${s.id}`} data-section={s.id}>{s.label}</a>
-  ))}
+  <a href="#" class="toc-link toc-back-to-top" data-section="top">
+    <span class="toc-icon">↑</span>
+    Back to Top
+  </a>
+  {sections.map((s) => renderSection(s))}
 </nav>
 
 <script>
@@ -14,14 +37,26 @@ const { sections = [] } = Astro.props;
     const toc = document.getElementById('toc');
     if (toc) {
       const links = Array.from(toc.querySelectorAll('a[data-section]'));
-      const sectionElements = links.map(link => {
-        const sectionId = link.getAttribute('data-section');
-        return {
-          link,
-          id: sectionId,
-          element: sectionId ? document.getElementById(sectionId) : null
-        };
-      }).filter(s => s.element);
+      const sectionElements = links
+        .filter(link => link.getAttribute('data-section') !== 'top')
+        .map(link => {
+          const sectionId = link.getAttribute('data-section');
+          return {
+            link,
+            id: sectionId,
+            element: sectionId ? document.getElementById(sectionId) : null
+          };
+        })
+        .filter(s => s.element);
+
+      // Back to top handler
+      const backToTopLink = links.find(link => link.getAttribute('data-section') === 'top');
+      if (backToTopLink) {
+        backToTopLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
 
       if (sectionElements.length > 0) {
         const observerOptions = {
@@ -50,6 +85,14 @@ const { sections = [] } = Astro.props;
             const activeLink = links.find(link => link.getAttribute('data-section') === activeSection);
             if (activeLink) {
               activeLink.classList.add('active');
+            }
+          } else {
+            // If no section is intersecting and we're at the top, highlight back to top
+            if (window.scrollY < 100) {
+              links.forEach(link => link.classList.remove('active'));
+              if (backToTopLink) {
+                backToTopLink.classList.add('active');
+              }
             }
           }
         }, observerOptions);
