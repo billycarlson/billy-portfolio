@@ -1,6 +1,7 @@
 ---
 import TableOfContents from "../components/TableOfContents.astro";
 import CaseStudyHero from "../components/CaseStudyHero.astro";
+import LeftNav from "../components/LeftNav.astro";
 
 const { title, lede, meta = [], sections = [] } = Astro.props;
 ---
@@ -14,23 +15,21 @@ const { title, lede, meta = [], sections = [] } = Astro.props;
   </head>
 
   <body>
-    <div class="topNav">
-      <a href="/stories">Stories</a>
-      <a href="/about">About</a>
-      <a href="/resume">Resume</a>
-    </div>
+    <div class="pageWrapper">
+      <LeftNav />
+      
+      <div class="caseStudy">
+        <aside class="tocWrap">
+          <TableOfContents sections={sections} />
+        </aside>
 
-    <div class="caseStudy">
-      <aside class="tocWrap">
-        <TableOfContents sections={sections} />
-      </aside>
-
-      <main class="main">
-        <CaseStudyHero title={title} lede={lede} meta={meta} />
-        <article class="content">
-          <slot />
-        </article>
-      </main>
+        <main class="main">
+          <CaseStudyHero title={title} lede={lede} meta={meta} />
+          <article class="content">
+            <slot />
+          </article>
+        </main>
+      </div>
     </div>
   </body>
 </html>
