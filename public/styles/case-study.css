@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap');
 
 :root{
   /* Dark mode (default) - matching Figma design */
@@ -70,6 +70,12 @@ body{
 }
 
 a{ color: inherit; }
+
+/* Serif font for italics */
+i, em {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+}
 
 /* Top Navigation - matching Figma */
 .topNav{
