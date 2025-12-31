@@ -14,7 +14,8 @@ const allCaseStudies = await Promise.all(
         slug,
         title: caseStudy.frontmatter?.title || 'Untitled',
         lede: caseStudy.frontmatter?.lede || '',
-        meta: caseStudy.frontmatter?.meta || []
+        meta: caseStudy.frontmatter?.meta || [],
+        company: caseStudy.frontmatter?.company || caseStudy.frontmatter?.meta?.[0] || ''
       };
     } catch (error) {
       console.error(`Error loading case study from ${path}:`, error);
@@ -23,8 +24,28 @@ const allCaseStudies = await Promise.all(
   })
 );
 
-// Filter out nulls and templates
-const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case-study-template');
+// Filter out nulls and templates, and manually define projects for work page
+const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case-study-template' && (cs.slug === 'iherb-desktop-redesign' || cs.slug === 'ai-toolkit'));
+
+// Define project cards with tags - matching joshlee.design style
+const projectCards = [
+  {
+    slug: 'iherb-desktop-redesign',
+    company: 'iHerb',
+    title: 'Desktop Homepage Redesign',
+    description: 'Reframing a high-pressure, executive-driven request into a future-facing design vision that aligned teams and created momentum.',
+    tags: ['E-commerce', 'Design Leadership', 'Product Strategy'],
+    ...caseStudies.find(cs => cs.slug === 'iherb-desktop-redesign')
+  },
+  {
+    slug: 'ai-toolkit',
+    company: 'Company Name',
+    title: 'AI Toolkit',
+    description: 'Brief description of the AI Toolkit project and its impact.',
+    tags: ['Product Design', 'AI/ML', 'Design Systems'],
+    ...caseStudies.find(cs => cs.slug === 'ai-toolkit')
+  }
+].filter(p => p.slug);
 ---
 
 <html lang="en">
@@ -43,75 +64,25 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
     <TopNav />
     
     <main class="work-page">
-      <h1 class="work-page-title">Project snapshots</h1>
-      <p class="work-page-subtitle">Quick, outcome-focused snapshots of real product work.</p>
-
-      {caseStudies.map((caseStudy) => (
-        <article class="project-snapshot">
-          <div class="project-snapshot-header">
-            <div class="project-snapshot-image">
+      <div class="work-grid">
+        {projectCards.map((project) => (
+          <a href={`/case-studies/${project.slug}`} class="project-card">
+            <div class="project-card-image">
               <div class="placeholder-image"></div>
             </div>
-            <div class="project-snapshot-meta">
-              <h2 class="project-snapshot-title">{caseStudy.title}</h2>
-              {caseStudy.meta && caseStudy.meta.length > 0 && (
-                <div class="project-snapshot-badges">
-                  {caseStudy.meta.map((item) => (
-                    <span class="project-badge">{item}</span>
-                  ))}
-                </div>
-              )}
+            <div class="project-card-content">
+              <div class="project-card-company">{project.company}</div>
+              <h2 class="project-card-title">{project.title}</h2>
+              <p class="project-card-description">{project.description}</p>
+              <div class="project-card-tags">
+                {project.tags.map((tag) => (
+                  <span class="project-tag">{tag}</span>
+                ))}
+              </div>
             </div>
-          </div>
-
-          {caseStudy.lede && (
-            <p class="project-snapshot-lede">{caseStudy.lede}</p>
-          )}
-
-          <div class="project-snapshot-content">
-            <div class="project-snapshot-overview">
-              <p>
-                This is where the overview content goes. Add detailed paragraphs describing the project context, 
-                your approach, and the challenges you faced. This content will be pulled from your case study 
-                MDX files or you can add it directly here.
-              </p>
-              <p>
-                Continue with more detail about the project, the team structure, timeline, and key decisions 
-                that shaped the work.
-              </p>
-            </div>
-
-            <div class="project-snapshot-outcomes">
-              <h3 class="project-section-title">Key outcomes</h3>
-              <ul class="project-list">
-                <li>Outcome one that demonstrates impact</li>
-                <li>Outcome two showing measurable results</li>
-                <li>Outcome three reflecting team or process improvements</li>
-              </ul>
-            </div>
-
-            <div class="project-snapshot-enablers">
-              <h3 class="project-section-title">Project enablers</h3>
-              <ul class="project-list">
-                <li>Key method, approach, or skill that enabled success</li>
-                <li>Process improvement or collaboration technique</li>
-                <li>Strategic decision or framework that guided the work</li>
-              </ul>
-            </div>
-
-            <div class="project-snapshot-tags">
-              <span class="project-tag">End-to-end product design</span>
-              <span class="project-tag">Product strategy</span>
-              <span class="project-tag">UX leadership</span>
-              <span class="project-tag">Design systems</span>
-            </div>
-
-            <div class="project-snapshot-link">
-              <a href={`/case-studies/${caseStudy.slug}`} class="project-link">Read full case study →</a>
-            </div>
-          </div>
-        </article>
-      ))}
+          </a>
+        ))}
+      </div>
     </main>
 
     <Footer />
@@ -120,170 +91,87 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
 
 <style>
   .work-page {
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 80px 40px;
   }
 
-  .work-page-title {
-    font-size: var(--step-3);
-    font-weight: 500;
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-    margin: 0 0 16px;
-    letter-spacing: -0.01em;
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 40px;
+    align-items: start;
   }
 
-  .work-page-subtitle {
-    font-size: var(--step-0);
-    color: var(--muted);
-    margin: 0 0 80px;
-    line-height: 1.6;
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
   }
 
-  .project-snapshot {
-    margin-bottom: 100px;
-    padding-bottom: 80px;
-    border-bottom: 1px solid var(--hairline);
+  .project-card:hover {
+    opacity: 0.8;
   }
 
-  .project-snapshot:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .project-snapshot-header {
-    margin-bottom: 32px;
-  }
-
-  .project-snapshot-image {
+  .project-card-image {
     width: 100%;
     aspect-ratio: 16 / 9;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     border-radius: 4px;
     overflow: hidden;
   }
 
-  .project-snapshot-image .placeholder-image {
+  .project-card-image .placeholder-image {
     width: 100%;
     height: 100%;
   }
 
-  .project-snapshot-title {
-    font-size: var(--step-3);
-    font-weight: 500;
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-    margin: 0 0 12px;
-    line-height: 1.2;
-  }
-
-  .project-snapshot-badges {
+  .project-card-content {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 8px;
-    margin-bottom: 24px;
   }
 
-  .project-badge {
+  .project-card-company {
     font-size: var(--step--1);
     color: var(--muted);
     font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
   }
 
-  .project-snapshot-lede {
-    font-size: var(--step-1);
-    line-height: 1.5;
-    color: var(--text);
-    margin: 0 0 40px;
-    font-weight: 400;
-  }
-
-  .project-snapshot-content {
-    display: grid;
-    gap: 32px;
-  }
-
-  .project-snapshot-overview {
-    font-size: var(--step-0);
-    line-height: 1.7;
-    color: var(--text);
-  }
-
-  .project-snapshot-overview p {
-    margin: 0 0 20px;
-  }
-
-  .project-snapshot-overview p:last-child {
-    margin-bottom: 0;
-  }
-
-  .project-section-title {
-    font-size: var(--step-1);
+  .project-card-title {
+    font-size: var(--step-2);
     font-weight: 500;
     font-family: 'Inter', sans-serif;
     color: var(--text);
-    margin: 0 0 12px;
-  }
-
-  .project-list {
-    list-style: none;
-    padding: 0;
     margin: 0;
+    line-height: 1.3;
+  }
+
+  .project-card-description {
     font-size: var(--step-0);
-    line-height: 1.7;
+    line-height: 1.6;
     color: var(--text);
+    margin: 8px 0 0;
   }
 
-  .project-list li {
-    margin-bottom: 8px;
-    padding-left: 20px;
-    position: relative;
-  }
-
-  .project-list li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--muted);
-  }
-
-  .project-list li:last-child {
-    margin-bottom: 0;
-  }
-
-  .project-snapshot-tags {
+  .project-card-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    padding-top: 8px;
+    gap: 6px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--hairline-subtle);
   }
 
   .project-tag {
     font-size: var(--step--1);
     color: var(--muted);
     font-family: 'Inter', sans-serif;
-    padding: 4px 8px;
-    border: 1px solid var(--hairline);
-    border-radius: 4px;
-    background: var(--bg-elevated);
-  }
-
-  .project-snapshot-link {
-    padding-top: 8px;
-  }
-
-  .project-link {
-    font-size: var(--step-0);
-    color: var(--text);
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    transition: color 0.2s;
-  }
-
-  .project-link:hover {
-    color: var(--muted-light);
   }
 
   /* Mobile responsive */
@@ -292,30 +180,13 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
       padding: 40px 20px;
     }
 
-    .work-page-title {
-      font-size: var(--step-2);
+    .work-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
     }
 
-    .work-page-subtitle {
-      margin-bottom: 60px;
-    }
-
-    .project-snapshot {
-      margin-bottom: 60px;
-      padding-bottom: 60px;
-    }
-
-    .project-snapshot-title {
-      font-size: var(--step-2);
-    }
-
-    .project-snapshot-lede {
-      font-size: var(--step-0);
-      margin-bottom: 32px;
-    }
-
-    .project-snapshot-content {
-      gap: 24px;
+    .project-card-title {
+      font-size: var(--step-1);
     }
   }
 
@@ -323,6 +194,11 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
   @media (min-width: 768px) and (max-width: 1023px) {
     .work-page {
       padding: 60px 40px;
+    }
+
+    .work-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
     }
   }
 </style>
