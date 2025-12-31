@@ -48,14 +48,17 @@ import Footer from "../components/Footer.astro";
 							<p class="box-text">a quote</p>
 						</div>
 
-						<!-- LinkedIn Link - Small box -->
-						<div class="content-box small-box">
-							<a href="https://linkedin.com/in/billycarlson" target="_blank" class="box-text">linkedin link</a>
-						</div>
+						<!-- LinkedIn Link and Speaking Engagement - Side by side -->
+						<div class="small-boxes-row">
+							<!-- LinkedIn Link - Small box -->
+							<div class="content-box small-box">
+								<a href="https://linkedin.com/in/billycarlson" target="_blank" class="box-text">linkedin link</a>
+							</div>
 
-						<!-- Speaking Engagement - Small box -->
-						<div class="content-box small-box">
-							<p class="box-text">A speaking engagement or community highlight</p>
+							<!-- Speaking Engagement - Small box -->
+							<div class="content-box small-box">
+								<p class="box-text">A speaking engagement or community highlight</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -160,7 +163,7 @@ import Footer from "../components/Footer.astro";
   /* Section 2: About Me and Quick Links */
   .about-links-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 24px;
   }
 
@@ -179,6 +182,12 @@ import Footer from "../components/Footer.astro";
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .small-boxes-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
 
   .small-box {
@@ -319,6 +328,11 @@ import Footer from "../components/Footer.astro";
       min-height: 250px;
     }
 
+    .small-boxes-row {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
     .case-studies-stories-grid {
       grid-template-columns: 1fr;
       gap: 20px;
@@ -353,7 +367,11 @@ import Footer from "../components/Footer.astro";
     }
 
     .about-links-grid {
-      grid-template-columns: 1.5fr 1fr;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .small-boxes-row {
+      grid-template-columns: 1fr 1fr;
     }
 
     .work-images-grid {
