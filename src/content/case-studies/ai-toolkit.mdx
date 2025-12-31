@@ -1,11 +1,11 @@
 ---
-title: "AI Toolkit"
-lede: "Brief description of the AI Toolkit project and its impact."
+title: "Enterprise AI Toolkit for KPMG Ignition"
+lede: "A modular, HAX-inspired framework to help product, design, and engineering teams plan and build AI-powered enterprise software."
 meta:
-  - "Company Name"
-  - "Role"
+  - "KPMG"
+  - "Design Lead (UX Manager)"
   - "Design Leadership"
-  - "10–12 min read"
+  - "12–15 min read"
 sections:
   - { id: "context", label: "Context" }
   - { id: "challenges", label: "Challenges" }
@@ -13,16 +13,16 @@ sections:
       id: "approach", 
       label: "Approach",
       children: [
-        { id: "vision", label: "Vision First" },
-        { id: "alignment", label: "Designing for Alignment" },
-        { id: "tradeoffs", label: "Navigating Tradeoffs" }
+        { id: "framework", label: "AI Use Case Framework" },
+        { id: "templates", label: "Templates & Architecture" },
+        { id: "workshops", label: "Cross-Functional Workshops" }
       ]
     }
   - { 
       id: "looking-forward", 
       label: "Looking Forward",
       children: [
-        { id: "outcome", label: "Outcome" },
+        { id: "outcome", label: "Key Outcomes" },
         { id: "reflection", label: "Reflection" }
       ]
     }
@@ -35,126 +35,157 @@ import MetricsGrid from "../../components/MetricsGrid.astro";
 <section id="context" class="two-col">
   <div class="section-text">
     <div class="label">Context</div>
-    <h2>Project context heading</h2>
+    <h2>A rapidly evolving AI landscape without unified methods</h2>
     <p>
-      Add your AI Toolkit project context here. Describe the background, 
-      the problem space, and what led to this work.
+      KPMG's product teams are rapidly adopting AI capabilities across tax, audit, and internal platforms like One Port, but teams lacked a unified method for identifying use cases, scoping effort, and aligning with engineering. Every initiative was being framed differently, creating confusion and slowing down progress.
     </p>
     <p>
-      Continue with more details about the team, timeline, and key stakeholders.
+      As Design Lead (UX Manager) on the Ignition team, I recognized that we needed a structured, collaborative framework that could work across design, product, engineering, and leadership—something that would help teams define AI opportunities, outline user workflows, map data dependencies, assess risk, and prototype quickly.
     </p>
   </div>
   <figure>
     <div class="placeholder-image"></div>
-    <figcaption>AI Toolkit project image.</figcaption>
+    <figcaption>Enterprise AI Toolkit overview.</figcaption>
   </figure>
 </section>
 
 <section id="challenges" class="two-col">
   <div class="section-text">
     <div class="label">Challenges</div>
-    <h2>The challenges you faced</h2>
+    <h2>Fragmented approaches across teams</h2>
     <p>
-      Describe the key challenges specific to the AI Toolkit project.
+      Without a common framework, every AI initiative was being scoped and presented differently. Product managers, designers, and engineers were using inconsistent language and methods to evaluate opportunities, creating confusion in reviews and slowing down decision-making.
     </p>
     <p>
-      What constraints, technical limitations, or organizational dynamics 
-      shaped this work?
+      Teams needed a way to rapidly evaluate feasibility before involving engineering, align on responsible AI patterns, and ensure clear handoffs from strategy through architecture, design, and prototyping.
+    </p>
+    <p>
+      Additionally, we needed to integrate KPMG's security, privacy, model-handling, and audit requirements into the framework so teams could design responsibly by default.
     </p>
   </div>
   <figure>
     <div class="placeholder-image"></div>
-    <figcaption>Challenges visualization.</figcaption>
+    <figcaption>Mapping the fragmented approach to AI initiatives.</figcaption>
   </figure>
 </section>
 
 <section id="approach">
   <div class="label">Approach</div>
-  <h2>How you navigated the work</h2>
+  <h2>Building a modular, collaborative framework</h2>
   <p>
-    Describe your approach to solving the AI Toolkit challenges.
+    I created an Enterprise AI Toolkit by synthesizing HAX principles, Azure Responsible AI guidelines, and internal KPMG AI policy into a usable, repeatable framework. The process involved facilitating strategy sessions with senior product managers, engineers, and AI architects, then translating those insights into practical templates and diagrams.
   </p>
 </section>
 
-<section id="vision" class="two-col">
+<section id="framework" class="two-col">
   <div class="section-text">
-    <div class="label">Vision First</div>
-    <h2>Your vision for the AI Toolkit</h2>
+    <div class="label">AI Use Case Framework</div>
+    <h2>A repeatable model for articulating AI opportunities</h2>
     <p>
-      Explain the vision and strategy behind the AI Toolkit design.
+      I created a structured framework that helps teams articulate the problem, opportunity, user goal, required inputs, and system behavior—all before touching UI. This ensures alignment on what we're building and why, before design work begins.
+    </p>
+    <p>
+      The framework guides teams through key questions: What problem are we solving? What's the user's goal? What inputs does the AI need? How should the system behave? What are the success criteria?
     </p>
   </div>
   <figure>
     <div class="placeholder-image"></div>
-    <figcaption>Vision concept.</figcaption>
+    <figcaption>AI Use Case Framework template.</figcaption>
   </figure>
 </section>
 
-<section id="alignment" class="two-col">
+<section id="templates" class="two-col">
   <div class="section-text">
-    <div class="label">Designing for Alignment</div>
-    <h2>How you aligned the team</h2>
+    <div class="label">Templates & Architecture</div>
+    <h2>Ready-to-use patterns and system diagrams</h2>
     <p>
-      Describe how you brought stakeholders together around this work.
+      I developed ready-to-use templates for agent workflows, decision trees, prompt/response architecture, multi-turn dialog patterns, and human-in-the-loop controls. These templates help teams prototype quickly while maintaining consistency.
+    </p>
+    <p>
+      I also mapped out the full flow of AI through One Port: Front-end → Agents → Retrieval → Model → Post-processing → Audit logging → Output surface. This system architecture diagram became a key reference for engineering discussions.
+    </p>
+    <p>
+      The toolkit integrated AI design quality and guardrails, ensuring KPMG's security, privacy, model-handling, and audit requirements were built into the framework by default.
     </p>
   </div>
   <figure>
     <div class="placeholder-image"></div>
-    <figcaption>Design explorations.</figcaption>
+    <figcaption>AI workflow template and system architecture diagram.</figcaption>
   </figure>
 </section>
 
-<section id="tradeoffs" class="two-col">
+<section id="workshops" class="two-col">
   <div class="section-text">
-    <div class="label">Navigating Tradeoffs</div>
-    <h2>Key decisions and tradeoffs</h2>
+    <div class="label">Cross-Functional Workshops</div>
+    <h2>Facilitating alignment through collaborative sessions</h2>
     <p>
-      What tradeoffs did you make? What couldn't be included and why?
+      I ran collaborative workshops with PMs, engineering leadership, and domain experts to define viable AI-assisted workflows. We tested the toolkit in live sessions, working through examples like onboarding, document summaries, email triage, and entity management.
+    </p>
+    <p>
+      These workshops served dual purposes: refining the toolkit itself while demonstrating its value. Participants could immediately see how the framework helped structure conversations and accelerate decision-making.
     </p>
   </div>
   <figure>
     <div class="placeholder-image"></div>
-    <figcaption>Decision framework.</figcaption>
+    <figcaption>Collaborative workshop Miro boards and workflow mapping.</figcaption>
   </figure>
 </section>
 
 <section id="looking-forward">
   <div class="label">Looking Forward</div>
-  <h2>Results and reflections</h2>
+  <h2>Impact and adoption</h2>
 
   <MetricsGrid 
     metrics={[
-      { value: "Metric", label: "Key outcome description" },
-      { value: "Metric", label: "Another outcome" },
-      { value: "Metric", label: "Third outcome" }
+      { value: "Unified", label: "AI planning workflow now used by product, engineering, and design" },
+      { value: "Faster", label: "Teams can evaluate feasibility before involving engineering" },
+      { value: "Reusable", label: "Architecture foundation for future AI initiatives" }
     ]}
   />
 </section>
 
 <section id="outcome" class="two-col">
   <div class="section-text">
-    <div class="label">Outcome</div>
-    <h2>What was achieved</h2>
+    <div class="label">Key Outcomes</div>
+    <h2>From framework to foundation</h2>
     <p>
-      Describe the outcomes and impact of the AI Toolkit project.
+      The Enterprise AI Toolkit became the foundation for how we evaluate and plan AI-powered features. It provided a unified AI planning workflow now used by product, engineering, and design teams across KPMG Ignition.
+    </p>
+    <p>
+      The toolkit enabled PMs and designers to rapidly evaluate feasibility before involving engineering, helped teams align on responsible AI patterns, and reduced ambiguity with clear handoffs from strategy → architecture → design → prototype.
+    </p>
+    <p>
+      It gave KPMG a reusable architecture for future AI initiatives and became the basis for upcoming enterprise AI workshops across Ignition. The framework has been translated into Miro, Figma, and slide decks used across teams.
     </p>
   </div>
   <figure>
     <div class="placeholder-image"></div>
-    <figcaption>Final implementation.</figcaption>
+    <figcaption>Toolkit artifacts in use across teams.</figcaption>
   </figure>
 </section>
 
 <section id="reflection" class="two-col">
   <div class="section-text">
     <div class="label">Reflection</div>
-    <h2>Key learnings</h2>
+    <h2>Design-led process for AI strategy</h2>
     <p>
-      What did you learn from this project? What would you do differently?
+      This project reinforced the value of design-led processes for defining AI user journeys, guardrails, and outputs. By creating structure and templates, we didn't just document best practices—we enabled teams to work more effectively.
+    </p>
+    <p>
+      The toolkit succeeded because it was practical and collaborative, not prescriptive. It gave teams a shared language and process while leaving room for domain-specific innovation. This balance between structure and flexibility has been key to its adoption.
     </p>
   </div>
   <figure>
     <div class="placeholder-image"></div>
-    <figcaption>Team collaboration.</figcaption>
+    <figcaption>"Before/After" comparison of manual → AI-assisted workflow.</figcaption>
   </figure>
 </section>
+
+<Callout title="Related Work">
+  <ul>
+    <li><a href="#">Internal Email Summaries + Role-Based Routing (Entity-Level Communication System)</a></li>
+    <li><a href="#">One Port UX Architecture</a></li>
+    <li><a href="#">AI Workflow Mapping Sessions</a></li>
+    <li><a href="#">Responsible AI Pattern Library</a></li>
+  </ul>
+</Callout>
