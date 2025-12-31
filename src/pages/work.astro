@@ -1,0 +1,328 @@
+---
+import TopNav from "../components/TopNav.astro";
+import Footer from "../components/Footer.astro";
+
+// Load case studies
+const caseStudyModules = import.meta.glob('../content/case-studies/*.mdx');
+const allCaseStudies = await Promise.all(
+  Object.entries(caseStudyModules).map(async ([path, module]) => {
+    try {
+      const caseStudy = await module();
+      const filename = path.split('/').pop() || '';
+      const slug = filename.replace(/\.mdx$/, '');
+      return {
+        slug,
+        title: caseStudy.frontmatter?.title || 'Untitled',
+        lede: caseStudy.frontmatter?.lede || '',
+        meta: caseStudy.frontmatter?.meta || []
+      };
+    } catch (error) {
+      console.error(`Error loading case study from ${path}:`, error);
+      return null;
+    }
+  })
+);
+
+// Filter out nulls and templates
+const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case-study-template');
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Work - Billy Carlson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/case-study.css" />
+  </head>
+  <body>
+    <TopNav />
+    
+    <main class="work-page">
+      <h1 class="work-page-title">Project snapshots</h1>
+      <p class="work-page-subtitle">Quick, outcome-focused snapshots of real product work.</p>
+
+      {caseStudies.map((caseStudy) => (
+        <article class="project-snapshot">
+          <div class="project-snapshot-header">
+            <div class="project-snapshot-image">
+              <div class="placeholder-image"></div>
+            </div>
+            <div class="project-snapshot-meta">
+              <h2 class="project-snapshot-title">{caseStudy.title}</h2>
+              {caseStudy.meta && caseStudy.meta.length > 0 && (
+                <div class="project-snapshot-badges">
+                  {caseStudy.meta.map((item) => (
+                    <span class="project-badge">{item}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {caseStudy.lede && (
+            <p class="project-snapshot-lede">{caseStudy.lede}</p>
+          )}
+
+          <div class="project-snapshot-content">
+            <div class="project-snapshot-overview">
+              <p>
+                This is where the overview content goes. Add detailed paragraphs describing the project context, 
+                your approach, and the challenges you faced. This content will be pulled from your case study 
+                MDX files or you can add it directly here.
+              </p>
+              <p>
+                Continue with more detail about the project, the team structure, timeline, and key decisions 
+                that shaped the work.
+              </p>
+            </div>
+
+            <div class="project-snapshot-outcomes">
+              <h3 class="project-section-title">Key outcomes</h3>
+              <ul class="project-list">
+                <li>Outcome one that demonstrates impact</li>
+                <li>Outcome two showing measurable results</li>
+                <li>Outcome three reflecting team or process improvements</li>
+              </ul>
+            </div>
+
+            <div class="project-snapshot-enablers">
+              <h3 class="project-section-title">Project enablers</h3>
+              <ul class="project-list">
+                <li>Key method, approach, or skill that enabled success</li>
+                <li>Process improvement or collaboration technique</li>
+                <li>Strategic decision or framework that guided the work</li>
+              </ul>
+            </div>
+
+            <div class="project-snapshot-tags">
+              <span class="project-tag">End-to-end product design</span>
+              <span class="project-tag">Product strategy</span>
+              <span class="project-tag">UX leadership</span>
+              <span class="project-tag">Design systems</span>
+            </div>
+
+            <div class="project-snapshot-link">
+              <a href={`/case-studies/${caseStudy.slug}`} class="project-link">Read full case study →</a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .work-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .work-page-title {
+    font-size: var(--step-3);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .work-page-subtitle {
+    font-size: var(--step-0);
+    color: var(--muted);
+    margin: 0 0 80px;
+    line-height: 1.6;
+  }
+
+  .project-snapshot {
+    margin-bottom: 100px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .project-snapshot:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .project-snapshot-header {
+    margin-bottom: 32px;
+  }
+
+  .project-snapshot-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 24px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .project-snapshot-image .placeholder-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .project-snapshot-title {
+    font-size: var(--step-3);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    margin: 0 0 12px;
+    line-height: 1.2;
+  }
+
+  .project-snapshot-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .project-badge {
+    font-size: var(--step--1);
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .project-snapshot-lede {
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0 0 40px;
+    font-weight: 400;
+  }
+
+  .project-snapshot-content {
+    display: grid;
+    gap: 32px;
+  }
+
+  .project-snapshot-overview {
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .project-snapshot-overview p {
+    margin: 0 0 20px;
+  }
+
+  .project-snapshot-overview p:last-child {
+    margin-bottom: 0;
+  }
+
+  .project-section-title {
+    font-size: var(--step-1);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    margin: 0 0 12px;
+  }
+
+  .project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .project-list li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .project-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+
+  .project-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .project-snapshot-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  .project-tag {
+    font-size: var(--step--1);
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    padding: 4px 8px;
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    background: var(--bg-elevated);
+  }
+
+  .project-snapshot-link {
+    padding-top: 8px;
+  }
+
+  .project-link {
+    font-size: var(--step-0);
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s;
+  }
+
+  .project-link:hover {
+    color: var(--muted-light);
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 767px) {
+    .work-page {
+      padding: 40px 20px;
+    }
+
+    .work-page-title {
+      font-size: var(--step-2);
+    }
+
+    .work-page-subtitle {
+      margin-bottom: 60px;
+    }
+
+    .project-snapshot {
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+    }
+
+    .project-snapshot-title {
+      font-size: var(--step-2);
+    }
+
+    .project-snapshot-lede {
+      font-size: var(--step-0);
+      margin-bottom: 32px;
+    }
+
+    .project-snapshot-content {
+      gap: 24px;
+    }
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .work-page {
+      padding: 60px 40px;
+    }
+  }
+</style>
