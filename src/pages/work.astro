@@ -25,7 +25,7 @@ const allCaseStudies = await Promise.all(
 );
 
 // Filter out nulls and templates, and manually define projects for work page
-const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case-study-template' && (cs.slug === 'iherb-desktop-redesign' || cs.slug === 'ai-toolkit' || cs.slug === 'momentum-report'));
+const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case-study-template' && (cs.slug === 'iherb-desktop-redesign' || cs.slug === 'ai-toolkit' || cs.slug === 'momentum-report' || cs.slug === 'power-lunch'));
 
 // Define project cards with tags - matching joshlee.design style
 const projectCards = [
@@ -52,6 +52,14 @@ const projectCards = [
     description: 'Transforming a manual reporting practice into a digital-first insights product inside One Port.',
     tags: ['Product Design', 'Workflow Design', 'Player/Coach'],
     ...caseStudies.find(cs => cs.slug === 'momentum-report')
+  },
+  {
+    slug: 'power-lunch',
+    company: 'Solo Project',
+    title: 'Power Lunch',
+    description: 'Building the MVP product vision for a niche professional network connecting young people to mentors in the sports industry.',
+    tags: ['Product Design', 'Founder Partner', 'Full-Stack'],
+    ...caseStudies.find(cs => cs.slug === 'power-lunch')
   }
 ].filter(p => p.slug);
 ---

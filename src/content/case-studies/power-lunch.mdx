@@ -1,0 +1,224 @@
+---
+title: "Power Lunch"
+lede: "Building the MVP product vision for a niche professional network connecting young people to mentors in the sports industry."
+meta:
+  - "Solo Project"
+  - "Design Leader, UX Strategist, Product Builder"
+  - "Product Design"
+  - "10–12 min read"
+sections:
+  - { id: "context", label: "Context" }
+  - { id: "challenges", label: "Challenges" }
+  - { 
+      id: "approach", 
+      label: "Approach",
+      children: [
+        { id: "strategy", label: "UX Strategy" },
+        { id: "product", label: "The Product" },
+        { id: "build", label: "Design System & Build" }
+      ]
+    }
+  - { 
+      id: "looking-forward", 
+      label: "Looking Forward",
+      children: [
+        { id: "outcome", label: "Outcome" },
+        { id: "reflection", label: "Reflection" }
+      ]
+    }
+---
+
+import PullQuote from "../../components/PullQuote.astro";
+import Callout from "../../components/Callout.astro";
+import MetricsGrid from "../../components/MetricsGrid.astro";
+
+<section id="context" class="two-col">
+  <div class="section-text">
+    <div class="label">Context</div>
+    <h2>From idea to testable product</h2>
+    <p>
+      Power Lunch is an early-stage startup helping young people explore real careers in sports by learning directly from professionals in the field. Think of it as a niche version of LinkedIn, where the focus is storytelling, mentorship, and access, not job listings and resumes.
+    </p>
+    <p>
+      I partnered directly with the founders to turn their idea into a real, testable product that could be shared with their first cohort of users. This included the experience strategy, product definition, UX, UI, and full MVP build.
+    </p>
+    <p>
+      This was a solo project, from research to prototypes to development and deployment.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Power Lunch MVP overview.</figcaption>
+  </figure>
+</section>
+
+<section id="challenges" class="two-col">
+  <div class="section-text">
+    <div class="label">Challenges</div>
+    <h2>Creating clarity and momentum from zero</h2>
+    <p>
+      The founders had a compelling thesis: There are thousands of jobs in sports beyond being an athlete, but most young people have no visibility into what they are or how to get them.
+    </p>
+    <p>They had:</p>
+    <ul>
+      <li>A concept</li>
+      <li>A mission</li>
+      <li>A hunch about video being the best medium</li>
+      <li>A few professionals willing to help</li>
+    </ul>
+    <p>They did not yet have:</p>
+    <ul>
+      <li>A product direction</li>
+      <li>A testable platform</li>
+      <li>A content pipeline</li>
+      <li>A UX strategy</li>
+      <li>A way to produce and ingest content consistently</li>
+    </ul>
+    <p>
+      The biggest challenge wasn't a feature—it was creating clarity, alignment, and momentum from zero.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Early concept exploration and user journey mapping.</figcaption>
+  </figure>
+</section>
+
+<section id="approach">
+  <div class="label">Approach</div>
+  <h2>From conversation to working product</h2>
+  <p>
+    When I joined, the product existed as a conversation. By guiding the founders through a phased approach—prototype fast, test early, iterate the product not the pixels—we moved from uncertainty to a working MVP.
+  </p>
+</section>
+
+<section id="strategy" class="two-col">
+  <div class="section-text">
+    <div class="label">UX Strategy</div>
+    <h2>Lo-fi to hi-fi progression</h2>
+    <p>
+      The founders initially wanted a fully polished, production-level product. I guided them to a phased approach: prototype fast (low fidelity), test with friends and early contributors, observe confusion and friction, iterate the product not the pixels, and scale fidelity as confidence grows.
+    </p>
+    <p>
+      This approach was essential. There were several moments where assumptions failed. The UX strategy allowed the product to benefit from those failures instead of collapse under them.
+    </p>
+    <p>
+      Early tests revealed: professionals struggled with first-time video setup, they needed structure but not scripts, and they wanted reassurance and clarity before recording. The product absorbed that learning, and the UX evolved to support their uncertainty.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Lo-fi prototypes and early testing sessions.</figcaption>
+  </figure>
+</section>
+
+<section id="product" class="two-col">
+  <div class="section-text">
+    <div class="label">The Product</div>
+    <h2>Two-sided experience for professionals and students</h2>
+    <p>
+      The MVP focuses on two primary workflows. For professionals: self-record or upload guided interview videos, follow a structured taping guide to ensure quality and consistency, and automatically generate a professional profile page from uploads.
+    </p>
+    <p>
+      For students and young adults: browse professionals by career type or interest, learn from candid personal stories, see what paths are possible in the sports world, and build confidence and direction before entering the job market.
+    </p>
+    <p>
+      This is not about glamorizing careers—it's about telling the truth of the work. Interview instructions and best practices are documented in a guide I helped translate into UX flows, including framing, setup, tone, and content sequencing.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Professional profile creation workflow and student browsing experience.</figcaption>
+  </figure>
+</section>
+
+<section id="build" class="two-col">
+  <div class="section-text">
+    <div class="label">Design System & Build</div>
+    <h2>Building for scale from day one</h2>
+    <p>
+      I created a small design system for Power Lunch to maintain consistency as the founders continue to scale the product: color tokens, typography rules, component patterns, interaction states, spacing system, and content hierarchy.
+    </p>
+    <p>
+      Development stack: React, Cursor (vibe coding workflow), Vercel (hosting), AWS for file storage, and proprietary design tokens. The MVP is live and currently in testing.
+    </p>
+    <p>
+      I built the entire application myself, set up AWS + database for storing video assets, created the video ingestion pipeline for professional profiles, and developed the progression from lo-fi prototypes → hi-fi → shipped product.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Design system tokens and component library.</figcaption>
+  </figure>
+</section>
+
+<section id="looking-forward">
+  <div class="label">Looking Forward</div>
+  <h2>From theory to product</h2>
+
+  <MetricsGrid 
+    metrics={[
+      { value: "Live", label: "Functioning, testable product exists" },
+      { value: "Active", label: "Founders onboarding professionals" },
+      { value: "Confident", label: "Replaced hesitation with direction" }
+    ]}
+  />
+</section>
+
+<section id="outcome" class="two-col">
+  <div class="section-text">
+    <div class="label">Outcome</div>
+    <h2>The single biggest transformation was psychological</h2>
+    <p>
+      We achieved a functioning, testable product that exists in the world. Founders are actively onboarding professionals, video profiles are live and being improved in real time, and early user tests are informing iteration, not redesign.
+    </p>
+    <p>
+      Confidence replaced hesitation. The single biggest transformation was psychological: Power Lunch became a product, not a theory.
+    </p>
+    <p>
+      By the time we reached MVP: rapid prototyping was normalized, feedback loops were welcomed, UX tradeoffs became understood, and the founders stopped guessing and started deciding.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Live MVP with active professional profiles.</figcaption>
+  </figure>
+</section>
+
+<Callout title="Founder Feedback">
+  <p>"This is the first time we felt the product had direction."</p>
+  <p>"It finally feels real, not just an idea."</p>
+</Callout>
+
+<section id="reflection" class="two-col">
+  <div class="section-text">
+    <div class="label">Reflection</div>
+    <h2>Founder whisperer: moving from concept to direction</h2>
+    <p>
+      I act as a design leader and founder whisperer for early-stage companies—helping them translate vision into product, and uncertainty into clarity.
+    </p>
+    <p>
+      For Power Lunch, I was not just a designer. I was the partner who gave their idea a shape they could test. This is where I operate best: helping founders move from an idea to a working product with direction.
+    </p>
+    <p>
+      The shift from uncertainty to clarity, from theory to product—this is what I am most proud of. Power Lunch shows my ability to lead a product from zero: strategy, UX, UI, system architecture, development, and launch.
+    </p>
+  </div>
+  <figure>
+    <div class="placeholder-image"></div>
+    <figcaption>Collaboration sessions with founders.</figcaption>
+  </figure>
+</section>
+
+<Callout title="My Role">
+  <ul>
+    <li>Defined the MVP scope and product direction</li>
+    <li>Guided founders through early-stage learning loops</li>
+    <li>Designed user journeys for both students and professionals</li>
+    <li>Established UX patterns and design tokens</li>
+    <li>Built the entire application (React, Cursor, Vercel)</li>
+    <li>Set up AWS + database for storing video assets</li>
+    <li>Created the video ingestion pipeline</li>
+    <li>Developed lo-fi prototypes → hi-fi → shipped product</li>
+  </ul>
+</Callout>
