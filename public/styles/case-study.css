@@ -89,7 +89,7 @@ i, em {
   position: sticky;
   top: 0;
   z-index: 100;
-  max-width: 1320px;
+  max-width: 1628px;
   margin: 0 auto;
 }
 
@@ -190,7 +190,19 @@ i, em {
 
 @media (min-width: 768px) {
   .topNav {
-    padding: 20px var(--page-pad-left);
+    padding: 16px 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .topNav {
+    padding: 16px 48px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .topNav {
+    padding: 16px 64px;
   }
 }
 
@@ -199,20 +211,26 @@ i, em {
   grid-template-columns: 260px 1fr;
   gap: clamp(18px, 3vw, 40px);
   padding: 40px 20px;
-  max-width: 1320px;
+  max-width: 1628px;
   margin: 0 auto;
   width: 100%;
 }
 
 @media (min-width: 768px) {
   .caseStudy {
-    padding: 60px 40px;
+    padding: 60px 32px;
   }
 }
 
 @media (min-width: 1024px) {
   .caseStudy {
-    padding: 80px var(--page-pad-right) 80px var(--page-pad-left);
+    padding: 80px 48px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .caseStudy {
+    padding: 80px 64px;
   }
 }
 

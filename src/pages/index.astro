@@ -1,52 +1,6 @@
 ---
 import TopNav from "../components/TopNav.astro";
 import Footer from "../components/Footer.astro";
-
-// Load stories
-const storyModules = import.meta.glob('../content/stories/*.mdx');
-const allStories = await Promise.all(
-  Object.entries(storyModules).map(async ([path, module]) => {
-    try {
-      const story = await module();
-      const filename = path.split('/').pop() || '';
-      const slug = filename.replace(/\.mdx$/, '');
-      return {
-        slug,
-        title: story.frontmatter?.title || 'Untitled',
-        lede: story.frontmatter?.lede || '',
-        meta: story.frontmatter?.meta || []
-      };
-    } catch (error) {
-      console.error(`Error loading story from ${path}:`, error);
-      return null;
-    }
-  })
-);
-
-// Load case studies
-const caseStudyModules = import.meta.glob('../content/case-studies/*.mdx');
-const allCaseStudies = await Promise.all(
-  Object.entries(caseStudyModules).map(async ([path, module]) => {
-    try {
-      const caseStudy = await module();
-      const filename = path.split('/').pop() || '';
-      const slug = filename.replace(/\.mdx$/, '');
-      return {
-        slug,
-        title: caseStudy.frontmatter?.title || 'Untitled',
-        lede: caseStudy.frontmatter?.lede || '',
-        meta: caseStudy.frontmatter?.meta || []
-      };
-    } catch (error) {
-      console.error(`Error loading case study from ${path}:`, error);
-      return null;
-    }
-  })
-);
-
-// Filter out nulls and templates
-const stories = allStories.filter(story => story !== null && story.slug !== 'case-study-template');
-const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case-study-template');
 ---
 
 <html lang="en">
@@ -58,87 +12,102 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
 		<title>Billy Carlson - Product Design Director</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="/styles/case-study.css" />
 	</head>
 	<body>
 		<TopNav />
 		
-		<main class="stories-page">
-			<!-- WHO I AM section -->
-			<section class="one-col-section" style="max-width: 800px; margin: 0 auto;">
-					<p class="section-intro">
-						<b>I’m a design leader who excels at bringing people together.</b> I create environments where teams <i>feel aligned, supported, and confident</i> in the work they’re doing. I <i>communicate clearly</i> across design, product, and engineering, explaining not just what we’re building, but why it matters.
-					</p>
-							</section>
+		<main class="home-page">
+			<!-- Section 1: Hero Blurbs -->
+			<section class="content-section">
+				<div class="hero-blurbs">
+					<div class="blurb-box large">
+						<p>A blurb about me</p>
+					</div>
+					<div class="blurb-box large">
+						<p>Another blurb about me</p>
+					</div>
+				</div>
+			</section>
 
-			<!-- CASE STUDIES section -->
-			{caseStudies.length > 0 && (
-				<section class="two-col-section">
-					<div class="col-left">
-						<h2 class="section-label">Case Studies</h2>
+			<!-- Section 2: About Me and Quick Links -->
+			<section class="content-section">
+				<div class="about-links-grid">
+					<!-- About Me - Tall block left -->
+					<div class="content-box about-box">
+						<h3 class="box-header">About Me</h3>
+						<p class="box-text">One sentence on what I do</p>
+						<a href="/about" class="box-link">Learn More</a>
 					</div>
-					<div class="col-right">
-						{caseStudies.map((caseStudy) => (
-							<article class="work-card stacked">
-								<div class="work-card-image">
-									<div class="placeholder-image"></div>
-								</div>
-								<div class="work-card-content">
-									<h3 class="work-card-title">
-										<a href={`/case-studies/${caseStudy.slug}`}>{caseStudy.title}</a>
-									</h3>
-									{caseStudy.lede && (
-										<p class="work-card-lede">{caseStudy.lede}</p>
-									)}
-									{caseStudy.meta.length > 0 && (
-										<div class="work-card-meta">
-											{caseStudy.meta.map((m) => <span>{m}</span>)}
-										</div>
-									)}
-								</div>
-							</article>
-						))}
-					</div>
-				</section>
-			)}
 
-			<!-- STORIES section -->
-			{stories.length > 0 && (
-				<section class="two-col-section">
-					<div class="col-left">
-						<h2 class="section-label">Stories</h2>
-					</div>
-					<div class="col-right">
-						{stories.map((story) => (
-							<article class="work-card">
-								<div class="work-card-image">
-									<div class="placeholder-image"></div>
-								</div>
-								<div class="work-card-content">
-									<h3 class="work-card-title">
-										<a href={`/stories/${story.slug}`}>{story.title}</a>
-									</h3>
-									{story.lede && (
-										<p class="work-card-lede">{story.lede}</p>
-									)}
-									{story.meta.length > 0 && (
-										<div class="work-card-meta">
-											{story.meta.map((m) => <span>{m}</span>)}
-										</div>
-									)}
-								</div>
-							</article>
-						))}
-					</div>
-				</section>
-			)}
+					<!-- Right column - stacked -->
+					<div class="right-column">
+						<!-- Quote - Top right -->
+						<div class="content-box quote-box">
+							<p class="box-text">a quote</p>
+						</div>
 
-			<!-- Bottom section -->
-			<section class="bottom-section">
-				<p class="bottom-text">
-					Design leadership isn't about having all the answers—it's about creating the conditions where great work can happen. Over the past fifteen years, I've learned that the best products come from teams that feel empowered to take risks, challenge assumptions, and push beyond the obvious solution. My role is to build those teams, protect their focus, and help them navigate the inevitable tensions between business goals and user needs.
-				</p>
+						<!-- LinkedIn Link - Small box -->
+						<div class="content-box small-box">
+							<a href="https://linkedin.com/in/billycarlson" target="_blank" class="box-text">linkedin link</a>
+						</div>
+
+						<!-- Speaking Engagement - Small box -->
+						<div class="content-box small-box">
+							<p class="box-text">A speaking engagement or community highlight</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Section 3: Case Studies and Stories -->
+			<section class="content-section">
+				<div class="case-studies-stories-grid">
+					<!-- Case Study 1 - Left -->
+					<div class="content-box case-study-box">
+						<h3 class="box-header">Case study</h3>
+						<p class="box-text">Link to a highlighted case study</p>
+					</div>
+
+					<!-- Story - Right -->
+					<div class="content-box story-box">
+						<h3 class="box-header">Story</h3>
+						<p class="box-text">Link to a story</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Section 4: Testimonials -->
+			<section class="content-section">
+				<div class="testimonials-grid">
+					<div class="content-box testimonials-box">
+						<p class="box-text">What people say about me</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Section 5: Additional Work and Images -->
+			<section class="content-section">
+				<div class="work-images-grid">
+					<!-- Case Study 2 - Left -->
+					<div class="content-box case-study-box">
+						<h3 class="box-header">Case study</h3>
+						<p class="box-text">Link to a highlighted case study</p>
+					</div>
+
+					<!-- Images - Right, stacked -->
+					<div class="images-column">
+						<div class="content-box image-box">
+							<div class="placeholder-image"></div>
+							<p class="box-text">Image</p>
+						</div>
+						<div class="content-box image-box">
+							<div class="placeholder-image"></div>
+							<p class="box-text">Image</p>
+						</div>
+					</div>
+				</div>
 			</section>
 		</main>
 
@@ -147,73 +116,248 @@ const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case
 </html>
 
 <style>
-  /* Page-specific styles for index */
-  .stories-page {
-    max-width: 1320px;
+  .home-page {
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 80px 80px;
-    width: 100%;
+    padding: 80px 40px;
   }
 
-  .section-intro {
-    font-size: var(--step-4);
-    line-height: 1.15;
-    color: var(--text);
-    font-weight: 400;
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    width: fit-content;
+  /* Content Sections with spacing */
+  .content-section {
+    margin-bottom: 80px;
   }
 
-  /* Attribute items (Who I Am section) */
-  .attribute-item {
-    padding-top: 28px;
-    padding-bottom: 28px;
-    border-top: 1px solid var(--hairline);
+  .content-section:last-child {
+    margin-bottom: 0;
   }
 
-  .attribute-item:first-child {
-    border-top: none;
-    padding-top: 0;
+  /* Section 1: Hero Blurbs - Two side by side */
+  .hero-blurbs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
 
-  .attribute-title {
+  .blurb-box {
+    border: 1px solid var(--hairline);
+    background: var(--bg);
+    padding: 48px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .blurb-box p {
     font-size: var(--step-2);
-    font-weight: 500;
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-    margin: 0 0 16px;
-  }
-
-  .attribute-text {
-    font-size: var(--step-0);
     line-height: 1.6;
     color: var(--text);
     margin: 0;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+  }
+
+  /* Section 2: About Me and Quick Links */
+  .about-links-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+
+  .about-box {
+    min-height: 400px;
+  }
+
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .quote-box {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .small-box {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Section 3: Case Studies and Stories */
+  .case-studies-stories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .case-study-box,
+  .story-box {
+    min-height: 200px;
+  }
+
+  /* Section 4: Testimonials */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-box {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Section 5: Additional Work and Images */
+  .work-images-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+
+  .images-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .image-box {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Common Box Styles */
+  .content-box {
+    border: 1px solid var(--hairline);
+    background: var(--bg);
+    padding: 32px;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content-box:hover {
+    border-color: var(--hairline-subtle);
+    transform: translateY(-2px);
+  }
+
+  .box-header {
+    font-size: var(--step-1);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    margin: 0 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .box-text {
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .box-link {
+    font-size: var(--step-0);
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    margin-top: auto;
+    padding-top: 16px;
+    transition: color 0.2s;
+  }
+
+  .box-link:hover {
+    color: var(--muted-light);
+  }
+
+  .image-box .placeholder-image {
     width: 100%;
+    height: 150px;
+    background: var(--bg-elevated);
+    border: 1px dashed var(--hairline);
+    margin-bottom: 12px;
   }
 
-  /* Mobile responsive - page specific */
+  /* Mobile responsive */
   @media (max-width: 767px) {
-    .stories-page {
-      padding: 40px 16px;
-      overflow-x: hidden;
+    .home-page {
+      padding: 40px 20px;
     }
 
-    .section-intro {
-      font-size: var(--step-2);
+    .content-section {
+      margin-bottom: 60px;
     }
 
-    .attribute-text {
-      max-width: 100%;
+    .hero-blurbs {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .blurb-box {
+      padding: 32px;
+      min-height: 150px;
+    }
+
+    .about-links-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .about-box {
+      min-height: 250px;
+    }
+
+    .case-studies-stories-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .work-images-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .content-box {
+      padding: 24px;
+    }
+
+    .testimonials-box {
+      min-height: 250px;
+    }
+
+    .image-box {
+      min-height: 150px;
     }
   }
 
-  /* Tablet - page specific */
+  /* Tablet */
   @media (min-width: 768px) and (max-width: 1023px) {
-    .stories-page {
-      padding: 60px 40px;
+    .home-page {
+      padding: 60px 32px;
+    }
+
+    .content-section {
+      margin-bottom: 60px;
+    }
+
+    .about-links-grid {
+      grid-template-columns: 1.5fr 1fr;
+    }
+
+    .work-images-grid {
+      grid-template-columns: 1.5fr 1fr;
     }
   }
 </style>
-
