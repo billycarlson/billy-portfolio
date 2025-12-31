@@ -25,7 +25,7 @@ const allCaseStudies = await Promise.all(
 );
 
 // Filter out nulls and templates, and manually define projects for work page
-const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case-study-template' && (cs.slug === 'iherb-desktop-redesign' || cs.slug === 'ai-toolkit'));
+const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case-study-template' && (cs.slug === 'iherb-desktop-redesign' || cs.slug === 'ai-toolkit' || cs.slug === 'momentum-report'));
 
 // Define project cards with tags - matching joshlee.design style
 const projectCards = [
@@ -44,6 +44,14 @@ const projectCards = [
     description: 'A modular, HAX-inspired framework to help product, design, and engineering teams plan and build AI-powered enterprise software.',
     tags: ['AI/ML', 'Design Systems', 'Workshop Facilitation'],
     ...caseStudies.find(cs => cs.slug === 'ai-toolkit')
+  },
+  {
+    slug: 'momentum-report',
+    company: 'KPMG Ignition',
+    title: 'Momentum Report',
+    description: 'Transforming a manual reporting practice into a digital-first insights product inside One Port.',
+    tags: ['Product Design', 'Workflow Design', 'Player/Coach'],
+    ...caseStudies.find(cs => cs.slug === 'momentum-report')
   }
 ].filter(p => p.slug);
 ---
