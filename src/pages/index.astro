@@ -23,10 +23,10 @@ import Footer from "../components/Footer.astro";
 			<section class="content-section">
 				<div class="hero-blurbs">
 					<div class="blurb-box large">
-						<p>A blurb about me</p>
+						<p><b>I'm a design leader who excels at bringing people together.</b> I create environments where teams <i>feel aligned, supported, and confident</i> in the work they're doing.</p>
 					</div>
 					<div class="blurb-box large">
-						<p>Another blurb about me</p>
+						<p>I <i>communicate clearly</i> across design, product, and engineering, explaining not just what we're building, but why it matters.</p>
 					</div>
 				</div>
 			</section>
@@ -37,7 +37,7 @@ import Footer from "../components/Footer.astro";
 					<!-- About Me - Tall block left -->
 					<div class="content-box about-box">
 						<h3 class="box-header">About Me</h3>
-						<p class="box-text">One sentence on what I do</p>
+						<p class="box-text">I bring a focus to communication, systems thinking, and creative strategy across end-to-end product design. I also coach designers through structured feedback and practical skill development.</p>
 						<a href="/about" class="box-link">Learn More</a>
 					</div>
 
@@ -45,19 +45,19 @@ import Footer from "../components/Footer.astro";
 					<div class="right-column">
 						<!-- Quote - Top right -->
 						<div class="content-box quote-box">
-							<p class="box-text">a quote</p>
+							<p class="box-text"><i>"What is the best outcome we can create?"</i></p>
 						</div>
 
 						<!-- LinkedIn Link and Speaking Engagement - Side by side -->
 						<div class="small-boxes-row">
 							<!-- LinkedIn Link - Small box -->
-							<div class="content-box small-box">
-								<a href="https://linkedin.com/in/billycarlson" target="_blank" class="box-text">linkedin link</a>
-							</div>
+							<a href="https://linkedin.com/in/billycarlson" target="_blank" class="content-box small-box">
+								<p class="box-text">LinkedIn</p>
+							</a>
 
 							<!-- Speaking Engagement - Small box -->
 							<div class="content-box small-box">
-								<p class="box-text">A speaking engagement or community highlight</p>
+								<p class="box-text">Speaking & community</p>
 							</div>
 						</div>
 					</div>
@@ -68,16 +68,17 @@ import Footer from "../components/Footer.astro";
 			<section class="content-section">
 				<div class="case-studies-stories-grid">
 					<!-- Case Study 1 - Left -->
-					<div class="content-box case-study-box">
+					<a href="/case-studies/iherb-desktop-redesign" class="content-box case-study-box">
 						<h3 class="box-header">Case study</h3>
-						<p class="box-text">Link to a highlighted case study</p>
-					</div>
+						<p class="box-text">iHerb Desktop Homepage Redesign</p>
+						<p class="box-text" style="margin-top: 8px; color: var(--muted); font-size: var(--step--1);">Reframing a high-pressure, executive-driven request into a future-facing design vision</p>
+					</a>
 
 					<!-- Story - Right -->
-					<div class="content-box story-box">
+					<a href="/stories/executive-pressure" class="content-box story-box">
 						<h3 class="box-header">Story</h3>
-						<p class="box-text">Link to a story</p>
-					</div>
+						<p class="box-text">Designing Under Executive Pressure</p>
+					</a>
 				</div>
 			</section>
 
@@ -85,7 +86,8 @@ import Footer from "../components/Footer.astro";
 			<section class="content-section">
 				<div class="testimonials-grid">
 					<div class="content-box testimonials-box">
-						<p class="box-text">What people say about me</p>
+						<p class="box-text" style="font-size: var(--step-1); margin-bottom: 24px;">Kind words from collaborators</p>
+						<p class="box-text" style="font-style: italic; margin-bottom: 16px;">"Structured, transparent, and organized" • "High accountability and drive" • "Customer-centric approach" • "Practical and grounded in feasibility"</p>
 					</div>
 				</div>
 			</section>
@@ -94,20 +96,21 @@ import Footer from "../components/Footer.astro";
 			<section class="content-section">
 				<div class="work-images-grid">
 					<!-- Case Study 2 - Left -->
-					<div class="content-box case-study-box">
+					<a href="/case-studies/momentum-report" class="content-box case-study-box">
 						<h3 class="box-header">Case study</h3>
-						<p class="box-text">Link to a highlighted case study</p>
-					</div>
+						<p class="box-text">Momentum Report</p>
+						<p class="box-text" style="margin-top: 8px; color: var(--muted); font-size: var(--step--1);">Transforming a manual reporting practice into a digital-first insights product</p>
+					</a>
 
 					<!-- Images - Right, stacked -->
 					<div class="images-column">
 						<div class="content-box image-box">
 							<div class="placeholder-image"></div>
-							<p class="box-text">Image</p>
+							<p class="box-text">Project image</p>
 						</div>
 						<div class="content-box image-box">
 							<div class="placeholder-image"></div>
-							<p class="box-text">Image</p>
+							<p class="box-text">Project image</p>
 						</div>
 					</div>
 				</div>
@@ -257,6 +260,11 @@ import Footer from "../components/Footer.astro";
   .content-box:hover {
     border-color: var(--hairline-subtle);
     transform: translateY(-2px);
+  }
+
+  .content-box a {
+    text-decoration: none;
+    color: inherit;
   }
 
   .box-header {
