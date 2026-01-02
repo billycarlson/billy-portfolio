@@ -60,6 +60,14 @@ const projectCards = [
     description: 'Building the MVP product vision for a niche professional network connecting young people to mentors in the sports industry.',
     tags: ['Product Design', 'Founder Partner', 'Full-Stack'],
     ...caseStudies.find(cs => cs.slug === 'power-lunch')
+  },
+  {
+    slug: 'momentum-report-detailed',
+    company: 'KPMG Ignition',
+    title: 'Momentum Report (Detailed)',
+    description: 'A detailed case study exploring how we transformed a manual reporting practice into a digital-first insights product inside One Port.',
+    tags: ['Product Design', 'Workflow Design', 'Case Study'],
+    href: '/case-studies/momentum-report-detailed'
   }
 ].filter(p => p.slug);
 ---
@@ -83,7 +91,7 @@ const projectCards = [
     <main class="work-page">
       <div class="work-grid">
         {projectCards.map((project) => (
-          <a href={`/case-studies/${project.slug}`} class="project-card">
+          <a href={project.href || `/case-studies/${project.slug}`} class="project-card">
             <div class="project-card-image">
               <div class="placeholder-image"></div>
             </div>
