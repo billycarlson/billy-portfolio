@@ -256,48 +256,37 @@ const {
     scroll-margin-top: 120px;
   }
 
-  /* Section Labels (Pill-shaped with icon) */
+  /* Section Labels */
   .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 12px;
-    background: #e0f2f1;
-    border-radius: 20px;
-    font-size: var(--step--2);
-    font-weight: 700;
+    font-size: var(--step--1);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #00695c;
-    font-family: 'Inter', monospace;
-    margin-bottom: 24px;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: block;
   }
 
-  .section-label::before {
-    content: "✦";
-    font-size: 12px;
-    color: #00796b;
-  }
-
-  /* Section Titles - Now Serif */
+  /* Section Titles */
   .section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    font-family: 'Playfair Display', Georgia, serif;
-    color: #00695c;
-    margin: 0 0 24px;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    margin: 0 0 48px;
     line-height: 1.2;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
 
-  /* Headlines (Serif) */
+  /* Headlines */
   .section-headline {
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: 700;
-    font-family: 'Playfair Display', Georgia, serif;
-    color: #00695c;
-    line-height: 1.3;
-    margin: 0 0 16px;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    line-height: 1.2;
+    margin: 0 0 24px;
     letter-spacing: -0.01em;
   }
 
@@ -376,9 +365,9 @@ const {
 
   .tldr-metric-value {
     font-size: var(--step-3);
-    font-weight: 700;
+    font-weight: 600;
     font-family: 'Inter', sans-serif;
-    color: #00695c;
+    color: var(--text);
     line-height: 1;
   }
 
@@ -391,12 +380,12 @@ const {
 
   /* tl;dr title style */
   .tldr-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    font-family: 'Inter', monospace;
-    color: #00695c;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
     margin: 0 0 24px;
-    line-height: 1.1;
+    line-height: 1.2;
     text-transform: lowercase;
   }
 
