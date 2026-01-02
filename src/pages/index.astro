@@ -14,107 +14,96 @@ import Footer from "../components/Footer.astro";
 		<title>Billy Carlson - Product Design Director</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="/styles/case-study.css" />
 	</head>
 	<body>
 		<TopNav />
 		
 		<main class="home-page">
-			<!-- Section 1: Hero Blurbs -->
-			<section class="content-section">
-				<div class="hero-blurbs">
-					<div class="blurb-box large">
-						<p>Hi, I'm Billy.<br /><br />I'm a UX Design Manager at iHerb</p>
-					</div>
-					<div class="blurb-box large">
-						<p>Say hi!</p>
-					</div>
+			<!-- Hero Section -->
+			<section class="home-hero">
+				<h1 class="home-headline">Hi, I'm Billy</h1>
+				<p class="home-subheadline">
+					I'm a UX Design Manager at iHerb. My mission is to bridge the gap between user needs and business goals—creating products that people genuinely like to use and fuel sustainable growth.
+				</p>
+				<p class="home-description">
+					Say hi!
+				</p>
+			</section>
+
+			<!-- About Section -->
+			<section class="home-section">
+				<div class="section-header">
+					<span class="section-label">About Me</span>
+					<h2 class="section-title">Design Leadership & Strategy</h2>
+				</div>
+				<div class="home-content">
+					<p class="home-text">
+						I bring a focus to communication, systems thinking, and creative strategy across end-to-end product design. I also coach designers through structured feedback and practical skill development.
+					</p>
+					<a href="/about" class="home-link">Learn More</a>
 				</div>
 			</section>
 
-			<!-- Section 2: About Me and Quick Links -->
-			<section class="content-section">
-				<div class="about-links-grid">
-					<!-- About Me - Tall block left -->
-					<div class="content-box about-box">
-						<h3 class="box-header">About Me</h3>
-						<p class="box-text">I bring a focus to communication, systems thinking, and creative strategy across end-to-end product design. I also coach designers through structured feedback and practical skill development.</p>
-						<a href="/about" class="box-link">Learn More</a>
-					</div>
-
-					<!-- Right column - stacked -->
-					<div class="right-column">
-						<!-- Quote - Top right -->
-						<div class="content-box quote-box">
-							<p class="box-text"><i>"What is the best outcome we can create?"</i></p>
-						</div>
-
-						<!-- LinkedIn Link and Speaking Engagement - Side by side -->
-						<div class="small-boxes-row">
-							<!-- LinkedIn Link - Small box -->
-							<a href="https://linkedin.com/in/billycarlson" target="_blank" class="content-box small-box">
-								<p class="box-text">LinkedIn</p>
-							</a>
-
-							<!-- Speaking Engagement - Small box -->
-							<div class="content-box small-box">
-								<p class="box-text">Speaking & community</p>
-							</div>
-						</div>
-					</div>
+			<!-- Quote Section -->
+			<section class="home-section">
+				<div class="home-content">
+					<p class="home-quote">"What is the best outcome we can create?"</p>
 				</div>
 			</section>
 
-			<!-- Section 3: Case Studies and Stories -->
-			<section class="content-section">
-				<div class="case-studies-stories-grid">
-					<!-- Case Study 1 - Left -->
-					<a href="/case-studies/iherb-desktop-redesign" class="content-box case-study-box">
-						<h3 class="box-header">Case study</h3>
-						<p class="box-text">iHerb Desktop Homepage Redesign</p>
-						<p class="box-text" style="margin-top: 8px; color: var(--muted); font-size: var(--step--1);">Reframing a high-pressure, executive-driven request into a future-facing design vision</p>
+			<!-- Case Studies Section -->
+			<section class="home-section">
+				<div class="section-header">
+					<span class="section-label">Work</span>
+					<h2 class="section-title">Case Studies</h2>
+				</div>
+				<div class="work-grid">
+					<a href="/case-studies/iherb-desktop-redesign" class="work-item">
+						<span class="work-label">Case Study</span>
+						<h3 class="work-title">iHerb Desktop Homepage Redesign</h3>
+						<p class="work-description">Reframing a high-pressure, executive-driven request into a future-facing design vision</p>
 					</a>
-
-					<!-- Story - Right -->
-					<a href="/stories/executive-pressure" class="content-box story-box">
-						<h3 class="box-header">Story</h3>
-						<p class="box-text">Designing Under Executive Pressure</p>
+					<a href="/case-studies/momentum-report" class="work-item">
+						<span class="work-label">Case Study</span>
+						<h3 class="work-title">Momentum Report</h3>
+						<p class="work-description">Transforming a manual reporting practice into a digital-first insights product</p>
+					</a>
+					<a href="/work" class="work-item">
+						<span class="work-label">View All</span>
+						<h3 class="work-title">See All Case Studies</h3>
+						<p class="work-description">Explore more of my work and projects</p>
 					</a>
 				</div>
 			</section>
 
-			<!-- Section 4: Testimonials -->
-			<section class="content-section">
-				<div class="testimonials-grid">
-					<div class="content-box testimonials-box">
-						<p class="box-text" style="font-size: var(--step-1); margin-bottom: 24px;">Kind words from collaborators</p>
-						<p class="box-text" style="font-style: italic; margin-bottom: 16px;">"Structured, transparent, and organized" • "High accountability and drive" • "Customer-centric approach" • "Practical and grounded in feasibility"</p>
+			<!-- Links Section -->
+			<section class="home-section">
+				<div class="section-header">
+					<span class="section-label">Connect</span>
+					<h2 class="section-title">Get In Touch</h2>
+				</div>
+				<div class="links-grid">
+					<a href="https://linkedin.com/in/billycarlson" target="_blank" class="link-item">
+						<span class="link-label">LinkedIn</span>
+					</a>
+					<div class="link-item">
+						<span class="link-label">Speaking & Community</span>
 					</div>
 				</div>
 			</section>
 
-			<!-- Section 5: Additional Work and Images -->
-			<section class="content-section">
-				<div class="work-images-grid">
-					<!-- Case Study 2 - Left -->
-					<a href="/case-studies/momentum-report" class="content-box case-study-box">
-						<h3 class="box-header">Case study</h3>
-						<p class="box-text">Momentum Report</p>
-						<p class="box-text" style="margin-top: 8px; color: var(--muted); font-size: var(--step--1);">Transforming a manual reporting practice into a digital-first insights product</p>
-					</a>
-
-					<!-- Images - Right, stacked -->
-					<div class="images-column">
-						<div class="content-box image-box">
-							<div class="placeholder-image"></div>
-							<p class="box-text">Project image</p>
-						</div>
-						<div class="content-box image-box">
-							<div class="placeholder-image"></div>
-							<p class="box-text">Project image</p>
-						</div>
-					</div>
+			<!-- Testimonials Section -->
+			<section class="home-section">
+				<div class="section-header">
+					<span class="section-label">Testimonials</span>
+					<h2 class="section-title">Kind Words from Collaborators</h2>
+				</div>
+				<div class="home-content">
+					<p class="home-text" style="font-style: italic;">
+						"Structured, transparent, and organized" • "High accountability and drive" • "Customer-centric approach" • "Practical and grounded in feasibility"
+					</p>
 				</div>
 			</section>
 		</main>
@@ -125,267 +114,214 @@ import Footer from "../components/Footer.astro";
 
 <style>
   .home-page {
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 80px 40px;
+    padding: 60px 80px 80px;
+    width: 100%;
   }
 
-  /* Content Sections with spacing */
-  .content-section {
+  /* Hero */
+  .home-hero {
     margin-bottom: 80px;
+    max-width: 800px;
   }
 
-  .content-section:last-child {
-    margin-bottom: 0;
-  }
-
-  /* Section 1: Hero Blurbs - Two side by side */
-  .hero-blurbs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  .blurb-box {
-    border: 1px solid var(--hairline);
-    background: var(--bg);
-    padding: 48px;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .blurb-box p {
-    font-size: var(--step-2);
-    line-height: 1.6;
+  .home-headline {
+    font-size: 48px;
+    font-weight: 500;
     color: var(--text);
+    margin: 0 0 30px;
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .home-subheadline {
+    font-size: 36px;
+    line-height: 1.3;
+    color: var(--text);
+    font-weight: 400;
+    font-family: 'Instrument Serif', serif;
+    margin: 0 0 24px;
+  }
+
+  .home-description {
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: var(--muted);
     margin: 0;
-    font-family: 'Inter', sans-serif;
-    text-align: center;
+    max-width: 650px;
   }
 
-  /* Section 2: About Me and Quick Links */
-  .about-links-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+  /* Sections */
+  .home-section {
+    margin-bottom: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--hairline);
   }
 
-  .about-box {
-    min-height: 400px;
+  .section-header {
+    margin-bottom: 40px;
   }
 
-  .right-column {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .quote-box {
-    min-height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .small-boxes-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  .small-box {
-    min-height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Section 3: Case Studies and Stories */
-  .case-studies-stories-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  .case-study-box,
-  .story-box {
-    min-height: 200px;
-  }
-
-  /* Section 4: Testimonials */
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .testimonials-box {
-    min-height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Section 5: Additional Work and Images */
-  .work-images-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 24px;
-  }
-
-  .images-column {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .image-box {
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  /* Common Box Styles */
-  .content-box {
-    border: 1px solid var(--hairline);
-    background: var(--bg);
-    padding: 32px;
-    transition: border-color 0.2s, transform 0.2s;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .content-box:hover {
-    border-color: var(--hairline-subtle);
-    transform: translateY(-2px);
-  }
-
-  .content-box a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .box-header {
-    font-size: var(--step-1);
+  .section-label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 8px;
     font-weight: 500;
     font-family: 'Inter', sans-serif;
-    color: var(--text);
-    margin: 0 0 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
   }
 
-  .box-text {
+  .section-title {
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0;
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .home-content {
+    max-width: 800px;
+  }
+
+  .home-text {
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0 0 24px;
+  }
+
+  .home-quote {
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--text);
+    font-style: italic;
+    margin: 0;
+    max-width: 800px;
+  }
+
+  .home-link {
+    font-size: var(--step-0);
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s;
+    display: inline-block;
+    margin-top: 8px;
+  }
+
+  .home-link:hover {
+    color: var(--muted);
+  }
+
+  /* Work Grid */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .work-item {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-item:hover {
+    opacity: 0.7;
+  }
+
+  .work-label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .work-title {
+    font-size: var(--step-1);
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 12px;
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .work-description {
     font-size: var(--step-0);
     line-height: 1.6;
     color: var(--muted);
     margin: 0;
-    font-family: 'Inter', sans-serif;
   }
 
-  .box-link {
-    font-size: var(--step-0);
-    color: var(--text);
+  /* Links Grid */
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 600px;
+  }
+
+  .link-item {
     text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    margin-top: auto;
-    padding-top: 16px;
-    transition: color 0.2s;
+    color: inherit;
+    transition: opacity 0.2s;
   }
 
-  .box-link:hover {
-    color: var(--muted-light);
+  .link-item:hover {
+    opacity: 0.7;
   }
 
-  .image-box .placeholder-image {
-    width: 100%;
-    height: 150px;
-    background: var(--bg-elevated);
-    border: 1px dashed var(--hairline);
-    margin-bottom: 12px;
+  .link-label {
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--text);
   }
 
-  /* Mobile responsive */
+  /* Responsive */
   @media (max-width: 767px) {
     .home-page {
-      padding: 40px 20px;
+      padding: 40px 20px 60px;
     }
 
-    .content-section {
+    .home-hero {
       margin-bottom: 60px;
     }
 
-    .hero-blurbs {
+    .home-subheadline {
+      font-size: 1.4rem;
+    }
+
+    .home-section {
+      margin-bottom: 60px;
+      padding-top: 30px;
+    }
+
+    .work-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .links-grid {
       grid-template-columns: 1fr;
       gap: 20px;
-    }
-
-    .blurb-box {
-      padding: 32px;
-      min-height: 150px;
-    }
-
-    .about-links-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .about-box {
-      min-height: 250px;
-    }
-
-    .small-boxes-row {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .case-studies-stories-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .work-images-grid {
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .content-box {
-      padding: 24px;
-    }
-
-    .testimonials-box {
-      min-height: 250px;
-    }
-
-    .image-box {
-      min-height: 150px;
     }
   }
 
-  /* Tablet */
   @media (min-width: 768px) and (max-width: 1023px) {
     .home-page {
-      padding: 60px 32px;
+      padding: 50px 40px 70px;
     }
 
-    .content-section {
-      margin-bottom: 60px;
-    }
-
-    .about-links-grid {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .small-boxes-row {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .work-images-grid {
-      grid-template-columns: 1.5fr 1fr;
+    .work-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
     }
   }
 </style>

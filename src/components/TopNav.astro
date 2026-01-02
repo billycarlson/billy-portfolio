@@ -9,16 +9,53 @@ const isActive = (path: string) => {
 ---
 
 <nav class="topNav">
-  <div class="topNav-left">
-    <a href="/about" class={isActive('/about') ? 'active' : ''}>About</a>
-    <a href="/work" class={isActive('/work') ? 'active' : ''}>Work</a>
-    <a href="/resume" class={isActive('/resume') ? 'active' : ''}>Resume</a>
-  </div>
   <div class="topNav-center">
     <a href="/" class="topNav-name">Billy Carlson</a>
   </div>
-  <div class="topNav-right">
-    <a href="mailto:your-email@example.com" class={isActive('/contact') ? 'active' : ''}>Get in touch</a>
+  
+  <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+  
+  <div class="topNav-menu">
+    <div class="topNav-left">
+      <a href="/about" class={isActive('/about') ? 'active' : ''}>About</a>
+      <a href="/work" class={isActive('/work') ? 'active' : ''}>Work</a>
+      <a href="/resume" class={isActive('/resume') ? 'active' : ''}>Resume</a>
+    </div>
+    <div class="topNav-right">
+      <a href="mailto:your-email@example.com" class={isActive('/contact') ? 'active' : ''}>Get in touch</a>
+    </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.querySelector('.topNav-menu');
+    
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        navMenu.classList.toggle('menu-open');
+        menuToggle.classList.toggle('menu-open');
+        document.body.classList.toggle('menu-open');
+      });
+      
+      // Close menu when clicking on a link
+      const navLinks = navMenu.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          navMenu.classList.remove('menu-open');
+          menuToggle.classList.remove('menu-open');
+          document.body.classList.remove('menu-open');
+        });
+      });
+    }
+  });
+</script>
 
