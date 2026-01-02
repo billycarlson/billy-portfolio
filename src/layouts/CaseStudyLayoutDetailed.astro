@@ -207,6 +207,20 @@ const {
   .hero-image .placeholder-image {
     width: 100%;
     height: 100%;
+    background: var(--grey-dark);
+  }
+
+  .hero-image .placeholder-image::before {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 70%;
+    background: var(--grey-medium);
+    border-radius: 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   }
 
   /* Navigation */
@@ -238,12 +252,13 @@ const {
     color: var(--muted);
     text-decoration: none;
     font-family: 'Inter', sans-serif;
-    transition: color 0.2s;
+    transition: color 0.2s, text-decoration 0.2s;
     text-transform: lowercase;
   }
 
   .case-nav a:hover {
-    color: var(--text);
+    color: var(--red);
+    text-decoration: underline;
   }
 
   /* Content Sections */
@@ -262,9 +277,9 @@ const {
     font-size: var(--step--2);
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--muted);
+    color: var(--red);
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 24px;
     display: block;
   }
@@ -401,21 +416,21 @@ const {
     background: var(--bg);
     border-radius: 0;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--hairline);
   }
 
   .comparison-table th {
     font-size: var(--step--1);
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--muted);
-    background: transparent;
+    color: var(--white);
+    background: var(--red);
     padding: 24px 32px;
     text-align: left;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 2px solid var(--hairline);
     position: relative;
-    font-family: 'Instrument Serif', serif;
+    font-family: 'Inter', sans-serif;
   }
 
   .comparison-table th:not(:last-child)::after {
@@ -465,28 +480,28 @@ const {
   /* Quote/Testimonial */
   .leadership-quote {
     margin: 64px 0;
-    padding: 0;
-    background: transparent;
-    border-left: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    background: var(--red);
+    border: none;
     font-family: 'Inter', sans-serif;
-    padding-left: 32px;
   }
 
   .leadership-quote p {
     font-size: var(--step-1);
     line-height: 1.7;
-    color: var(--text);
+    color: var(--white);
     font-style: normal;
     margin: 0 0 20px;
-    font-weight: 400;
+    font-weight: 600;
   }
 
   .leadership-quote cite {
     font-size: var(--step--1);
-    color: var(--muted);
+    color: var(--white);
     font-style: normal;
     display: block;
     font-weight: 400;
+    opacity: 0.9;
   }
 
   /* Ordered lists */

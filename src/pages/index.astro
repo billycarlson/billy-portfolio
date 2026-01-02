@@ -38,16 +38,21 @@ import Footer from "../components/Footer.astro";
 					<span class="section-label">About Me</span>
 					<h2 class="section-title">Design Leadership & Strategy</h2>
 				</div>
-				<div class="home-content">
-					<p class="home-text">
-						I bring a focus to communication, systems thinking, and creative strategy across end-to-end product design. I also coach designers through structured feedback and practical skill development.
-					</p>
-					<a href="/about" class="home-link">Learn More</a>
+				<div class="about-content-grid">
+					<div class="about-image-wrapper">
+						<div class="placeholder-image product-mockup"></div>
+					</div>
+					<div class="home-content">
+						<p class="home-text">
+							I bring a focus to communication, systems thinking, and creative strategy across end-to-end product design. I also coach designers through structured feedback and practical skill development.
+						</p>
+						<a href="/about" class="home-link">Learn More</a>
+					</div>
 				</div>
 			</section>
 
 			<!-- Quote Section -->
-			<section class="home-section">
+			<section class="home-section quote-section-red">
 				<div class="home-content">
 					<p class="home-quote">"What is the best outcome we can create?"</p>
 				</div>
@@ -61,16 +66,25 @@ import Footer from "../components/Footer.astro";
 				</div>
 				<div class="work-grid">
 					<a href="/case-studies/iherb-desktop-redesign" class="work-item">
+						<div class="work-image-wrapper">
+							<div class="placeholder-image product-mockup"></div>
+						</div>
 						<span class="work-label">Case Study</span>
 						<h3 class="work-title">iHerb Desktop Homepage Redesign</h3>
 						<p class="work-description">Reframing a high-pressure, executive-driven request into a future-facing design vision</p>
 					</a>
 					<a href="/case-studies/momentum-report" class="work-item">
+						<div class="work-image-wrapper">
+							<div class="placeholder-image product-mockup"></div>
+						</div>
 						<span class="work-label">Case Study</span>
 						<h3 class="work-title">Momentum Report</h3>
 						<p class="work-description">Transforming a manual reporting practice into a digital-first insights product</p>
 					</a>
 					<a href="/work" class="work-item">
+						<div class="work-image-wrapper">
+							<div class="placeholder-image geometric-pattern"></div>
+						</div>
 						<span class="work-label">View All</span>
 						<h3 class="work-title">See All Case Studies</h3>
 						<p class="work-description">Explore more of my work and projects</p>
@@ -126,6 +140,39 @@ import Footer from "../components/Footer.astro";
     max-width: 800px;
   }
 
+  .about-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-image-wrapper,
+  .work-image-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .work-image-wrapper {
+    margin-bottom: 24px;
+  }
+
+  /* Quote section with red background */
+  .quote-section-red {
+    background: var(--red);
+    padding: 60px;
+    margin-left: -80px;
+    margin-right: -80px;
+    border: none;
+  }
+
+  .quote-section-red .home-quote {
+    color: var(--white);
+    font-style: normal;
+    font-weight: 600;
+  }
+
   .home-headline {
     font-size: 48px;
     font-weight: 500;
@@ -167,9 +214,9 @@ import Footer from "../components/Footer.astro";
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.78rem;
-    color: var(--muted);
+    color: var(--red);
     margin-bottom: 8px;
-    font-weight: 500;
+    font-weight: 600;
     font-family: 'Inter', sans-serif;
   }
 
@@ -206,13 +253,63 @@ import Footer from "../components/Footer.astro";
     color: var(--text);
     text-decoration: none;
     font-family: 'Inter', sans-serif;
-    transition: color 0.2s;
+    transition: color 0.2s, text-decoration 0.2s;
     display: inline-block;
     margin-top: 8px;
   }
 
   .home-link:hover {
-    color: var(--muted);
+    color: var(--red);
+    text-decoration: underline;
+  }
+
+  /* Placeholder image styles */
+  .geometric-pattern {
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 20px,
+        var(--grey-medium) 20px,
+        var(--grey-medium) 21px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 20px,
+        var(--grey-medium) 20px,
+        var(--grey-medium) 21px
+      ),
+      var(--grey-dark);
+    background-size: 100% 100%, 100% 100%, auto;
+  }
+
+  .product-mockup {
+    background: var(--grey-dark);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-mockup::before {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 80%;
+    background: var(--grey-medium);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .product-mockup::after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 50%;
+    background: linear-gradient(135deg, var(--grey-medium) 0%, transparent 100%);
+    border-radius: 4px;
+    transform: rotate(-10deg);
   }
 
   /* Work Grid */
@@ -230,8 +327,16 @@ import Footer from "../components/Footer.astro";
     flex-direction: column;
   }
 
+  .work-title {
+    transition: text-decoration 0.2s;
+  }
+
   .work-item:hover {
     opacity: 0.7;
+  }
+
+  .work-item:hover .work-title {
+    text-decoration: underline;
   }
 
   .work-label {
@@ -239,9 +344,9 @@ import Footer from "../components/Footer.astro";
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.7rem;
-    color: var(--muted);
+    color: var(--red);
     margin-bottom: 8px;
-    font-weight: 500;
+    font-weight: 600;
     font-family: 'Inter', sans-serif;
   }
 
@@ -278,10 +383,15 @@ import Footer from "../components/Footer.astro";
     opacity: 0.7;
   }
 
+  .link-item:hover .link-label {
+    text-decoration: underline;
+  }
+
   .link-label {
     font-size: var(--step-0);
     line-height: 1.6;
     color: var(--text);
+    transition: text-decoration 0.2s;
   }
 
   /* Responsive */
@@ -303,6 +413,17 @@ import Footer from "../components/Footer.astro";
       padding-top: 30px;
     }
 
+    .quote-section-red {
+      padding: 40px 24px;
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+
+    .about-content-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
     .work-grid {
       grid-template-columns: 1fr;
       gap: 30px;
@@ -317,6 +438,16 @@ import Footer from "../components/Footer.astro";
   @media (min-width: 768px) and (max-width: 1023px) {
     .home-page {
       padding: 50px 40px 70px;
+    }
+
+    .quote-section-red {
+      margin-left: -40px;
+      margin-right: -40px;
+    }
+
+    .about-content-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
     }
 
     .work-grid {
