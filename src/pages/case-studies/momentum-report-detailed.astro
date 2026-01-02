@@ -1,0 +1,465 @@
+---
+import CaseStudyLayoutDetailed from "../../layouts/CaseStudyLayoutDetailed.astro";
+
+const title = "Momentum";
+const lede = "Transforming KPMG's legacy reporting workflow into a governed, collaborative product inside One Port.";
+const client = "KPMG Canada · Ignition";
+const scope = "Product strategy, workflow architecture, UX leadership, cross-practice alignment, MVP definition for integration within One Port";
+const role = "Design Lead & Player/Coach\nExperience strategy, fidelity progression, collaboration model, UX patterns, Builder Mode workflows, prototype → MVP partnership with engineering";
+const timeline = "2024 – 2025 (in progress)";
+---
+
+<CaseStudyLayoutDetailed 
+  title={title}
+  lede={lede}
+  client={client}
+  scope={scope}
+  role={role}
+  timeline={timeline}
+>
+  <!-- Overview Section -->
+  <section id="overview">
+    <div class="section-text">
+      <p>
+        Momentum reimagines KPMG's manual 360 Review process as a living product experience, shifting value creation from a single, end-of-engagement deliverable to ongoing strategic insight across the entire lifecycle of client work.
+      </p>
+      <p>
+        Instead of PDF reports assembled at the finish line, Momentum drives forward progress throughout the engagement — with structure, governance, and collaboration built directly into One Port.
+      </p>
+      <p>
+        The result is an MVP that internal teams can use, test, and scale — replacing fragmented tooling with a shared definition of both the workflow and the value.
+      </p>
+    </div>
+    <div class="placeholder-image" style="width: 100%; aspect-ratio: 16/9; margin-top: 32px; border-radius: 4px;"></div>
+  </section>
+
+  <!-- tl;dr Section -->
+  <section id="tldr">
+    <div class="tldr-layout">
+      <div class="tldr-content">
+        <h2 class="tldr-title">tl;dr</h2>
+        <div class="section-text">
+          <p style="font-size: var(--step-1); line-height: 1.7; margin-bottom: 32px; font-family: 'Inter', monospace;">
+            KPMG's legacy reporting process was functional but unsustainable: manual, siloed, over-dependent on expert intervention, and too often delivered after strategic opportunities had passed.
+          </p>
+          <p style="margin-bottom: 16px;">
+            Momentum changes the timeline:
+          </p>
+          <ul style="margin-bottom: 32px;">
+            <li>Insight starts earlier</li>
+            <li>Collaboration happens in-platform</li>
+            <li>Work becomes reusable</li>
+            <li>Confidence can be operationalized</li>
+          </ul>
+          <p style="font-size: var(--step-1); font-weight: 600; margin-bottom: 16px; color: #00695c;">
+            The MVP introduces:
+          </p>
+          <ul style="margin-bottom: 24px;">
+            <li>Builder Mode</li>
+            <li>Structured screener workflows</li>
+            <li>Data ingestion paths (API → Excel → OCR)</li>
+            <li>Publishing governance</li>
+            <li>Entity-level ownership inside One Port</li>
+          </ul>
+          <p style="font-size: var(--step-1); font-weight: 600; color: #00695c;">
+            Momentum replaces "deliverable-first" with "progress-first."
+          </p>
+        </div>
+      </div>
+      <div class="tldr-metrics">
+        <div class="tldr-metric">
+          <div class="tldr-metric-value">548+</div>
+          <div class="tldr-metric-label">screens designed</div>
+        </div>
+        <div class="tldr-metric">
+          <div class="tldr-metric-value">665</div>
+          <div class="tldr-metric-label">unique components</div>
+        </div>
+        <div class="tldr-metric">
+          <div class="tldr-metric-value">66</div>
+          <div class="tldr-metric-label">pages of product and brand guidelines</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Problem Section -->
+  <section id="problem">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">The Problem</h2>
+    <div class="section-text">
+      <p>
+        The 360 Review is a proven consulting asset — but the delivery model hadn't kept pace with modern expectations:
+      </p>
+      <ul>
+        <li>Reports built manually in Microsoft Word</li>
+        <li>Scattered spreadsheets and SMEs as single points of failure</li>
+        <li>Context lost between service lines</li>
+        <li>Late delivery minimizing strategic impact</li>
+        <li>No ownership model for collaboration</li>
+        <li>Repeating the same effort annually</li>
+      </ul>
+      <p>
+        This wasn't a UX problem.<br />
+        It was a structural one.
+      </p>
+      <p>
+        The product had to absorb the complexity — not the user.
+      </p>
+    </div>
+    <div class="placeholder-image" style="width: 100%; aspect-ratio: 16/9; margin-top: 32px; border-radius: 4px;"></div>
+  </section>
+
+  <!-- Outcome Section -->
+  <section id="outcome">
+    <div class="section-label">Outcome</div>
+    <h2 class="section-headline">Momentum reframes reporting as a platform capability, not an artifact.</h2>
+    <div class="section-text">
+      <p style="color: var(--muted);">
+        Momentum gives teams a shared toolset, a shared model of progress, and a shared language for how insight becomes value.
+      </p>
+    </div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Before</th>
+          <th>After</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>One person assembles a report at the end</td>
+          <td>Teams build insight in stages throughout</td>
+        </tr>
+        <tr>
+          <td>Files live in email / desktop</td>
+          <td>Work lives inside One Port</td>
+        </tr>
+        <tr>
+          <td>No reusability across years</td>
+          <td>Annual carry-over context</td>
+        </tr>
+        <tr>
+          <td>Emergent strategy</td>
+          <td>Structured collaboration</td>
+        </tr>
+        <tr>
+          <td>Static PDF</td>
+          <td>Governed publishing pipeline</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="leadership-quote">
+      <p>"Momentum finally feels like a product with direction — not just a process we inherit."</p>
+      <cite>— Placeholder, KPMG Leadership</cite>
+    </div>
+  </section>
+
+  <!-- Strategy Section -->
+  <section id="strategy">
+    <div class="section-label">Strategy</div>
+    <h2 class="section-title">Strategy</h2>
+    
+    <h3 class="section-headline" style="margin: 48px 0 24px;">
+      Audience Ecosystem
+    </h3>
+    <div class="section-text">
+      <p>
+        Momentum needed to support a multi-stakeholder environment without fragmenting the experience:
+      </p>
+    </div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Audience</th>
+          <th>Challenge</th>
+          <th>Need</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Engagement Partners</td>
+          <td>Insight comes too late</td>
+          <td>Lead earlier with confidence</td>
+        </tr>
+        <tr>
+          <td>SMEs & Service Practitioners</td>
+          <td>Work becomes invisible</td>
+          <td>Structured collaboration</td>
+        </tr>
+        <tr>
+          <td>Analysts / Juniors</td>
+          <td>High barrier to entry</td>
+          <td>Scaffolding + clarity</td>
+        </tr>
+        <tr>
+          <td>Clients</td>
+          <td>Overwhelming outputs</td>
+          <td>Context, narrative, and timing</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-text">
+      <p>
+        We balanced these needs across the engagement timeline instead of treating them sequentially.
+      </p>
+    </div>
+
+    <h3 class="section-headline" style="margin: 64px 0 24px;">
+      Design Pillars
+    </h3>
+    <div class="section-text">
+      <p>
+        Our strategic pillars anchored every decision:
+      </p>
+    </div>
+
+    <div style="margin: 48px 0;">
+      <div style="margin-bottom: 48px;">
+        <h4 style="font-size: var(--step-2); font-weight: 500; margin: 0 0 16px; font-family: 'Inter', sans-serif; color: var(--text);">1. Clarity Over Control</h4>
+        <div class="section-text">
+          <p>
+            Tools that guide without forcing, ensuring the product supports judgment rather than replaces it.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 48px;">
+        <h4 style="font-size: var(--step-2); font-weight: 500; margin: 0 0 16px; font-family: 'Inter', sans-serif; color: var(--text);">2. Momentum Over Completion</h4>
+        <div class="section-text">
+          <p>
+            Progress is a product outcome. Completion is a milestone, not the value.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-size: var(--step-2); font-weight: 500; margin: 0 0 16px; font-family: 'Inter', sans-serif; color: var(--text);">3. Structure Without Script</h4>
+        <div class="section-text">
+          <p>
+            Prompts, defaults, and guided paths — without reducing expertise to templates.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">Process</h2>
+    <div class="section-text">
+      <div style="margin-bottom: 32px;">
+        <h4 style="font-size: var(--step-1); font-weight: 500; margin: 0 0 12px; font-family: 'Inter', sans-serif; color: var(--text);">1. Prototype for Alignment</h4>
+        <p>
+          We started low-fidelity to define what Momentum is, what it isn't, and where it fits in One Port.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 32px;">
+        <h4 style="font-size: var(--step-1); font-weight: 500; margin: 0 0 12px; font-family: 'Inter', sans-serif; color: var(--text);">2. Workshops Across Practices</h4>
+        <p>
+          Tax, Assurance, Audit, and platform engineering established shared definitions of ownership and entry points.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 32px;">
+        <h4 style="font-size: var(--step-1); font-weight: 500; margin: 0 0 12px; font-family: 'Inter', sans-serif; color: var(--text);">3. UX + Architecture Iteration</h4>
+        <p>
+          We surfaced friction patterns and learned where practitioners needed support vs autonomy.
+        </p>
+      </div>
+
+      <div style="margin-bottom: 32px;">
+        <h4 style="font-size: var(--step-1); font-weight: 500; margin: 0 0 12px; font-family: 'Inter', sans-serif; color: var(--text);">4. MVP Scope & Engineering Partnership</h4>
+        <p>
+          Feature cuts and sequencing preserved strategic intent without over-building.
+        </p>
+      </div>
+
+      <div>
+        <h4 style="font-size: var(--step-1); font-weight: 500; margin: 0 0 12px; font-family: 'Inter', sans-serif; color: var(--text);">5. Build Integration</h4>
+        <p>
+          Worked alongside engineering to translate experience concepts into buildable pathways tied to platform constraints.
+        </p>
+      </div>
+
+      <p style="margin-top: 32px;">
+        This was executed as a player/coach contribution — designing while raising the team's ability to move from ambiguity to alignment.
+      </p>
+    </div>
+    <div class="placeholder-image" style="width: 100%; aspect-ratio: 16/9; margin-top: 32px; border-radius: 4px;"></div>
+  </section>
+
+  <!-- Solutions Section -->
+  <section id="solution">
+    <div class="section-label">Solutions</div>
+    <h2 class="section-title">Solutions</h2>
+    
+    <h3 class="section-headline" style="margin: 48px 0 24px;">
+      Report Creation Model
+    </h3>
+    <div class="section-text">
+      <p>
+        A report is created at the Entity or Engagement level inside One Port, enforcing:
+      </p>
+      <ul>
+        <li>Ownership</li>
+        <li>Eligibility</li>
+        <li>Governance</li>
+        <li>Visibility</li>
+        <li>Reusability</li>
+      </ul>
+      <p>
+        Creation is no longer an isolated act — it's foundational to structure and scale.
+      </p>
+    </div>
+    <div class="placeholder-image" style="width: 100%; aspect-ratio: 16/9; margin-top: 32px; border-radius: 4px;"></div>
+
+    <h3 class="section-headline" style="margin: 64px 0 24px;">
+      Builder Mode
+    </h3>
+    <div class="section-text">
+      <p>
+        The core of the experience.
+      </p>
+      <p>
+        Builder Mode allows practitioners to build insight progressively, collaboratively, and transparently — before, during, and after client conversations.
+      </p>
+      <p>
+        Builder Mode introduces:
+      </p>
+      <ul>
+        <li>Screener workflows (context before content)</li>
+        <li>Section-by-section drafting</li>
+        <li>Collaboration + role visibility</li>
+        <li>Inline guidance and scaffolding</li>
+        <li>Right-rail knowledge capture</li>
+        <li>In-product narrative development</li>
+      </ul>
+      <p>
+        This is the cultural transformation: the report becomes a workspace, not a document.
+      </p>
+    </div>
+    <div class="placeholder-image" style="width: 100%; aspect-ratio: 16/9; margin-top: 32px; border-radius: 4px;"></div>
+
+    <h3 class="section-headline" style="margin: 64px 0 24px;">
+      Data Ingestion Architecture
+    </h3>
+    <div class="section-text">
+      <p>
+        We architected three ingestion paths to prevent client maturity from breaking the product:
+      </p>
+      <ol style="margin: 24px 0; padding-left: 24px; line-height: 1.8;">
+        <li>CaseWare API (ideal state; structured)</li>
+        <li>Excel Templates (standard operating reality)</li>
+        <li>OCR PDF (fallback so no client is blocked)</li>
+      </ol>
+      <p>
+        This approach allows Momentum to scale immediately — without requiring clients to.
+      </p>
+    </div>
+    <div class="placeholder-image" style="width: 100%; aspect-ratio: 16/9; margin-top: 32px; border-radius: 4px;"></div>
+
+    <h3 class="section-headline" style="margin: 64px 0 24px;">
+      Publishing Governance
+    </h3>
+    <div class="section-text">
+      <p>
+        Publication is a guided step with:
+      </p>
+      <ul>
+        <li>Permissioning & ownership</li>
+        <li>Readiness checks</li>
+        <li>Governance standards</li>
+        <li>Traceability</li>
+        <li>Client Portal integration</li>
+      </ul>
+      <p>
+        "Publish" becomes a decision — not a file save.
+      </p>
+    </div>
+    <div class="placeholder-image" style="width: 100%; aspect-ratio: 16/9; margin-top: 32px; border-radius: 4px;"></div>
+  </section>
+
+  <!-- Insights Section -->
+  <section id="insights">
+    <div class="section-label">Insights</div>
+    <h2 class="section-title">Insights</h2>
+    
+    <div style="margin-bottom: 48px;">
+      <h3 class="section-headline" style="margin: 0 0 16px;">
+        When maturity varies, UX must absorb complexity.
+      </h3>
+      <div class="section-text">
+        <p>
+          We focused on pathways instead of ideal states.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 48px;">
+      <h3 class="section-headline" style="margin: 0 0 16px;">
+        Value comes from timing, not volume.
+      </h3>
+      <div class="section-text">
+        <p>
+          Arriving earlier mattered more than adding more content.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="section-headline" style="margin: 0 0 16px;">
+        Clarity is an accelerant.
+      </h3>
+      <div class="section-text">
+        <p>
+          Well-designed scaffolding triggered cross-practice collaboration faster than new features did.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Steps Section -->
+  <section id="next-steps">
+    <div class="section-label">Future Opportunities</div>
+    <h2 class="section-title">Future Opportunities</h2>
+    <div class="section-text">
+      <ul>
+        <li>AI summarization of Builder Mode progress</li>
+        <li>Annual carry-forward engagement memory</li>
+        <li>Patterns library for domain-specific insight surfacing</li>
+        <li>Integration with Interval data visualization</li>
+        <li>Structured narrative generation for clients</li>
+      </ul>
+      <p>
+        Momentum is positioned not as a delivery mechanism — but as a capability surface within One Port.
+      </p>
+    </div>
+  </section>
+
+  <!-- Positioning Section -->
+  <section id="positioning">
+    <div class="section-label">Positioning</div>
+    <h2 class="section-title">Positioning</h2>
+    <div class="section-text">
+      <p>
+        This case study represents how I lead:
+      </p>
+      <ul>
+        <li>I enter ambiguity and establish direction.</li>
+        <li>I build clarity before fidelity.</li>
+        <li>I design for behavior change, not just interface change.</li>
+        <li>I work as a player/coach: strategic where needed, hands-on where necessary.</li>
+      </ul>
+      <p>
+        Momentum reflects the work I want to do more of: transform legacy processes into products that scale value.
+      </p>
+    </div>
+  </section>
+</CaseStudyLayoutDetailed>

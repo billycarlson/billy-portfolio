@@ -1,0 +1,541 @@
+---
+import TopNav from "../components/TopNav.astro";
+import Footer from "../components/Footer.astro";
+
+const { 
+  title, 
+  lede, 
+  client = "", 
+  scope = "", 
+  role = "", 
+  timeline = "",
+  tldrProblem = "",
+  tldrResearch = "",
+  tldrSolution = "",
+  outcomeStats = [],
+  outcomeDescription = ""
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} - Billy Carlson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700;900&family=Playfair+Display:ital,wght@1,400;1,600;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/case-study.css" />
+  </head>
+
+  <body>
+    <TopNav />
+    
+    <main class="detailed-case-study">
+      <!-- Hero Section -->
+      <section class="case-hero">
+        <div class="hero-content">
+          <h1 class="case-title">{title}</h1>
+          <p class="case-lede">{lede}</p>
+          
+          <div class="case-meta-grid">
+            {client && (
+              <div class="meta-item">
+                <div class="meta-label">Client</div>
+                <div class="meta-value">{client}</div>
+              </div>
+            )}
+            {scope && (
+              <div class="meta-item">
+                <div class="meta-label">Scope</div>
+                <div class="meta-value">{scope}</div>
+              </div>
+            )}
+            {role && (
+              <div class="meta-item">
+                <div class="meta-label">Role & Contributions</div>
+                <div class="meta-value role-multiline">{role}</div>
+              </div>
+            )}
+            {timeline && (
+              <div class="meta-item">
+                <div class="meta-label">Timeline</div>
+                <div class="meta-value">{timeline}</div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="placeholder-image"></div>
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <nav class="case-nav">
+        <a href="#overview">Overview</a>
+        <a href="#tldr">tl;dr</a>
+        <a href="#problem">The Problem</a>
+        <a href="#outcome">Outcome</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#process">Process</a>
+        <a href="#solution">Solutions</a>
+        <a href="#insights">Insights</a>
+        <a href="#next-steps">Future Opportunities</a>
+        <a href="#positioning">Positioning</a>
+      </nav>
+
+      <!-- Content Sections -->
+      <article class="case-content">
+        <slot />
+      </article>
+    </main>
+
+    <Footer />
+
+    <script>
+      // Make navigation sticky and add visual feedback when stuck
+      document.addEventListener('DOMContentLoaded', () => {
+        const nav = document.querySelector('.case-nav');
+        if (!nav) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                nav.classList.remove('stuck');
+              } else {
+                nav.classList.add('stuck');
+              }
+            });
+          },
+          {
+            threshold: [0, 1],
+            rootMargin: '-1px 0px 0px 0px'
+          }
+        );
+
+        // Observe the hero section to know when we've scrolled past it
+        const hero = document.querySelector('.case-hero');
+        if (hero) {
+          observer.observe(hero);
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .detailed-case-study {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* Hero Section */
+  .case-hero {
+    margin-bottom: 80px;
+  }
+
+  .hero-content {
+    margin-bottom: 60px;
+  }
+
+  .case-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    margin: 0 0 24px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .case-lede {
+    font-size: var(--step-2);
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0 0 48px;
+    max-width: 900px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .case-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .meta-label {
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+
+  .meta-value {
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .meta-value.role-multiline {
+    white-space: pre-line;
+  }
+
+  .hero-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-top: 48px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .hero-image .placeholder-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Navigation */
+  .case-nav {
+    display: flex;
+    gap: 32px;
+    padding: 24px 0;
+    margin-bottom: 80px;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    background: rgba(var(--bg-rgb, 255, 255, 255), 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .case-nav.stuck {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .case-nav a {
+    font-size: var(--step-0);
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s;
+    text-transform: lowercase;
+  }
+
+  .case-nav a:hover {
+    color: var(--text);
+  }
+
+  /* Content Sections */
+  .case-content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .case-content section {
+    margin-bottom: 120px;
+    scroll-margin-top: 120px;
+  }
+
+  /* Section Labels (Pill-shaped with icon) */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: #e0f2f1;
+    border-radius: 20px;
+    font-size: var(--step--2);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #00695c;
+    font-family: 'Inter', monospace;
+    margin-bottom: 24px;
+  }
+
+  .section-label::before {
+    content: "✦";
+    font-size: 12px;
+    color: #00796b;
+  }
+
+  /* Section Titles - Now Serif */
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #00695c;
+    margin: 0 0 24px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  /* Headlines (Serif) */
+  .section-headline {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #00695c;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-text {
+    font-size: var(--step-0);
+    line-height: 1.8;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 32px;
+  }
+
+  .section-text p {
+    margin: 0 0 24px;
+  }
+
+  .section-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    margin: 48px 0;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stat-value {
+    font-size: var(--step-3);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    line-height: 1.1;
+  }
+
+  .stat-label {
+    font-size: var(--step--1);
+    line-height: 1.5;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Two-column tl;dr layout */
+  .tldr-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 0;
+    margin: 48px 0;
+    position: relative;
+  }
+
+
+  .tldr-content {
+    min-width: 0;
+    padding-right: 48px;
+  }
+
+  .tldr-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-left: 48px;
+    border-left: 1px dashed #bdbdbd;
+  }
+
+  .tldr-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tldr-metric-value {
+    font-size: var(--step-3);
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    color: #00695c;
+    line-height: 1;
+  }
+
+  .tldr-metric-label {
+    font-size: var(--step--1);
+    line-height: 1.5;
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* tl;dr title style */
+  .tldr-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    font-family: 'Inter', monospace;
+    color: #00695c;
+    margin: 0 0 24px;
+    line-height: 1.1;
+    text-transform: lowercase;
+  }
+
+  /* Tables */
+  .comparison-table {
+    width: 100%;
+    margin: 48px 0;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 16px 24px;
+    text-align: left;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .comparison-table th {
+    font-size: var(--step-0);
+    font-weight: 600;
+    color: var(--text);
+    background: var(--bg-elevated);
+  }
+
+  .comparison-table td {
+    font-size: var(--step-0);
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  .comparison-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Quote/Testimonial */
+  .leadership-quote {
+    margin: 48px 0;
+    padding: 32px;
+    background: var(--bg-elevated);
+    border-left: 4px solid var(--text);
+    font-family: 'Inter', sans-serif;
+    border-radius: 4px;
+  }
+
+  .leadership-quote p {
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--text);
+    font-style: italic;
+    margin: 0 0 16px;
+  }
+
+  .leadership-quote cite {
+    font-size: var(--step--1);
+    color: var(--muted);
+    font-style: normal;
+    display: block;
+  }
+
+  /* Ordered lists */
+  .case-content ol {
+    margin: 24px 0;
+    padding-left: 24px;
+    line-height: 1.8;
+  }
+
+  .case-content ol li {
+    margin-bottom: 12px;
+  }
+
+  /* Bullet lists */
+  .case-content ul {
+    margin: 24px 0;
+    padding-left: 24px;
+    line-height: 1.8;
+  }
+
+  .case-content ul li {
+    margin-bottom: 12px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 767px) {
+    .detailed-case-study {
+      padding: 40px 20px;
+    }
+
+    .case-hero {
+      margin-bottom: 60px;
+    }
+
+    .case-meta-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .case-nav {
+      gap: 16px;
+      padding: 20px 0;
+      margin-bottom: 60px;
+      overflow-x: auto;
+    }
+
+    .case-content section {
+      margin-bottom: 80px;
+      scroll-margin-top: 100px;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .tldr-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .tldr-layout::before {
+      display: none;
+    }
+
+    .tldr-metrics {
+      padding-left: 0;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .tldr-metric {
+      flex: 1 1 auto;
+      min-width: 120px;
+    }
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .detailed-case-study {
+      padding: 60px 32px;
+    }
+  }
+</style>
