@@ -1,5 +1,189 @@
 ---
-// Redirect /stories to homepage (where case studies are now displayed)
-return Astro.redirect('/', 301);
+import TopNav from "../../components/TopNav.astro";
+import Footer from "../../components/Footer.astro";
+
+// Load stories
+const storyModules = import.meta.glob('../../content/stories/*.mdx');
+const allStories = await Promise.all(
+  Object.entries(storyModules).map(async ([path, module]) => {
+    try {
+      const story = await module();
+      const filename = path.split('/').pop() || '';
+      const slug = filename.replace(/\.mdx$/, '');
+      return {
+        slug,
+        title: story.frontmatter?.title || 'Untitled',
+        lede: story.frontmatter?.lede || '',
+        meta: story.frontmatter?.meta || []
+      };
+    } catch (error) {
+      console.error(`Error loading story from ${path}:`, error);
+      return null;
+    }
+  })
+);
+
+// Filter out nulls and templates
+const stories = allStories.filter(s => s !== null && !s.slug.includes('template'));
 ---
 
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Stories - Billy Carlson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/case-study.css" />
+  </head>
+  <body>
+    <TopNav />
+    
+    <main class="stories-page">
+      <div class="stories-hero">
+        <h1 class="stories-title">Stories</h1>
+        <p class="stories-description">
+          Thoughts on design leadership, process, and the work behind the work.
+        </p>
+      </div>
+
+      <div class="stories-grid">
+        {stories.map((story) => (
+          <a href={`/stories/${story.slug}`} class="story-card">
+            <div class="story-card-content">
+              <h2 class="story-card-title">{story.title}</h2>
+              <p class="story-card-lede">{story.lede}</p>
+              {story.meta && story.meta.length > 0 && (
+                <div class="story-card-meta">
+                  {story.meta.map((item, index) => (
+                    <span class="story-meta-item">{item}{index < story.meta.length - 1 ? ' • ' : ''}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .stories-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 80px 80px;
+    width: 100%;
+  }
+
+  .stories-hero {
+    margin-bottom: 80px;
+    max-width: 800px;
+  }
+
+  .stories-title {
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--text);
+    margin: 0 0 24px;
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .stories-description {
+    font-size: var(--step-0);
+    line-height: 1.7;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .stories-grid {
+    display: grid;
+    gap: 0;
+  }
+
+  .story-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 40px 0;
+    border-top: 1px solid var(--hairline);
+    transition: opacity 0.2s;
+  }
+
+  .story-card:first-child {
+    border-top: none;
+  }
+
+  .story-card:hover {
+    opacity: 0.7;
+  }
+
+  .story-card:hover .story-card-title {
+    text-decoration: underline;
+  }
+
+  .story-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .story-card-title {
+    font-size: var(--step-2);
+    font-weight: 500;
+    font-family: 'Instrument Serif', serif;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.3;
+    transition: text-decoration 0.2s;
+  }
+
+  .story-card-lede {
+    font-size: var(--step-0);
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .story-card-meta {
+    font-size: var(--step--1);
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    margin-top: 8px;
+  }
+
+  .story-meta-item {
+    color: var(--muted);
+  }
+
+  /* Responsive */
+  @media (max-width: 767px) {
+    .stories-page {
+      padding: 40px 20px 60px;
+    }
+
+    .stories-hero {
+      margin-bottom: 60px;
+    }
+
+    .stories-title {
+      font-size: 36px;
+    }
+
+    .story-card {
+      padding: 30px 0;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .stories-page {
+      padding: 50px 40px 70px;
+    }
+  }
+</style>
