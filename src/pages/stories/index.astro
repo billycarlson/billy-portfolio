@@ -1,6 +1,8 @@
 ---
 import TopNav from "../../components/TopNav.astro";
 import Footer from "../../components/Footer.astro";
+import PasswordGate from "../../components/PasswordGate.astro";
+---
 
 // Load stories
 const storyModules = import.meta.glob('../../content/stories/*.mdx');
@@ -41,6 +43,7 @@ const stories = allStories.filter(s => s !== null && !s.slug.includes('template'
     <link rel="stylesheet" href="/styles/case-study.css" />
   </head>
   <body>
+    <PasswordGate />
     <TopNav />
     
     <main class="stories-page">
