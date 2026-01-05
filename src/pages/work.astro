@@ -6,28 +6,29 @@ import PasswordGate from "../components/PasswordGate.astro";
 
 // Load case studies
 const caseStudyModules = import.meta.glob('../content/case-studies/*.mdx');
-const allCaseStudies = await Promise.all(
+const allCaseStudies = await Promise.allSettled(
   Object.entries(caseStudyModules).map(async ([path, module]) => {
-    try {
-      const caseStudy = await module();
-      const filename = path.split('/').pop() || '';
-      const slug = filename.replace(/\.mdx$/, '');
-      return {
-        slug,
-        title: caseStudy.frontmatter?.title || 'Untitled',
-        lede: caseStudy.frontmatter?.lede || '',
-        meta: caseStudy.frontmatter?.meta || [],
-        company: caseStudy.frontmatter?.company || caseStudy.frontmatter?.meta?.[0] || ''
-      };
-    } catch (error) {
-      console.error(`Error loading case study from ${path}:`, error);
-      return null;
-    }
+    const caseStudy = await module();
+    const filename = path.split('/').pop() || '';
+    const slug = filename.replace(/\.mdx$/, '');
+    return {
+      slug,
+      title: caseStudy.frontmatter?.title || 'Untitled',
+      lede: caseStudy.frontmatter?.lede || '',
+      meta: caseStudy.frontmatter?.meta || [],
+      company: caseStudy.frontmatter?.company || caseStudy.frontmatter?.meta?.[0] || ''
+    };
   })
 );
 
-// Filter out nulls and templates, and manually define projects for work page
-const caseStudies = allCaseStudies.filter(cs => cs !== null && cs.slug !== 'case-study-template' && (cs.slug === 'iherb-desktop-redesign' || cs.slug === 'ai-toolkit' || cs.slug === 'momentum-report' || cs.slug === 'power-lunch'));
+// Extract successful results and filter out failed ones
+const caseStudies = allCaseStudies
+  .filter(result => result.status === 'fulfilled')
+  .map(result => result.value)
+  .filter(cs => cs !== null && cs !== undefined);
+
+// Filter out templates and only include specific case studies for work page
+const filteredCaseStudies = caseStudies.filter(cs => cs.slug !== 'case-study-template' && (cs.slug === 'iherb-desktop-redesign' || cs.slug === 'ai-toolkit' || cs.slug === 'momentum-report' || cs.slug === 'power-lunch'));
 
 // Define project cards with tags - matching joshlee.design style
 const projectCards = [
@@ -37,7 +38,7 @@ const projectCards = [
     title: 'Desktop Homepage Redesign',
     description: 'Reframing a high-pressure, executive-driven request into a future-facing design vision that aligned teams and created momentum.',
     tags: ['E-commerce', 'Design Leadership', 'Product Strategy'],
-    ...caseStudies.find(cs => cs.slug === 'iherb-desktop-redesign')
+    ...filteredCaseStudies.find(cs => cs.slug === 'iherb-desktop-redesign')
   },
   {
     slug: 'ai-toolkit',
@@ -45,7 +46,7 @@ const projectCards = [
     title: 'Enterprise AI Toolkit',
     description: 'A modular, HAX-inspired framework to help product, design, and engineering teams plan and build AI-powered enterprise software.',
     tags: ['AI/ML', 'Design Systems', 'Workshop Facilitation'],
-    ...caseStudies.find(cs => cs.slug === 'ai-toolkit')
+    ...filteredCaseStudies.find(cs => cs.slug === 'ai-toolkit')
   },
   {
     slug: 'momentum-report',
@@ -53,7 +54,7 @@ const projectCards = [
     title: 'Momentum Report',
     description: 'Transforming a manual reporting practice into a digital-first insights product inside One Port.',
     tags: ['Product Design', 'Workflow Design', 'Player/Coach'],
-    ...caseStudies.find(cs => cs.slug === 'momentum-report')
+    ...filteredCaseStudies.find(cs => cs.slug === 'momentum-report')
   },
   {
     slug: 'power-lunch',
@@ -61,7 +62,7 @@ const projectCards = [
     title: 'Power Lunch',
     description: 'Building the MVP product vision for a niche professional network connecting young people to mentors in the sports industry.',
     tags: ['Product Design', 'Founder Partner', 'Full-Stack'],
-    ...caseStudies.find(cs => cs.slug === 'power-lunch')
+    ...filteredCaseStudies.find(cs => cs.slug === 'power-lunch')
   },
   {
     slug: 'momentum-report-detailed',
