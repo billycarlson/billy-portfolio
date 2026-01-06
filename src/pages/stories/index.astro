@@ -1,31 +1,24 @@
 ---
 import TopNav from "../../components/TopNav.astro";
 import Footer from "../../components/Footer.astro";
----
 
 // Load stories
 const storyModules = import.meta.glob('../../content/stories/*.mdx');
-const allStories = await Promise.all(
-  Object.entries(storyModules).map(async ([path, module]) => {
-    try {
-      const story = await module();
-      const filename = path.split('/').pop() || '';
-      const slug = filename.replace(/\.mdx$/, '');
-      return {
-        slug,
-        title: story.frontmatter?.title || 'Untitled',
-        lede: story.frontmatter?.lede || '',
-        meta: story.frontmatter?.meta || []
-      };
-    } catch (error) {
-      console.error(`Error loading story from ${path}:`, error);
-      return null;
-    }
-  })
-);
+const storyEntries = Object.entries(storyModules);
+const storyPromises = storyEntries.map(async ([path, module]) => {
+  const story = await module() as any;
+  const filename = path.split('/').pop() || '';
+  const slug = filename.replace(/\.mdx$/, '');
+  return {
+    slug,
+    title: story.frontmatter?.title || 'Untitled',
+    lede: story.frontmatter?.lede || '',
+    meta: story.frontmatter?.meta || []
+  };
+});
 
-// Filter out nulls and templates
-const stories = allStories.filter(s => s !== null && !s.slug.includes('template'));
+const allStories = await Promise.all(storyPromises);
+const stories = allStories.filter(s => s !== null && s !== undefined && !s.slug.includes('template'));
 ---
 
 <html lang="en">
