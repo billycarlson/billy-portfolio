@@ -3,7 +3,6 @@ import TableOfContents from "../components/TableOfContents.astro";
 import CaseStudyHero from "../components/CaseStudyHero.astro";
 import TopNav from "../components/TopNav.astro";
 import Footer from "../components/Footer.astro";
-import PasswordGate from "../components/PasswordGate.astro";
 
 const { title, lede, meta = [], sections = [] } = Astro.props;
 ---
@@ -22,7 +21,6 @@ const { title, lede, meta = [], sections = [] } = Astro.props;
   </head>
 
   <body>
-    <PasswordGate />
     <TopNav />
     
     <div class="caseStudy">

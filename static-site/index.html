@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Billy Carlson - Product Design Director</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --text: #ffffff;
+      --muted: #cccccc;
+      --muted-light: #dddddd;
+      --hairline: rgba(255,255,255,0.3);
+      --hairline-subtle: rgba(255,255,255,0.12);
+      --bg-elevated: rgba(255,255,255,.03);
+      --red: #2d5016;
+      --red-light: #3d6b20;
+      --white: #ffffff;
+      --grey-dark: #1a1a1a;
+      --grey-medium: #2a2a2a;
+      --step--1: 0.95rem;
+      --step-0: 1rem;
+      --step-1: 1.25rem;
+      --step-2: 1.375rem;
+      --step-3: 1.875rem;
+      --step-4: 2.5rem;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #ffffff;
+        --text: #000000;
+        --muted: #666666;
+        --muted-light: #333333;
+        --hairline: rgba(0,0,0,0.3);
+        --hairline-subtle: rgba(0,0,0,0.12);
+        --bg-elevated: rgba(0,0,0,.03);
+      }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-size: var(--step-0);
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Navigation */
+    .topNav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--hairline-subtle);
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      max-width: 1628px;
+      margin: 0 auto;
+    }
+
+    .topNav-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .topNav-name {
+      text-transform: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: normal;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .topNav-right {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 0;
+    }
+
+    .topNav a {
+      text-decoration: none;
+      color: var(--muted-light);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.7px;
+      transition: color 0.2s, text-decoration 0.2s;
+      padding: 4px 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .topNav a:hover {
+      color: var(--red);
+      text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+      .topNav {
+        padding: 16px 32px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .topNav {
+        padding: 16px 48px;
+      }
+    }
+
+    /* Main Content */
+    .about-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 80px 80px;
+      width: 100%;
+    }
+
+    /* Hero */
+    .about-hero {
+      margin-bottom: 80px;
+      max-width: 800px;
+    }
+
+    .about-headline {
+      font-size: var(--step-3);
+      font-weight: 500;
+      color: var(--text);
+      margin: 0 0 30px;
+      font-family: 'Instrument Serif', serif;
+    }
+
+    .about-mission {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      line-height: 1.3;
+      color: var(--text);
+      font-weight: 400;
+      font-family: 'Instrument Serif', serif;
+      margin: 0 0 24px;
+    }
+
+    .about-extended {
+      font-size: var(--step-0);
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0 0 16px;
+      max-width: 650px;
+    }
+
+    /* Sections */
+    .about-section {
+      margin-bottom: 80px;
+      padding-top: 40px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .section-label {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      color: var(--red);
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 0;
+      font-family: 'Instrument Serif', serif;
+    }
+
+    /* Career Chapters */
+    .chapters-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .chapter {
+      padding-right: 20px;
+    }
+
+    .chapter-label {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+      color: var(--red);
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .chapter-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 0 0 12px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .chapter p {
+      font-size: var(--step-0);
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Principles */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 60px;
+    }
+
+    .principle-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 0 0 8px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .principle p {
+      font-size: var(--step--1);
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Capabilities */
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 60px;
+    }
+
+    .capability-title {
+      font-size: var(--step-0);
+      font-weight: 500;
+      color: var(--text);
+      margin: 0 0 8px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .capability p {
+      font-size: var(--step--1);
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Personal */
+    .about-personal {
+      margin-bottom: 0;
+    }
+
+    .personal-text {
+      font-size: var(--step-0);
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 0;
+      max-width: 650px;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--hairline);
+      padding: 40px 80px;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copyright {
+      font-size: var(--step-0);
+      color: var(--muted);
+      margin: 0;
+      font-style: italic;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      transition: opacity 0.2s;
+    }
+
+    .footer-social a:hover {
+      opacity: 0.6;
+    }
+
+    .footer-divider {
+      color: var(--muted);
+      font-size: 14px;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .about-page {
+        padding: 40px 20px 60px;
+      }
+
+      .about-hero {
+        margin-bottom: 60px;
+      }
+
+      .about-mission {
+        font-size: 1.4rem;
+      }
+
+      .about-section {
+        margin-bottom: 60px;
+        padding-top: 30px;
+      }
+
+      .chapters-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .principles-grid,
+      .capabilities-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .site-footer {
+        padding: 30px 16px;
+        margin-top: 60px;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+
+      .footer-social {
+        gap: 12px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .about-page {
+        padding: 50px 40px 70px;
+      }
+
+      .chapters-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .principles-grid,
+      .capabilities-grid {
+        gap: 30px 40px;
+      }
+
+      .site-footer {
+        padding: 40px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topNav">
+    <div class="topNav-center">
+      <a href="/" class="topNav-name">Billy Carlson</a>
+    </div>
+    <div class="topNav-right">
+      <a href="billycarlson@ucla.edu">Get in touch</a>
+    </div>
+  </nav>
+  
+  <main class="about-page">
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <h1 class="about-headline">About Me</h1>
+      <p class="about-mission">
+        My mission is to bridge the gap between user needs and business goals—creating products that people genuinely like to use and fuel sustainable growth.
+      </p>
+      <p class="about-extended">
+        For over 15 years I've built teams that balance creative excellence with tangible results—transforming complex problems into clear, impactful experiences. I thrive in environments where I can elevate talent, maintain high standards, and create momentum for products that matter.
+      </p>
+    </section>
+
+    <!-- Career Chapters -->
+    <section class="about-section">
+      <div class="section-header">
+        <span class="section-label">MY JOURNEY</span>
+        <h2 class="section-title">Career in Chapters</h2>
+      </div>
+
+      <div class="chapters-grid">
+        <div class="chapter">
+          <span class="chapter-label">EARLY CAREER</span>
+          <h3 class="chapter-title">Craft Foundation</h3>
+          <p>
+            Started as a graphic designer, then a UX designer, obsessing over details and learning what it takes to ship products that feel right. This foundation in craft and execution shaped how I approach design leadership today.
+          </p>
+        </div>
+
+        <div class="chapter">
+          <span class="chapter-label">MID-CAREER</span>
+          <h3 class="chapter-title">Strategic Growth</h3>
+          <p>
+            Moved into leadership roles, learning to advocate for user-centered approaches in engineering-focused environments. This period taught me how to translate design value into language executives understand.
+          </p>
+        </div>
+
+        <div class="chapter">
+          <span class="chapter-label">RECENT YEARS</span>
+          <h3 class="chapter-title">Design Leadership</h3>
+          <p>
+            Now focused on connecting business goals, engineering capabilities, and human needs. Building high-performing teams and maintaining a player-coach mentality—staying close to the work while enabling others.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How I Work -->
+    <section class="about-section">
+      <div class="section-header">
+        <span class="section-label">Leadership Principles</span>
+        <h2 class="section-title">How I Work</h2>
+      </div>
+
+      <div class="principles-grid">
+        <div class="principle">
+          <h3 class="principle-title">Stay Close to the Work</h3>
+          <p>
+            Strong design leadership doesn't mean stepping away from craft. I stay hands-on in high-stakes moments—modeling standards and maintaining credibility with the team.
+          </p>
+        </div>
+
+        <div class="principle">
+          <h3 class="principle-title">Clarity Over Completeness</h3>
+          <p>
+            When pressure is high, I focus on what matters most. Vision before optimization. Alignment before execution. Clear thinking unlocks better outcomes.
+          </p>
+        </div>
+
+        <div class="principle">
+          <h3 class="principle-title">Build Trust Through Transparency</h3>
+          <p>
+            I explain tradeoffs clearly—what matters now, what can wait, and why. Honest communication builds the trust that enables teams to move fast.
+          </p>
+        </div>
+
+        <div class="principle">
+          <h3 class="principle-title">Grow Others Deliberately</h3>
+          <p>
+            Mentorship isn't passive. I invest in developing designers through intentional coaching, challenging projects, and creating space for them to stretch.
+          </p>
+        </div>
+
+        <div class="principle">
+          <h3 class="principle-title">Design for Business Impact</h3>
+          <p>
+            Great design serves users and the business. I focus on outcomes that matter—engagement, conversion, satisfaction—not just aesthetics.
+          </p>
+        </div>
+
+        <div class="principle">
+          <h3 class="principle-title">Move with Intention</h3>
+          <p>
+            Speed without direction is just motion. I help teams build momentum by establishing clear vision and removing obstacles.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I Do -->
+    <section class="about-section">
+      <div class="section-header">
+        <span class="section-label">Capabilities</span>
+        <h2 class="section-title">What I Bring</h2>
+      </div>
+
+      <div class="capabilities-grid">
+        <div class="capability">
+          <h3 class="capability-title">Team Leadership</h3>
+          <p>
+            Building and scaling design teams. Hiring, developing talent, establishing culture, and creating the conditions for designers to do their best work.
+          </p>
+        </div>
+
+        <div class="capability">
+          <h3 class="capability-title">Design Strategy</h3>
+          <p>
+            Connecting design work to business outcomes. Setting vision, prioritizing initiatives, and ensuring design has a seat at strategic conversations.
+          </p>
+        </div>
+
+        <div class="capability">
+          <h3 class="capability-title">Player & Coach</h3>
+          <p>
+            Hands-on design when it counts. Complex flows, high-visibility surfaces, and the kind of work that sets the quality bar for the team.
+          </p>
+        </div>
+
+        <div class="capability">
+          <h3 class="capability-title">Cross-Functional Partnership</h3>
+          <p>
+            Navigating the space between product, engineering, and design. Building relationships and alignment that enable teams to ship well.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personal -->
+    <section class="about-section about-personal">
+      <div class="section-header">
+        <span class="section-label">Personal Life</span>
+        <h2 class="section-title">Beyond Work</h2>
+      </div>
+
+      <p class="personal-text">
+        When I'm not designing or leading teams, I'm probably exploring new ideas, staying curious about how things work, and spending time with family. I believe the best design leaders bring their whole selves to work—and that means having a life outside of it.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2024 Wm Carlson Jr.</p>
+      
+      <div class="footer-social">
+        <a href="https://dribbble.com/billycarlson" target="_blank" rel="noopener noreferrer" aria-label="Dribbble">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.375 0 0 5.375 0 12s5.375 12 12 12 12-5.375 12-12S18.625 0 12 0zm7.938 5.531a10.18 10.18 0 012.312 6.375c-.344-.063-3.75-.75-7.187-.328-.063-.156-.125-.281-.188-.438-.187-.438-.375-.875-.593-1.312 3.812-1.563 5.531-3.781 5.656-3.969v-.328zM12 1.781c2.625 0 5.031 1 6.844 2.625-.094.156-1.656 2.219-5.313 3.594A95.85 95.85 0 009.594 1.97c.781-.125 1.594-.188 2.406-.188zM7.687 2.625a67.42 67.42 0 013.938 6c-4.969 1.313-9.344 1.281-9.844 1.281.688-3.188 2.781-5.844 5.625-7.281h.281zM1.781 12v-.344c.5.031 5.625.094 10.938-1.5.313.594.594 1.219.875 1.844l-.438.125c-5.594 1.812-8.531 6.75-8.687 6.969a10.233 10.233 0 01-2.688-7.094zM12 22.219a10.123 10.123 0 01-6.5-2.344c.125-.219 2.344-4.469 8.5-6.531h.063c1.531 4 2.156 7.344 2.344 8.437a10.307 10.307 0 01-4.407.438zm6.094-1.969c-.125-.75-.687-3.969-2.094-7.906 3.25-.531 6.094.344 6.438.438a10.27 10.27 0 01-4.344 7.468z"/>
+          </svg>
+        </a>
+        
+        <span class="footer-divider">|</span>
+        
+        <a href="https://behance.net/billycarlson" target="_blank" rel="noopener noreferrer" aria-label="Behance">
+          <svg width="24" height="16" viewBox="0 0 24 16" fill="currentColor">
+            <path d="M6.938 4.5H.875v10.438h6.156c3.281 0 5.281-1.719 5.281-4.156 0-1.688-1.031-2.844-2.563-3.156 1.188-.438 1.938-1.438 1.938-2.781 0-2.125-1.688-4.344-4.75-4.344zM6.5 6.812c.938 0 1.5.5 1.5 1.281 0 .844-.625 1.375-1.625 1.375H3.812V6.812H6.5zm.125 5.063H3.812v-2.938h2.875c1.125 0 1.75.594 1.75 1.5 0 .938-.656 1.438-1.812 1.438zm10.5-6.188c-3.406 0-5.5 2.281-5.5 5.469s2.094 5.469 5.5 5.469c2.625 0 4.594-1.344 5.219-3.594h-2.406c-.344.719-1.281 1.219-2.594 1.219-1.719 0-2.844-1.031-3.031-2.625h8.188v-.656c0-3.188-2.063-5.281-5.375-5.281zm-2.813 4.375c.281-1.406 1.344-2.25 2.781-2.25 1.406 0 2.438.844 2.625 2.25h-5.406zm2.875-6.875h5.625V4.5h-5.625V3.188z"/>
+          </svg>
+        </a>
+        
+        <span class="footer-divider">|</span>
+        
+        <a href="https://instagram.com/billycarlson" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </a>
+        
+        <span class="footer-divider">|</span>
+        
+        <a href="https://linkedin.com/in/billycarlson" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
