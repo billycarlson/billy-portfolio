@@ -1,0 +1,9 @@
+{
+  "name": "wmcarlson-static",
+  "version": "1.0.0",
+  "description": "Static site for wmcarlson.com",
+  "scripts": {
+    "build": "echo 'No build step needed'"
+  }
+}
+
