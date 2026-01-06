@@ -1,11 +1,10 @@
 ---
 import TopNav from "../components/TopNav.astro";
 import Footer from "../components/Footer.astro";
----
 
 // Load case studies
 const caseStudyModules = import.meta.glob('../content/case-studies/*.mdx');
-const allCaseStudies = await Promise.allSettled(
+const allCaseStudiesResults = await Promise.allSettled(
   Object.entries(caseStudyModules).map(async ([path, module]) => {
     const caseStudy = await module();
     const filename = path.split('/').pop() || '';
@@ -20,16 +19,19 @@ const allCaseStudies = await Promise.allSettled(
   })
 );
 
-// Extract successful results and filter out failed ones
-const caseStudies = allCaseStudies
-  .filter(result => result.status === 'fulfilled')
-  .map(result => result.value)
-  .filter(cs => cs !== null && cs !== undefined);
+// Extract successful results
+const caseStudies = allCaseStudiesResults
+  .filter((result) => result.status === 'fulfilled')
+  .map((result) => result.value)
+  .filter((cs) => cs !== null && cs !== undefined);
 
-// Filter out templates and only include specific case studies for work page
-const filteredCaseStudies = caseStudies.filter(cs => cs.slug !== 'case-study-template' && (cs.slug === 'iherb-desktop-redesign' || cs.slug === 'ai-toolkit' || cs.slug === 'momentum-report' || cs.slug === 'power-lunch'));
+// Filter for specific case studies
+const filteredCaseStudies = caseStudies.filter(
+  (cs) => cs.slug !== 'case-study-template' && 
+  (cs.slug === 'iherb-desktop-redesign' || cs.slug === 'ai-toolkit' || cs.slug === 'momentum-report' || cs.slug === 'power-lunch')
+);
 
-// Define project cards with tags - matching joshlee.design style
+// Define project cards
 const projectCards = [
   {
     slug: 'iherb-desktop-redesign',
@@ -37,7 +39,7 @@ const projectCards = [
     title: 'Desktop Homepage Redesign',
     description: 'Reframing a high-pressure, executive-driven request into a future-facing design vision that aligned teams and created momentum.',
     tags: ['E-commerce', 'Design Leadership', 'Product Strategy'],
-    ...filteredCaseStudies.find(cs => cs.slug === 'iherb-desktop-redesign')
+    ...filteredCaseStudies.find((cs) => cs.slug === 'iherb-desktop-redesign')
   },
   {
     slug: 'ai-toolkit',
@@ -45,7 +47,7 @@ const projectCards = [
     title: 'Enterprise AI Toolkit',
     description: 'A modular, HAX-inspired framework to help product, design, and engineering teams plan and build AI-powered enterprise software.',
     tags: ['AI/ML', 'Design Systems', 'Workshop Facilitation'],
-    ...filteredCaseStudies.find(cs => cs.slug === 'ai-toolkit')
+    ...filteredCaseStudies.find((cs) => cs.slug === 'ai-toolkit')
   },
   {
     slug: 'momentum-report',
@@ -53,7 +55,7 @@ const projectCards = [
     title: 'Momentum Report',
     description: 'Transforming a manual reporting practice into a digital-first insights product inside One Port.',
     tags: ['Product Design', 'Workflow Design', 'Player/Coach'],
-    ...filteredCaseStudies.find(cs => cs.slug === 'momentum-report')
+    ...filteredCaseStudies.find((cs) => cs.slug === 'momentum-report')
   },
   {
     slug: 'power-lunch',
@@ -61,7 +63,7 @@ const projectCards = [
     title: 'Power Lunch',
     description: 'Building the MVP product vision for a niche professional network connecting young people to mentors in the sports industry.',
     tags: ['Product Design', 'Founder Partner', 'Full-Stack'],
-    ...filteredCaseStudies.find(cs => cs.slug === 'power-lunch')
+    ...filteredCaseStudies.find((cs) => cs.slug === 'power-lunch')
   },
   {
     slug: 'momentum-report-detailed',
@@ -71,7 +73,7 @@ const projectCards = [
     tags: ['Product Design', 'Workflow Design', 'Case Study'],
     href: '/case-studies/momentum-report-detailed'
   }
-].filter(p => p.slug);
+].filter((p) => p.slug);
 ---
 
 <html lang="en">
