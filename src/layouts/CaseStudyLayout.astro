@@ -20,7 +20,8 @@ const { title, lede, meta = [], sections = [] } = Astro.props;
     <link rel="stylesheet" href="/styles/case-study.css" />
   </head>
 
-  <body>
+  <body id="top">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <TopNav />
     
     <div class="caseStudy">
@@ -28,7 +29,7 @@ const { title, lede, meta = [], sections = [] } = Astro.props;
         <TableOfContents sections={sections} />
       </aside>
 
-      <main class="main">
+      <main id="main-content" class="main">
         <CaseStudyHero title={title} lede={lede} meta={meta} />
         <article class="content">
           <slot />

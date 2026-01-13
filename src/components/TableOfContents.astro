@@ -9,8 +9,8 @@ const { sections = [] } = Astro.props as { sections: Section[] };
 ---
 
 <nav class="toc" id="toc">
-  <a href="#" class="toc-link toc-back-to-top" data-section="top">
-    <span class="toc-icon">↑</span>
+  <a href="#top" class="toc-link toc-back-to-top" data-section="top">
+    <span class="toc-icon" aria-hidden="true">↑</span>
     Back to Top
   </a>
   {sections.map((section) => (

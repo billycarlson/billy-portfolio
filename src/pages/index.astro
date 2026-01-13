@@ -17,10 +17,11 @@ import Footer from "../components/Footer.astro";
 		<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="/styles/case-study.css" />
 	</head>
-	<body>
+	<body id="top">
+		<a href="#main-content" class="skip-link">Skip to main content</a>
 		<TopNav />
 		
-		<main class="home-page">
+		<main id="main-content" class="home-page">
 			<!-- Hero Section -->
 			<section class="home-hero">
 				<h1 class="home-headline">Hi, I'm Billy</h1>
@@ -39,9 +40,9 @@ import Footer from "../components/Footer.astro";
 					<h2 class="section-title">Design Leadership & Strategy</h2>
 				</div>
 				<div class="about-content-grid">
-					<div class="about-image-wrapper">
-						<div class="placeholder-image product-mockup"></div>
-					</div>
+				<div class="about-image-wrapper">
+					<div class="placeholder-image product-mockup" aria-hidden="true"></div>
+				</div>
 					<div class="home-content">
 						<p class="home-text">
 							I bring a focus to communication, systems thinking, and creative strategy across end-to-end product design. I also coach designers through structured feedback and practical skill development.
@@ -60,7 +61,7 @@ import Footer from "../components/Footer.astro";
 				<div class="work-grid">
 					<a href="/case-studies/iherb-desktop-redesign" class="work-item">
 						<div class="work-image-wrapper">
-							<div class="placeholder-image product-mockup"></div>
+							<div class="placeholder-image product-mockup" aria-hidden="true"></div>
 						</div>
 						<span class="work-label">Case Study</span>
 						<h3 class="work-title">iHerb Desktop Homepage Redesign</h3>
@@ -68,7 +69,7 @@ import Footer from "../components/Footer.astro";
 					</a>
 					<a href="/case-studies/momentum-report" class="work-item">
 						<div class="work-image-wrapper">
-							<div class="placeholder-image product-mockup"></div>
+							<div class="placeholder-image product-mockup" aria-hidden="true"></div>
 						</div>
 						<span class="work-label">Case Study</span>
 						<h3 class="work-title">Momentum Report</h3>
@@ -76,7 +77,7 @@ import Footer from "../components/Footer.astro";
 					</a>
 					<a href="/work" class="work-item">
 						<div class="work-image-wrapper">
-							<div class="placeholder-image geometric-pattern"></div>
+							<div class="placeholder-image geometric-pattern" aria-hidden="true"></div>
 						</div>
 						<span class="work-label">View All</span>
 						<h3 class="work-title">See All Case Studies</h3>
@@ -92,10 +93,10 @@ import Footer from "../components/Footer.astro";
 					<h2 class="section-title">Get In Touch</h2>
 				</div>
 				<div class="links-grid">
-					<a href="https://linkedin.com/in/billycarlson" target="_blank" class="link-item">
+					<a href="https://linkedin.com/in/billycarlson" target="_blank" rel="noopener noreferrer" class="link-item">
 						<span class="link-label">LinkedIn</span>
 					</a>
-					<div class="link-item">
+					<div class="link-item link-item-disabled">
 						<span class="link-label">Speaking & Community</span>
 					</div>
 				</div>
@@ -256,6 +257,30 @@ import Footer from "../components/Footer.astro";
     text-decoration: underline;
   }
 
+  .home-link:focus {
+    outline: 2px solid var(--red);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--red);
+    color: var(--white);
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 1000;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
   /* Placeholder image styles */
   .geometric-pattern {
     background: 
@@ -332,6 +357,12 @@ import Footer from "../components/Footer.astro";
     text-decoration: underline;
   }
 
+  .work-item:focus {
+    outline: 2px solid var(--red);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
   .work-label {
     display: block;
     text-transform: uppercase;
@@ -378,6 +409,25 @@ import Footer from "../components/Footer.astro";
 
   .link-item:hover .link-label {
     text-decoration: underline;
+  }
+
+  .link-item:focus {
+    outline: 2px solid var(--red);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .link-item-disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  .link-item-disabled:hover {
+    opacity: 0.5;
+  }
+
+  .link-item-disabled:hover .link-label {
+    text-decoration: none;
   }
 
   .link-label {

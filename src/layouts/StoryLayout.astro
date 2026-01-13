@@ -19,10 +19,11 @@ const { title, lede, meta = [] } = Astro.props;
     <link rel="stylesheet" href="/styles/case-study.css" />
   </head>
 
-  <body>
+  <body id="top">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <TopNav />
     
-    <main class="story-content">
+    <main id="main-content" class="story-content">
       <StoryHero title={title} lede={lede} meta={meta} />
       <article class="content">
         <slot />

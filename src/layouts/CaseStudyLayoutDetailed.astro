@@ -30,10 +30,11 @@ const {
     <link rel="stylesheet" href="/styles/case-study.css" />
   </head>
 
-  <body>
+  <body id="top">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <TopNav />
     
-    <main class="detailed-case-study">
+    <main id="main-content" class="detailed-case-study">
       <!-- Hero Section -->
       <section class="case-hero">
         <div class="hero-content">
@@ -68,7 +69,7 @@ const {
           </div>
         </div>
         <div class="hero-image">
-          <div class="placeholder-image"></div>
+          <div class="placeholder-image" aria-hidden="true"></div>
         </div>
       </section>
 

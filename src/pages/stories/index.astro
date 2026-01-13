@@ -34,10 +34,11 @@ const stories = allStories.filter(s => s !== null && s !== undefined && !s.slug.
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles/case-study.css" />
   </head>
-  <body>
+  <body id="top">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <TopNav />
     
-    <main class="stories-page">
+    <main id="main-content" class="stories-page">
       <div class="stories-hero">
         <h1 class="stories-title">Stories</h1>
         <p class="stories-description">
@@ -120,6 +121,12 @@ const stories = allStories.filter(s => s !== null && s !== undefined && !s.slug.
 
   .story-card:hover .story-card-title {
     text-decoration: underline;
+  }
+
+  .story-card:focus {
+    outline: 2px solid var(--red);
+    outline-offset: 4px;
+    border-radius: 4px;
   }
 
   .story-card-content {
